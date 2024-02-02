@@ -70,10 +70,9 @@ fragment INTEGER: DIGIT+;
 BooleanLit: 'true'| 'false';
 
 StringLit
-	: '"' StringChars? '"'
+	: '"' StringChar* '"'
 	{setText(getText().substring(1, getText().length()-1));};
 
-fragment StringChars: StringChar+;
 
 fragment StringChar: ~["\\\r\n] | EscapedSequence | DoubleQuote;
 fragment DoubleQuote: '\'"';
