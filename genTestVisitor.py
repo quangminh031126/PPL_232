@@ -48,7 +48,7 @@ class ZCodeProgram(Visitor):
             raise ValueError("Must be in parser mode or ast mode (case - insensitive)")
 
     def gen(self):
-        return self.visit(self.mode)
+        return self.visit('parser')
 
     def getExprList(self, mode, min, max):
         if min > max:

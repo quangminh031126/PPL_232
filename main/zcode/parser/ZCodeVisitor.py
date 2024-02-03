@@ -234,8 +234,8 @@ class ZCodeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ZCodeParser#function.
-    def visitFunction(self, ctx:ZCodeParser.FunctionContext):
+    # Visit a parse tree produced by ZCodeParser#functionDecl.
+    def visitFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
         return self.visitChildren(ctx)
 
 

@@ -91,8 +91,9 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 /* PARSER */
 mainFunction: FUNC 'main' LBracket paramDeclList RBracket NEWLINE* (returnStatement | blockStatement)?;
 
-program: NEWLINE* functionDecl* mainFunction? functionDecl* EOF;
+program: NEWLINE* decl* EOF;
 
+decl: mainFunction | functionDecl | varDecl;
 
 /* ARRAY */
 arrayDeclaration: (NUMBER | BOOL | STRING) IDENTIFIER LSBracket arrayDim RSBracket LEFTARR LSBracket arrayInit RSBracket;
