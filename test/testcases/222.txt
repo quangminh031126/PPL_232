@@ -1,0 +1,3 @@
+
+func lCKk ()	return 3.857
+

@@ -1,0 +1,8 @@
+
+string CPC <- true ## 0
+func ffT (bool nOs)
+	return "'"1L"
+
+## R
+number c5c[9]
+## vLE:SMC?}Q!"uw$s56

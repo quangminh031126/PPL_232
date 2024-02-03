@@ -1,0 +1,7 @@
+
+## >Kk[4Q$_b9]
+func eBzT (string oA[999e-14,59,21.179E19], var kqeN, number pa7T)
+	begin
+		KdAC <- ZP4O
+	end
+

@@ -1,0 +1,4 @@
+
+func k0K (bool Qt04, bool nqX[518,602e+28,5], var hrF[14])	return
+
+number sz4Y[934.245,3.316e07,485.757] <- JaNg

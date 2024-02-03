@@ -1,0 +1,5 @@
+
+func wJI (number rbQ[5.629,248], dynamic QV[98.329E+01,7.170e-20,299.429], string ZJv[58e66])	begin
+	end
+var LG2 <- [not true * GPNC(479.309E22), "'"'"'""] ## y j
+string rn <- false

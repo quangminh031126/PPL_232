@@ -1,0 +1,8 @@
+
+## fLD>|<{*GXr|3/kpSFj
+func wxM3 (string XLd, bool Bh, string X_l)
+	return "*@P"
+
+func S2 ()	return false
+
+dynamic Tau1 <- 63.123

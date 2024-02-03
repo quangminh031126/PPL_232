@@ -1,0 +1,10 @@
+
+string fp_n[3.317] <- 49
+func dqX ()
+	begin
+		return false
+		## X
+		## s,5UM.#`W;g2_
+	end
+## bGr0|/
+func aU ()	return 30.754e99

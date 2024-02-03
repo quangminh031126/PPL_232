@@ -1,0 +1,8 @@
+
+func H8C (number aq6, number XIS1)
+	return true
+dynamic NkX ## 5&L
+func QK1_ (dynamic tm)
+	return
+
+dynamic V5[787.154,332.143,52.155] ## =_YfP=K
