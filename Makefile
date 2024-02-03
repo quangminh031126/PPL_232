@@ -6,7 +6,7 @@ gen:
 
 .PHONY: parser_test
 parser_test:
-	python run.py genTest ParserSuite
+	python genTestCase.py ParserSuite
 
 .PHONY: parser
 parser:
