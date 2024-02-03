@@ -5,14 +5,25 @@ from lexererr import *
 }
 
 options {
-	language=Python3;
+    language=Python3;
 }
-
-program: function* mainFunction function* EOF;
-mainFunction: 'main' '(' ')' '{' (statement)* '}' NEWLINE;
 
 
 /* LEXER */
+
+/* Fragments */
+fragment DECIMAL: '.' INTEGER* ;
+fragment EXPONENT: [eE] ('+'|'-')? INTEGER;
+fragment INTEGER: DIGIT+;
+fragment StringChar: ~["\\\r\n] | EscapedSequence | DoubleQuote;
+fragment DoubleQuote: '\'"';
+fragment EscapedSequence
+    : '\\' [btnfr'\\]
+    ;
+fragment LETTER: [a-zA-Z];
+fragment UNDERSCORE: '_';
+fragment DIGIT: [0-9];
+
 
 /* Keywords */
 NUMBER: 'number';
@@ -62,44 +73,36 @@ NEWLINE: '\n';
 
 /* Literals */
 
-NumberLit: INTEGER (DECIMAL|DECIMAL? EXPONENT);
-fragment DECIMAL: '.' INTEGER* ;
-fragment EXPONENT: [eE] ('+'|'-')? INTEGER;
-fragment INTEGER: DIGIT+;
+NumberLit: INTEGER (DECIMAL|DECIMAL? EXPONENT)?;
+
 
 BooleanLit: 'true'| 'false';
 
 StringLit
-	: '"' StringChar* '"'
-	{setText(getText().substring(1, getText().length()-1));};
-
-
-fragment StringChar: ~["\\\r\n] | EscapedSequence | DoubleQuote;
-fragment DoubleQuote: '\'"';
-fragment EscapedSequence
-    : '\\' [btnfr'\\]
-    ;
+    : '"' StringChar* '"'{        
+    temp = self.text
+    temp = temp[1:-1]  # Remove the opening and closing quotes
+    self.text = temp
+};
 
 IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
-fragment LETTER: [a-zA-Z];
-fragment UNDERSCORE: '_';
-fragment DIGIT: [0-9];
-
-
 
 
 /* PARSER */
+mainFunction: FUNC 'main' LBracket paramDeclList RBracket NEWLINE* (returnStatement | blockStatement)?;
+
+program: function* mainFunction function* ;
 
 
 /* ARRAY */
 arrayDeclaration: (NUMBER | BOOL | STRING) IDENTIFIER LSBracket arrayDim RSBracket LEFTARR LSBracket arrayInit RSBracket;
 arrayDim: NumberLit COMMA arrayDim | NumberLit;
 arrayInit
-	: LSBracket numberList RSBracket
-	| LSBracket boolList RSBracket 
-	| LSBracket stringList RSBracket
-	| LSBracket arrayList RSBracket
-	;
+    : LSBracket numberList RSBracket
+    | LSBracket boolList RSBracket 
+    | LSBracket stringList RSBracket
+    | LSBracket arrayList RSBracket
+    ;
 numberList: numberPrime | /* empty */;
 numberPrime: NumberLit COMMA numberPrime | NumberLit;
 
@@ -138,8 +141,8 @@ literalOp: EQUALEQUAL;
 /* Index Operator */
 
 elementAccessExpr: arrExpr LSBracket indexOp RSBracket;
-arrExpr: IDENTIFIER | functionCall;
-indexOp: arrExpr COMMA indexOp | arrExpr;
+arrExpr: IDENTIFIER | functionCall | NumberLit ;
+indexOp: arrExpr COMMA indexOp | arrExpr;/* Non empty list of arrExpr */
 
 /* Function Call */
 functionCall: IDENTIFIER LBracket functionArgsList RBracket;
@@ -149,6 +152,7 @@ arg: expression;
 
 
 /* Variable and Function Declaration */
+statement: (functionCallStatement|continueStatement|returnStatement|breakStatement|blockStatement|ifStatement | forStatement) NEWLINE+;
 
 variableDeclaration: normalDeclaration | arrayDeclaration | varDecl | dynamicDecl;
 normalDeclaration: varType variableInitialization?;
@@ -182,9 +186,9 @@ elseStatement: ELSE logicExpr statement;
 
 /* For statement */
 forStatement
-	: 
-	FOR IDENTIFIER UNTIL logicExpr BY updateExpr nullableListOfNEWLINE statement
-	;
+    : 
+    FOR IDENTIFIER UNTIL logicExpr BY updateExpr nullableListOfNEWLINE statement
+    ;
 updateExpr: expression;
 /* Break statement */
 breakStatement: BREAK;
@@ -199,24 +203,23 @@ returnStatement: RETURN expression?;
 functionCallStatement: functionCall;
 
 /* Block statement */
-blockStatement: BEGIN NEWLINE+ blockStatementBody END NEWLINE+;
+blockStatement: BEGIN NEWLINE+ blockStatementBody END (NEWLINE+|EOF);
 blockStatementBody: nullableListOfStatement;
-nullableListOfStatement: statement nullableListOfStatement;
+nullableListOfStatement: statement nullableListOfStatement|/* empty */;
 
-statement: (functionCallStatement|continueStatement|returnStatement|breakStatement|blockStatement|ifStatement | forStatement) nullableListOfNEWLINE;
 
 COMMENT: '##' .*? ('\n'| EOF) -> skip;
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 UNCLOSE_STRING:  '"' StringChar* (NEWLINE|EOF){
-	esc = ['\n']
+    esc = ['\n']
     temp = str(self.text)
     if (temp[-1] in esc):
         raise UncloseString(temp[1:-1])
     else:
         raise UncloseString(temp[1:])
 };
-ILLEGAL_ESCAPE: '\\' (~[bfrnt'\\] | ~'\\') {
+ILLEGAL_ESCAPE: '"' StringChar* '\\' (~[bfrnt'\\] | ~'\\') {
     temp = self.text
     raise IllegalEscape(temp[1:])
 };
