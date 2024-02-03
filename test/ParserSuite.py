@@ -1255,3 +1255,8 @@ func bF (dynamic J7, dynamic OOHX[10.755,777e88,7.780e-13], var qr)	return
 '''
 		expect = '''Error on line 2 col 9: dynamic'''
 		self.assertTrue(TestParser.test(input, expect, 300))
+	def test_301(self):
+		input = """func main() return 1
+"""
+		expect = "successful"
+		self.assertTrue(TestParser.test(input, expect, 301))

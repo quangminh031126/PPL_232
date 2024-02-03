@@ -89,11 +89,10 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
 /* PARSER */
-mainFunction: FUNC 'main' LBracket paramDeclList RBracket NEWLINE* (returnStatement | blockStatement)?;
-
 program: NEWLINE* decl* EOF;
 
-decl: mainFunction | functionDecl | varDecl;
+decl: (functionDecl | varDecl)  NEWLINE*;
+mainFunction: FUNC 'main' LBracket paramDeclList RBracket NEWLINE* (returnStatement | blockStatement)?;
 
 /* ARRAY */
 arrayDeclaration: (NUMBER | BOOL | STRING) IDENTIFIER LSBracket arrayDim RSBracket LEFTARR LSBracket arrayInit RSBracket;
@@ -204,7 +203,7 @@ returnStatement: RETURN expression?;
 functionCallStatement: functionCall;
 
 /* Block statement */
-blockStatement: BEGIN NEWLINE+ blockStatementBody END (NEWLINE+|EOF);
+blockStatement: BEGIN NEWLINE+ blockStatementBody END NEWLINE+;
 blockStatementBody: nullableListOfStatement;
 nullableListOfStatement: statement nullableListOfStatement|/* empty */;
 
