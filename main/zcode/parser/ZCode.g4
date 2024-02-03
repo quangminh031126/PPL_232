@@ -89,10 +89,10 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
 /* PARSER */
-program: NEWLINE* decl* EOF;
-
-decl: (functionDecl | varDecl)  NEWLINE*;
 mainFunction: FUNC 'main' LBracket paramDeclList RBracket NEWLINE* (returnStatement | blockStatement)?;
+
+program: function* mainFunction function* ;
+
 
 /* ARRAY */
 arrayDeclaration: (NUMBER | BOOL | STRING) IDENTIFIER LSBracket arrayDim RSBracket LEFTARR LSBracket arrayInit RSBracket;
@@ -167,7 +167,7 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionDecl: FUNC IDENTIFIER LBracket paramDeclList RBracket nullableListOfNEWLINE (returnStatement | blockStatement)?;
+function: FUNC IDENTIFIER LBracket paramDeclList RBracket nullableListOfNEWLINE (returnStatement | blockStatement)?;
 
 nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE | /* empty */;
 
@@ -203,7 +203,7 @@ returnStatement: RETURN expression?;
 functionCallStatement: functionCall;
 
 /* Block statement */
-blockStatement: BEGIN NEWLINE+ blockStatementBody END NEWLINE+;
+blockStatement: BEGIN NEWLINE+ blockStatementBody END (NEWLINE+|EOF);
 blockStatementBody: nullableListOfStatement;
 nullableListOfStatement: statement nullableListOfStatement|/* empty */;
 
