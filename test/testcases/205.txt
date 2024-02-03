@@ -1,6 +1,2 @@
 
-## (g7ncOf
-string w81h[223,4,526] ## (.H<z#,9B=b4H:Z
-string MeGK <- "'"'"'"'"'"" ## ,Rb}[MX>|<f8@Z13
-number o9W[78.644E88,2.002E38,501e-35] ## Jw7%?,=aVoMD8Yf|SoGw
-## A: qy0n!FQvPyj[:E}o
+number C9[25,10.211e-21,711.048E-38]

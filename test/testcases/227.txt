@@ -1,5 +1,7 @@
 
-## j.W]"e#5p.CRUo}V
-number pFwK <- 128.927e31 ## U,%7}+6Cc?
-## &(9L>ax:N>Gh*O
-number h3 <- 5e-57
+string rEw[5] <- niK ## %8sSC<z}!OT$$^f
+number hD ## 1+
+bool hOFY[6.130e+89] ## FT&De8
+func eQD (bool pni)
+	return 556
+number o0oj <- inV9 ## Y;_US Zi|

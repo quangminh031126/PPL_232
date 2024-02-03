@@ -1,3 +1,5 @@
 
-func lCKk ()	return 3.857
+func TW3 (string nMK5, bool me, var QCa)	return "c>/'""
 
+var EQ[91,18]
+var niZD

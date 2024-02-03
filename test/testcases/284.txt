@@ -1,2 +1,33 @@
 
-string Fvj ## jp#=N`A^cjL_UJj)m
+func ViRk (var dX, string TMFm)
+	begin
+	end
+func ONpH (bool CQ_)	return true
+
+## c}
+## w|n& -Hr
+func PcH (number heY0, var iMI)	begin
+		if ("'"7y'"S")
+		begin
+		end
+		elif ("T'"3'"") break
+		elif (Gm8m) return lpU
+		elif (XMZ) continue
+		elif (false)
+		hAMk("~'"", true, 751)[true] <- "a'"'""
+		elif ("<") if (true) hf("'"CE", false)
+		elif (29.572e-16)
+		q9 <- 54.847
+		elif (true) mB["'"'"#'"'"", true, false] <- 2.691E-99
+		elif (j_V) if ("P'"'"")
+		begin
+			break
+			continue
+		end
+		elif (true)
+		return
+		else break
+		for F5s until true by 77.150E-11
+			FD("'"'"", "'"")
+		## |-
+	end

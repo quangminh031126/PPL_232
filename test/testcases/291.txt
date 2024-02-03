@@ -1,8 +1,5 @@
 
-## fLD>|<{*GXr|3/kpSFj
-func wxM3 (string XLd, bool Bh, string X_l)
-	return "*@P"
+bool xD2[388.528e-05,19.869] ## +J=h-NBK|bt3S tu_
+func DWYk ()
+	return false
 
-func S2 ()	return false
-
-dynamic Tau1 <- 63.123

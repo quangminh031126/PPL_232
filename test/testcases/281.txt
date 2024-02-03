@@ -1,15 +1,4 @@
 
-dynamic Zc <- 50 ## c{w]tJ|g-Hzz h;$
-## qtICv:"4L9f.ILE2Zzz
-func Bvgh (var O3O)
-	begin
-		## f:TN}{IF
-		vsB(false, false, a8Of)
-		for lzx_ until "9Z" by 22.464e-65
-			if ("'"") if (9.450) Kp4(false)
-			else return
-			elif (79.419) FvY1()
-			elif (true) begin
-			end
-	end
-
+## cu"c|Rs
+number RL <- true ## =
+bool NoOY[87.420e-13,64.916] ## vHB2Oy

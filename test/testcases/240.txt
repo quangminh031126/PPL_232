@@ -1,6 +1,5 @@
 
-var kiTM ## bX{n8|#0(
-## @
-## Bmb|Zi1G8JKoV$hFt1TE
-bool Pd[1] <- GwG7 ## L3GZj
-## U
+## )}hDIX(H99:iFv9%J
+func mH (number Pw[532], number AS, string Yyn[901e27,1.883])
+	return
+string Zs[8.380e+20,428.427]

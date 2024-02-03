@@ -1,4 +1,8 @@
 
-dynamic cb[665.190]
-## lQ)w9u_%si#G5|u}lM
-func zUX (var fuW, number fVZ[595.524,0e+11,4], number k9K[679,7,38.986])	return false
+dynamic iJ
+var f_B <- 17.665E+39 ## +3&xIiqUp&%Y9K7
+string JyPi ##  A>?L#p4STeDB2o.Xi
+## {gAm"
+func xI ()
+	return 9.978e46
+

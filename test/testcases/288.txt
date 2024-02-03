@@ -1,6 +1,13 @@
 
-dynamic hTN <- true ## T}VS1UcS]Rw&Ol^
-bool HoF[5E59,99,76e+64] ## b|)u!-B
-func ubw (bool oBWG[4,69.555e+26,16.424])
-	return
+func Ss ()	return
 
+bool te <- AOit
+func AT1A ()
+	begin
+		if (false)
+		return
+	end
+
+func qf1 (number r7)
+	return Qf
+dynamic Ar <- "$'""

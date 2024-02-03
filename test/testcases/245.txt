@@ -1,3 +1,10 @@
 
-bool CSe <- 8.677E+31 ## E+mD0
-var Mx9 ## G;(>)aN?
+## [A%f_J@<R?0=Sat#L]
+func tK (string De5[1.990E-67,79.302e+07], string a3Hi)
+	return
+func XES (string Jc[2e44])	begin
+		begin
+		end
+		begin
+		end
+	end

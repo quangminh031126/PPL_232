@@ -1,7 +1,10 @@
 
-var UFkI[3]
-string Uwo <- "'"X" ## =Fa[`jInAmM*%3@G*P/
-number gr[37,11.699,72.820E-34]
-string f9Ju ## F]
-func dL ()	return
+## pAMRumHYBAtTjCR(
+func SwI5 (bool uz, bool rVp[903.207,697.666], bool zwtt[0,20e+47,26e-74])
+	begin
+	end
 
+## 7kBVVDal8
+func Kc ()	begin
+		## 1|}O)EIV
+	end

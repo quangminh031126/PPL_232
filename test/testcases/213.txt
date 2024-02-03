@@ -1,4 +1,4 @@
 
-number NA[90.405,55.461e+96] ## LA7~p
-## U
-bool bX
+func ftc (var Nvl[50,1], bool QP[278,686.049E76,121.811E+39])	return "'""
+bool Fa[3,22E+59,0] <- p22 ## !M3
+func pl (number cJ0, bool iiML)	return

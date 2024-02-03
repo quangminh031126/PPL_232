@@ -1,6 +1,2 @@
 
-## :#/Am"<Xu{C<K&!T8$me
-func x5 (string CNO, var Zd)
-	return
-bool Ry[151,59.635,234.547] <- false
-dynamic Xu[923] <- yT7
+## NtYK

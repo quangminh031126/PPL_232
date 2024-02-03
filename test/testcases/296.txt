@@ -1,9 +1,9 @@
 
-## ?hZb$;NXd+:4:PP
-func wEPm (number d1)	return
-func Sa3f (bool yw4K[7,376.563])
+func zM2 (dynamic OYAE[2.688])
 	begin
-		## aSN&?gDliC4ddU$At*I
-		## .jm$S*mcJil:?1
-		## [_XEkK-b(.S/6re
 	end
+
+## %lOIRdSlRDR.$78aT
+string Cwrt
+func BGh (string Nwpb, number i2[25,2])
+	return

@@ -1,6 +1,6 @@
 
-## gnD:h`l0
-func bFA3 (bool mqBt)
-	return true
-bool QT80
-## U .tg}wc(LLY(1K;oKy
+number bxP[28.953E+94,9.815e41] ## +4R,{^7l k{#x$
+bool S_rd
+func V7u4 (number r6[24,55e+35,2.207], dynamic I4t[555,879])
+	return 50E-15
+## ejb

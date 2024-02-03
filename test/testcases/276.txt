@@ -1,4 +1,7 @@
 
-bool GO[264.739E+22] <- "u" ## {`*D(M<xBB>{%9
-func Vx (string xGn[32.524,85.100,503e46], string OMD[5.814,372E+96], number Rfm9)	return
-dynamic TzMz[8.926e+42]
+string A60A[1e63] <- "j'",'""
+func FB (dynamic kHQY[3.411E-73,58])	begin
+		## iRf34y9?j5R;L
+		## d"m{K#{;z*%3[
+		## [8x3l_Qq2BBHzxl
+	end

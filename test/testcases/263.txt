@@ -1,5 +1,7 @@
 
-## ThS+x7eT|Su-@oGW%{
-## HS*z}$8q]SUsIR5
-## ">Vn{3zF5
-string XPo[667.413e+48] ## ty[;%Ggtl2R6
+func fn ()
+	return false
+
+## G1dZs
+## -TBH.Sxq[B0ZmT-[!+LP
+func ahX ()	return "'"l'"h"
