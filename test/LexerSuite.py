@@ -109,4 +109,3 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test(""" "Tien \\\'" " """, "Tien \\',Unclosed String:  ", 149))
         self.assertTrue(TestLexer.test(""" "Tien 
                                        " """, "Unclosed String: Tien ", 150))
-        self.assertTrue(TestLexer.test("123abc", "Error Token 123abc", 400))

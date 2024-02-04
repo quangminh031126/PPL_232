@@ -43,7 +43,7 @@ CONTINUE: 'continue';
 IF: 'if';
 ELSE: 'else';
 ELIF: 'elif';
-BEGIN: 'begin';
+BEGIN: 'begin' NEWLINE+;
 END: 'end';
 NOT: 'not';
 AND: 'and';
@@ -90,13 +90,12 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
 /* PARSER */
-functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody NEWLINE+;
 
 program: NEWLINE* declaration* EOF;
 
-declaration: (function | variableDeclaration );
-function: functionDecl | function1;
-function1: functionPreDecl;
+declaration: (function | variableDeclaration ) (NEWLINE+|EOF);
+function: function1 | functionPreDecl;
+function1: functionDecl;
 
 /* ARRAY */
 
@@ -158,9 +157,11 @@ functionCall: IDENTIFIER LBracket functionArgsList RBracket;
 functionArgsList: argsPrime | /* Empty */;
 argsPrime: arg COMMA argsPrime | arg;
 arg: expression;
-assignStatement: lhs LEFTARR expression;
-lhs: IDENTIFIER | elementAccessExpr;
 
+
+assignStatement: scalarAssignStatement | arrayAssignStatement;
+scalarAssignStatement: IDENTIFIER LEFTARR expression;
+arrayAssignStatement: (IDENTIFIER | elementAccessExpr) arrayAssign;
 /* Variable and Function Declaration */
 statement
     : 
@@ -177,7 +178,7 @@ statement
     )
     (NEWLINE+|EOF);
 
-variableDeclaration: (normalDeclaration | arrayDeclaration | varDecl | dynamicDecl) NEWLINE+;
+variableDeclaration: (normalDeclaration | arrayDeclaration | varDecl | dynamicDecl);
 normalDeclaration: varType IDENTIFIER variableInitialization?;
 varType: (NUMBER|BOOL|STRING);
 varDecl: VAR IDENTIFIER variableInitialization;
@@ -189,8 +190,8 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-
-functionPreDecl: FUNC IDENTIFIER paramDecl NEWLINE+;
+functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody;
+functionPreDecl: FUNC IDENTIFIER paramDecl;
 paramDecl: LBracket paramDeclList RBracket;
 functionBody: blockStatement | returnStatement;
 
@@ -227,9 +228,9 @@ returnStatement: RETURN expression?;
 functionCallStatement: functionCall;
 
 /* Block statement */
-blockStatement: BEGIN NEWLINE+ blockStatementBody END;
+blockStatement: BEGIN (blockStatementBody) END;
 blockStatementBody: nullableListOfStatement;
-nullableListOfStatement: (statement|declaration) nullableListOfStatement|/* empty */;
+nullableListOfStatement: (statement|declaration)*;
 
 expressionList: expression COMMA expressionList | expression;
 expression: expression1 ELLIPSIS expression1 | expression1;
@@ -243,7 +244,7 @@ expression7: elementAccessExpr | operands;
 operands: literal | IDENTIFIER | (LBracket expression RBracket) | functionCall ; 
 
 COMMENT: '##' .*? ~[\n\r\f]* -> skip;
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+WS : [ \t\r]+ -> skip ; // skip spaces, tabs, newlines
 
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 UNCLOSE_STRING:  '"' StringChar* (NEWLINE|EOF){
