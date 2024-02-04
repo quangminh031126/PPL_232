@@ -90,10 +90,13 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
 /* PARSER */
+functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody NEWLINE+;
 
 program: NEWLINE* declaration* EOF;
 
-declaration: (functionDecl | variableDeclaration );
+declaration: (function | variableDeclaration );
+function: functionDecl | function1;
+function1: functionPreDecl;
 
 /* ARRAY */
 
@@ -155,7 +158,8 @@ functionCall: IDENTIFIER LBracket functionArgsList RBracket;
 functionArgsList: argsPrime | /* Empty */;
 argsPrime: arg COMMA argsPrime | arg;
 arg: expression;
-
+assignStatement: lhs LEFTARR expression;
+lhs: IDENTIFIER | elementAccessExpr;
 
 /* Variable and Function Declaration */
 statement
@@ -169,6 +173,7 @@ statement
     | returnStatement
     | functionCallStatement
     | blockStatement
+    | assignStatement
     )
     (NEWLINE+|EOF);
 
@@ -184,7 +189,8 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody? NEWLINE+;
+
+functionPreDecl: FUNC IDENTIFIER paramDecl NEWLINE+;
 paramDecl: LBracket paramDeclList RBracket;
 functionBody: blockStatement | returnStatement;
 
@@ -237,7 +243,7 @@ expression7: elementAccessExpr | operands;
 operands: literal | IDENTIFIER | (LBracket expression RBracket) | functionCall ; 
 
 COMMENT: '##' .*? ~[\n\r\f]* -> skip;
-WS : [ \t\r]+ -> skip ; // skip spaces, tabs, newlines
+WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 UNCLOSE_STRING:  '"' StringChar* (NEWLINE|EOF){
