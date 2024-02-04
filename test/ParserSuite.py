@@ -1260,3 +1260,16 @@ func bF (dynamic J7, dynamic OOHX[10.755,777e88,7.780e-13], var qr)	return
 """
 		expect = "successful"
 		self.assertTrue(TestParser.test(input, expect, 301))
+	def test_302(self):
+		input = """func areDivisor(number num1, number num2)
+		return ((num1 % num2 = 0) or (num2 % num1 = 0))
+		func main()
+			begin
+				var num1 <- readNumber()
+				var num2 <- readNumber()
+				
+				if (areDivisors(num1,num2)) printString("Yes")
+				else printString("No")
+			end"""
+		expect = "successful"
+		self.assertTrue(TestParser.test(input, expect, 302))
