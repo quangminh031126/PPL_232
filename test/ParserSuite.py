@@ -170,16 +170,16 @@ class ParserSuite(unittest.TestCase):
         input = """ var VoTien <- "Vo" ... "Tien" 
 """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 211))
+        self.assertTrue(TestParser.test(input, expect, 217))
         
         input = """ var VoTien <- "Vo" ... 1 ... "Tien" 
         """
         expect = "Error on line 1 col 26: ..."
-        self.assertTrue(TestParser.test(input, expect, 212))
+        self.assertTrue(TestParser.test(input, expect, 218))
         
         #! so sánh không có tính kết hợp
         input = """ 
-            var VoTien <- true > "true" 
+            var VoTien <- true > "true"
             var VoTien <- true >= "true"
             var VoTien <- true = "true"
             var VoTien <- true == "true"
@@ -188,12 +188,12 @@ class ParserSuite(unittest.TestCase):
             var VoTien <- true >= "true" ... 1 > 2
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 213))
+        self.assertTrue(TestParser.test(input, expect, 219))
         
         input = """ var VoTien <- true > x >= z 
         """
         expect = "Error on line 1 col 24: >="
-        self.assertTrue(TestParser.test(input, expect, 214))
+        self.assertTrue(TestParser.test(input, expect, 220))
         
         #! cộng trừ nhân chia và and/or ....
         input = """ 
@@ -204,12 +204,12 @@ class ParserSuite(unittest.TestCase):
             var VoTien <- 1 / 2 / 2 * 3 % 4
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 215))
+        self.assertTrue(TestParser.test(input, expect, 221))
         
         input = """var VoTien <- true >= "true" and 1 > 2
         """
         expect = "Error on line 1 col 35: >"
-        self.assertTrue(TestParser.test(input, expect, 216)) 
+        self.assertTrue(TestParser.test(input, expect, 222)) 
         
         #! toán tử not và sign   
         input = """ 
@@ -217,12 +217,12 @@ class ParserSuite(unittest.TestCase):
             var VoTien <- not not not----C
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 217)) 
+        self.assertTrue(TestParser.test(input, expect, 223)) 
         
         input = """var VoTien <- - not 1
         """
         expect = "Error on line 1 col 16: not"
-        self.assertTrue(TestParser.test(input, expect, 218)) 
+        self.assertTrue(TestParser.test(input, expect, 224)) 
         
         #! toán tử array
         input = """ 
@@ -233,12 +233,12 @@ class ParserSuite(unittest.TestCase):
             var VoTien <- 1[1]
         """
         expect = "Error on line 3 col 38: ["
-        self.assertTrue(TestParser.test(input, expect, 219))
+        self.assertTrue(TestParser.test(input, expect, 225))
         
         input = """var VoTien <- a[]
         """
         expect = "Error on line 1 col 16: ]"
-        self.assertTrue(TestParser.test(input, expect, 220)) 
+        self.assertTrue(TestParser.test(input, expect, 226)) 
         
         #! hàm 
         input = """ 
@@ -248,12 +248,12 @@ class ParserSuite(unittest.TestCase):
             var VoTien <- a(z,k[3] ... 2)[1,2]
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 221))    
+        self.assertTrue(TestParser.test(input, expect, 227))    
         
         input = """var VoTien <- a()()
         """
         expect = "Error on line 1 col 17: ("
-        self.assertTrue(TestParser.test(input, expect, 222))  
+        self.assertTrue(TestParser.test(input, expect, 228))  
         
         #! tổng hợp
 
@@ -266,12 +266,12 @@ class ParserSuite(unittest.TestCase):
             var VoTien <- a(x,array[2])[2,3+2,true,false]
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 223))  
+        self.assertTrue(TestParser.test(input, expect, 229))  
 
         input = """var VoTien <- a[1]()
         """
         expect = "Error on line 1 col 18: ("
-        self.assertTrue(TestParser.test(input, expect, 224))         
+        self.assertTrue(TestParser.test(input, expect, 248))         
         
     def test_Statements(self): # test 230 -> ...
         """Statements"""

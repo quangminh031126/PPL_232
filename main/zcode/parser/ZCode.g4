@@ -77,7 +77,6 @@ NEWLINE: '\n';
 
 NumberLit: INTEGER (DECIMAL|DECIMAL? EXPONENT)?;
 
-BooleanLit: TRUE| FALSE;
 
 StringLit
     : '"' StringChar* '"'{        
@@ -86,7 +85,7 @@ StringLit
     self.text = temp
 };
 
-literal: NumberLit | BooleanLit | StringLit;
+literal: NumberLit | TRUE| FALSE | StringLit;
 IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
@@ -100,7 +99,7 @@ declaration: (functionDecl | variableDeclaration );
 
 arrayDeclaration: varType IDENTIFIER LSBracket arrayDim RSBracket arrayAssign?;
 arrayDim: NumberLit COMMA arrayDim | NumberLit;
-arrayAssign: LEFTARR LSBracket arrayElementList RSBracket;
+arrayAssign: LEFTARR ((LSBracket arrayElementList RSBracket) | expression);
 arrayElementList
     : literalList
     | arrayList
@@ -185,9 +184,9 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody NEWLINE+;
+functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody? NEWLINE+;
 paramDecl: LBracket paramDeclList RBracket;
-functionBody: (returnStatement | blockStatement)?;
+functionBody: blockStatement | returnStatement;
 
 
 /* statements */
@@ -228,14 +227,14 @@ nullableListOfStatement: (statement|declaration) nullableListOfStatement|/* empt
 
 expressionList: expression COMMA expressionList | expression;
 expression: expression1 ELLIPSIS expression1 | expression1;
-expression1: expression1 ( EQUAL | EQUALEQUAL | NOTEQUAL | LESS | LESSOREQUAL | GREATER | GREATEROREQUAL ) expression1 | expression2;
+expression1: expression2 ( EQUAL | EQUALEQUAL | NOTEQUAL | LESS | LESSOREQUAL | GREATER | GREATEROREQUAL ) expression2 | expression2;
 expression2: expression2 (AND | OR) expression3 | expression3;
 expression3: expression3 (PLUS | MINUS) expression4 | expression4;
 expression4: expression4 (MULT | DIV | MOD) expression5 | expression5;
 expression5: NOT expression5 | expression6;
 expression6: MINUS expression6 | expression7;
 expression7: elementAccessExpr | operands;
-operands: IDENTIFIER | literal | (LBracket expression RBracket) | functionCall ; 
+operands: literal | IDENTIFIER | (LBracket expression RBracket) | functionCall ; 
 
 COMMENT: '##' .*? ~[\n\r\f]* -> skip;
 WS : [ \t\r]+ -> skip ; // skip spaces, tabs, newlines
