@@ -1,6 +1,0 @@
-
-string w0[5E77,5E-66] <- "'"'"a"
-## n`.v#9DMn
-bool zm[40.890e-30,85.444E-88] ## 4XS)
-string ax9n <- false
-var Nz[0.499,6e+60]

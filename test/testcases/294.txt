@@ -1,4 +1,0 @@
-
-bool kE <- true ## 6i.(2
-func zpU (string wocH, dynamic Xp)	return false
-## 66nu

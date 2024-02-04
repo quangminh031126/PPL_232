@@ -1,4 +1,0 @@
-
-func ZiJ7 (dynamic iXL, dynamic Mgb)
-	return "0-"
-string XKEJ ## X!qGjY=l=~emr

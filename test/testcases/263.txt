@@ -1,7 +1,0 @@
-
-func fn ()
-	return false
-
-## G1dZs
-## -TBH.Sxq[B0ZmT-[!+LP
-func ahX ()	return "'"l'"h"

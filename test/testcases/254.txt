@@ -1,7 +1,0 @@
-
-var gBES <- false ## %3,
-number g5u <- false
-dynamic Zsfq[242.766e61,25.218e90,9E-32] ## ND=PI9IIh
-## qLR@Yh8P["Y#`
-func H8f ()	begin
-	end

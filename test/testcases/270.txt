@@ -1,9 +1,11 @@
 
-func RX5j (bool NC[29.608e-00,83.095e-72,24.901], string sMW)	return mAl
-## ?EdOK|c~^fF,@z[<U^
-func Un (bool rR)	begin
-	end
-dynamic TP ## RfijQ;
-func M3jc ()
-	return 6.850E+93
-
+        func areDivisors(number num1, number num2)
+            return (num1 % num2 = 0 ... num2 % num1 = 0)
+        func main()
+            begin
+                var num1 <- readNumber()
+                var num2 <- readNumber()
+                if (areDivisors(num1, num2)) printString("Yes")
+                else printString("No")
+            end
+        

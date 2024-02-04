@@ -77,7 +77,6 @@ NEWLINE: '\n';
 
 NumberLit: INTEGER (DECIMAL|DECIMAL? EXPONENT)?;
 
-
 BooleanLit: TRUE| FALSE;
 
 StringLit
@@ -105,6 +104,7 @@ arrayAssign: LEFTARR LSBracket arrayElementList RSBracket;
 arrayElementList
     : literalList
     | arrayList
+    | expressionList
     ;
 arrayList
     : LSBracket arrayElementList RSBracket COMMA arrayList
@@ -174,10 +174,10 @@ statement
     (NEWLINE+|EOF);
 
 variableDeclaration: (normalDeclaration | arrayDeclaration | varDecl | dynamicDecl) NEWLINE+;
-normalDeclaration: varType variableInitialization?;
+normalDeclaration: varType IDENTIFIER variableInitialization?;
 varType: (NUMBER|BOOL|STRING);
-varDecl: VAR variableInitialization;
-dynamicDecl: DYNAMIC variableInitialization?;
+varDecl: VAR IDENTIFIER variableInitialization;
+dynamicDecl: DYNAMIC IDENTIFIER variableInitialization?;
 
 variableInitialization: LEFTARR expression;
 
@@ -237,8 +237,9 @@ expression6: MINUS expression6 | expression7;
 expression7: elementAccessExpr | operands;
 operands: IDENTIFIER | literal | (LBracket expression RBracket) | functionCall ; 
 
-COMMENT: '##' .*? ('\n'| EOF) -> skip;
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+COMMENT: '##' .*? ~[\n\r\f]* -> skip;
+WS : [ \t\r]+ -> skip ; // skip spaces, tabs, newlines
+
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 UNCLOSE_STRING:  '"' StringChar* (NEWLINE|EOF){
     esc = ['\n']

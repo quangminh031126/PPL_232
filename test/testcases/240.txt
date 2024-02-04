@@ -1,5 +1,0 @@
-
-## )}hDIX(H99:iFv9%J
-func mH (number Pw[532], number AS, string Yyn[901e27,1.883])
-	return
-string Zs[8.380e+20,428.427]

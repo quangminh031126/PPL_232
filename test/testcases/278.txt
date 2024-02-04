@@ -1,7 +1,0 @@
-
-func rYW (dynamic HZs[2.688], number NSBv[137.969])	return 0.416E-41
-func uH (dynamic Pljy, dynamic S_b[6], bool lV)
-	return
-
-func gG0 ()	return false
-

@@ -1,5 +1,0 @@
-
-func CjiW (string hZ[10.344,4e+03,21.222], number z1F[18,5e+73])
-	return
-func yOt (number etqg[2e24], dynamic N0, number Ds)	return
-## *mjkAV$TP9

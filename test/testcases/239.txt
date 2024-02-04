@@ -1,7 +1,0 @@
-
-func AYP ()	return
-
-string WPM[172,609.010] <- 71.062e40 ## @!Dh};/J]^Q"^
-number q6PH[639.474,887.250,0.689E-15] <- "'"M" ## |iXPU
-dynamic HH4c <- KEp
-## j4|OR

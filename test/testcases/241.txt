@@ -1,9 +1,0 @@
-
-func u2 (bool R04[80])
-	begin
-		ZL(false, true, true)
-		## Zyom(iwN-Fm#4?
-	end
-bool Zd[100.567e-50,6.804e-56,282] <- "C4+"
-## hO]+}Kw*E[R4;nhp|
-## /?? N$$_8u

@@ -1,4 +1,0 @@
-
-dynamic aq8[83E-55,160.370,59E-15] <- 50E-73
-func Nx (bool P99, var J0XS[8], bool vsr[8.700,6e+42,234])	return
-func YB4 (string sUGE, dynamic imEW, var kZ4G[514,4.078,67e+44])	return Q8

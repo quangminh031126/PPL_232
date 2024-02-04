@@ -1,7 +1,0 @@
-
-string rEw[5] <- niK ## %8sSC<z}!OT$$^f
-number hD ## 1+
-bool hOFY[6.130e+89] ## FT&De8
-func eQD (bool pni)
-	return 556
-number o0oj <- inV9 ## Y;_US Zi|

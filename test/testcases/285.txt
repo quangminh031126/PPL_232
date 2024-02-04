@@ -1,6 +1,0 @@
-
-number Yy98 ## ?j1Gla}1 2{5fW
-## (}zdiNh5+e1%|q1#UipI
-func s_qB (string U2, string mm[95.249E+49], var rgO)
-	return
-

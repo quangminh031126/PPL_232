@@ -1,4 +1,17 @@
-
-number O_ <- - [UKwh(x3e(FJm()[DWD]), false, 57)[mI2], 4] ## RPWZrii?mn
-number AOKW[75] <- false ## +$,{)
-## MM:!w
+ 
+            number VoTien
+            
+            ## VO Tien
+            number VoTien <- 0
+            bool a[122,15]
+            bool a[122,15] <- 1 + 1 / 2 * 3
+            string b[3]
+            ## 12 
+            
+            string b[3] <- 2 ... " tring"
+            var i <- 0
+            dynamic i
+            dynamic i <- 0
+            ## VO Tien
+             
+        

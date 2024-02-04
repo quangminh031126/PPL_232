@@ -1,10 +1,1 @@
-
-dynamic vkL[258E51] ## gQWO}#*
-func PN (var P4v[80.358E60], number f2dK[228E81])
-	return
-
-string wbzq
-func VS (dynamic evb, var hGgk, bool NY)	begin
-		## z,D|"
-	end
-
+ var VoTien <- "Vo" ... "Tien" 

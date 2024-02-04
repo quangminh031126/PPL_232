@@ -1,6 +1,0 @@
-
-## |~`B3}9zn&-P
-number Vp <- true
-func Su (bool f3r[0,995], bool pCWi[831E49,68])
-	return
-

@@ -1,9 +1,0 @@
-
-func zM2 (dynamic OYAE[2.688])
-	begin
-	end
-
-## %lOIRdSlRDR.$78aT
-string Cwrt
-func BGh (string Nwpb, number i2[25,2])
-	return

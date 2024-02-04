@@ -1,8 +1,3 @@
-
-dynamic iJ
-var f_B <- 17.665E+39 ## +3&xIiqUp&%Y9K7
-string JyPi ##  A>?L#p4STeDB2o.Xi
-## {gAm"
-func xI ()
-	return 9.978e46
-
+ 
+            var VoTien
+        

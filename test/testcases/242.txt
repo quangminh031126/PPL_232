@@ -1,8 +1,0 @@
-
-dynamic P_G
-## w~*<,HInmpsl
-dynamic jRS6 <- Xlm ## t
-number tY <- 3.332
-func MG1 (var Ps[58e47,304E+49,2.508e-11], string H96X)
-	return
-

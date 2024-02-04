@@ -1,6 +1,0 @@
-
-## (LDt
-## ez]Mdz7gOn?<t4o
-func J1q (bool AAXY[565.943,288.749e34,97.166], string q_q7)
-	return false
-

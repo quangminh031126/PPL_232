@@ -1,9 +1,0 @@
-
-dynamic dk4A ## 4v @N]G4Z+
-func hz (number Y3fl, number jUAI, var hw7U[48.625E+79,37.535E59])	return
-
-func x7 (string vQ, number N7H[418e+42,78E+06,38.130])	return 478.115E-04
-
-## E|guQ
-func VPh (bool cYRm)	return
-

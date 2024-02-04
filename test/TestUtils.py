@@ -37,7 +37,6 @@ class TestLexer:
         TestLexer.check(SOL_DIR,inputfile,num)
         dest = open(SOL_DIR + str(num) + ".txt","r")
         line = dest.read()
-        print("logging:",line)
         return line == expect
     
     @staticmethod
@@ -81,7 +80,6 @@ class TestParser:
         TestParser.check(SOL_DIR,inputfile,num)
         dest = open(SOL_DIR + str(num) + ".txt","r")
         line = dest.read()
-        print("logging:",line)
         return line == expect
 
     @staticmethod

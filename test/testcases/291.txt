@@ -1,5 +1,0 @@
-
-bool xD2[388.528e-05,19.869] ## +J=h-NBK|bt3S tu_
-func DWYk ()
-	return false
-

@@ -1,3 +1,0 @@
-
-func EUK3 ()
-	return

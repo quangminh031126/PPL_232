@@ -1,7 +1,0 @@
-
-func nk (dynamic M6, string Wv[71], bool bUwz[3e36,0.448])
-	return false
-func PT (number Xlu, string ohG[7.664E-62])
-	begin
-		## Bs? R6fz(!#K
-	end
