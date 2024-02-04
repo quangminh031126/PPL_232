@@ -87,64 +87,69 @@ StringLit
     self.text = temp
 };
 
+literal: NumberLit | BooleanLit | StringLit;
 IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
 /* PARSER */
 
-program: NEWLINE* functionDecl* EOF;
+program: NEWLINE* declaration* EOF;
 
-
+declaration: (functionDecl | variableDeclaration );
 
 /* ARRAY */
-arrayDeclaration: (NUMBER | BOOL | STRING) IDENTIFIER LSBracket arrayDim RSBracket LEFTARR LSBracket arrayInit RSBracket;
+
+arrayDeclaration: varType IDENTIFIER LSBracket arrayDim RSBracket arrayAssign?;
 arrayDim: NumberLit COMMA arrayDim | NumberLit;
-arrayInit
-    : LSBracket numberList RSBracket
-    | LSBracket boolList RSBracket 
-    | LSBracket stringList RSBracket
-    | LSBracket arrayList RSBracket
+arrayAssign: LEFTARR LSBracket arrayElementList RSBracket;
+arrayElementList
+    : literalList
+    | arrayList
     ;
-numberList: numberPrime | /* empty */;
-numberPrime: NumberLit COMMA numberPrime | NumberLit;
+arrayList
+    : LSBracket arrayElementList RSBracket COMMA arrayList
+    | LSBracket arrayElementList RSBracket;
+literalList: literal COMMA literalList | literal;
+// numberList: numberPrime | /* empty */;
+// numberPrime: NumberLit COMMA numberPrime | NumberLit;
 
-boolList: boolPrime| /* empty */;
-boolPrime: BooleanLit COMMA boolPrime | BooleanLit;
+// boolList: boolPrime| /* empty */;
+// boolPrime: BooleanLit COMMA boolPrime | BooleanLit;
 
-stringList: stringPrime | /* empty */;
-stringPrime: StringLit COMMA stringPrime | StringLit;
+// stringList: stringPrime | /* empty */;
+// stringPrime: StringLit COMMA stringPrime | StringLit;
 
-arrayList: arrayPrime | /* empty */;
-arrayPrime: arrayInit COMMA arrayPrime | arrayInit;
 
-/* NEGATION > MULT | DIV | MOD > PLUS | MINUS */
-arithExpr: arithExpr (PLUS | MINUS) arithExpr1 | arithExpr1; /* Left associative */
-arithExpr1: arithExpr1 (MULT | DIV | MOD) arithExpr2 | arithExpr2; /* Left associative */
-arithExpr2: MINUS arithExpr2 | arithExpr3 ;
-arithExpr3: IDENTIFIER | NumberLit;
 
-/* NOT > AND > OR */
-logicExpr: logicExpr OR logicExpr1 | logicExpr1;
-logicExpr1: logicExpr1 AND logicExpr2 | logicExpr2;
-logicExpr2: NOT logicExpr2 | logicExpr3;
-logicExpr3: BooleanLit | IDENTIFIER;
+// /* NEGATION > MULT | DIV | MOD > PLUS | MINUS */
+// arithExpr: arithExpr (PLUS | MINUS) arithExpr1 | arithExpr1; /* Left associative */
+// arithExpr1: arithExpr1 (MULT | DIV | MOD) arithExpr2 | arithExpr2; /* Left associative */
+// arithExpr2: MINUS arithExpr2 | arithExpr3 ;
+// arithExpr3: IDENTIFIER | NumberLit;
 
-/* String Expression */
-stringConcatExpr: stringConcatExpr ELLIPSIS stringConcatExpr | StringLit | IDENTIFIER;
+// /* NOT > AND > OR */
+// logicExpr: logicExpr OR logicExpr1 | logicExpr1;
+// logicExpr1: logicExpr1 AND logicExpr2 | logicExpr2;
+// logicExpr2: NOT logicExpr2 | logicExpr3;
+// logicExpr3: BooleanLit | IDENTIFIER;
 
-/* Relational Expression */
+// /* String Expression */
+// stringConcatExpr: stringConcatExpr ELLIPSIS stringConcatExpr | StringLit | IDENTIFIER;
 
-relExpr: arithComp | literalComp;
-arithComp: arithExpr arithRelOp arithExpr;
-literalComp: stringConcatExpr literalOp stringConcatExpr;
-arithRelOp: EQUAL | NOTEQUAL | LESS | GREATER | LESSOREQUAL | GREATEROREQUAL;
-literalOp: EQUALEQUAL;
+// /* Relational Expression */
+
+// relExpr: arithComp | literalComp;
+// arithComp: arithExpr arithRelOp arithExpr;
+// literalComp: stringConcatExpr literalOp stringConcatExpr;
+// arithRelOp: EQUAL | NOTEQUAL | LESS | GREATER | LESSOREQUAL | GREATEROREQUAL;
+// literalOp: EQUALEQUAL;
+// expression: arithExpr | stringConcatExpr | relExpr | logicExpr | elementAccessExpr | functionCall;
 
 /* Index Operator */
 
-elementAccessExpr: arrExpr LSBracket indexOp RSBracket;
-arrExpr: IDENTIFIER | functionCall | NumberLit ;
-indexOp: arrExpr COMMA indexOp | arrExpr;/* Non empty list of arrExpr */
+elementAccessExpr: arrExpr LSBracket indexList RSBracket;
+arrExpr: IDENTIFIER | functionCall;
+indexList: expression COMMA indexList | expression;/* Non empty list of expression */
 
 /* Function Call */
 functionCall: IDENTIFIER LBracket functionArgsList RBracket;
@@ -154,24 +159,36 @@ arg: expression;
 
 
 /* Variable and Function Declaration */
-statement: (functionCallStatement|continueStatement|returnStatement|breakStatement|blockStatement|ifStatement | forStatement) NEWLINE+;
+statement
+    : 
+    ( /* variableDeclaration */
+    /* variableInitialization arrayAssign */
+    ifStatement
+    | forStatement
+    | breakStatement
+    | continueStatement
+    | returnStatement
+    | functionCallStatement
+    | blockStatement
+    )
+    (NEWLINE+|EOF);
 
-variableDeclaration: normalDeclaration | arrayDeclaration | varDecl | dynamicDecl;
+variableDeclaration: (normalDeclaration | arrayDeclaration | varDecl | dynamicDecl) NEWLINE+;
 normalDeclaration: varType variableInitialization?;
 varType: (NUMBER|BOOL|STRING);
 varDecl: VAR variableInitialization;
 dynamicDecl: DYNAMIC variableInitialization?;
 
 variableInitialization: LEFTARR expression;
-expression: arithExpr | stringConcatExpr | relExpr | logicExpr | elementAccessExpr | functionCall;
 
 paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionDecl: FUNC IDENTIFIER LBracket paramDeclList RBracket nullableListOfNEWLINE (returnStatement | blockStatement)?;
+functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody NEWLINE+;
+paramDecl: LBracket paramDeclList RBracket;
+functionBody: (returnStatement | blockStatement)?;
 
-nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE | /* empty */;
 
 /* statements */
 /* An action that a program performs */
@@ -180,16 +197,16 @@ nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE | /* empty */;
 
 
 /* If statement */
-ifStatement: IF logicExpr statement elifStatementList elseStatement?;
+ifStatement: IF expression statement elifStatementList elseStatement?;
 elifStatementList: elifStatementPrime | /* empty */ ;
-elifStatementPrime: elifStatement nullableListOfNEWLINE elifStatementPrime | elifStatement;
-elifStatement: ELIF logicExpr statement;
-elseStatement: ELSE logicExpr statement;
+elifStatementPrime: elifStatement NEWLINE* elifStatementPrime | elifStatement;
+elifStatement: ELIF expression statement;
+elseStatement: ELSE expression statement;
 
 /* For statement */
 forStatement
     : 
-    FOR IDENTIFIER UNTIL logicExpr BY updateExpr nullableListOfNEWLINE statement
+    FOR IDENTIFIER UNTIL expression BY updateExpr NEWLINE* statement
     ;
 updateExpr: expression;
 /* Break statement */
@@ -205,10 +222,20 @@ returnStatement: RETURN expression?;
 functionCallStatement: functionCall;
 
 /* Block statement */
-blockStatement: BEGIN NEWLINE+ blockStatementBody END (NEWLINE+|EOF);
+blockStatement: BEGIN NEWLINE+ blockStatementBody END;
 blockStatementBody: nullableListOfStatement;
-nullableListOfStatement: statement nullableListOfStatement|/* empty */;
+nullableListOfStatement: (statement|declaration) nullableListOfStatement|/* empty */;
 
+expressionList: expression COMMA expressionList | expression;
+expression: expression1 ELLIPSIS expression1 | expression1;
+expression1: expression1 ( EQUAL | EQUALEQUAL | NOTEQUAL | LESS | LESSOREQUAL | GREATER | GREATEROREQUAL ) expression1 | expression2;
+expression2: expression2 (AND | OR) expression3 | expression3;
+expression3: expression3 (PLUS | MINUS) expression4 | expression4;
+expression4: expression4 (MULT | DIV | MOD) expression5 | expression5;
+expression5: NOT expression5 | expression6;
+expression6: MINUS expression6 | expression7;
+expression7: elementAccessExpr | operands;
+operands: IDENTIFIER | literal | (LBracket expression RBracket) | functionCall ; 
 
 COMMENT: '##' .*? ('\n'| EOF) -> skip;
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
