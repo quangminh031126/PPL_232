@@ -12,7 +12,7 @@ options {
 /* LEXER */
 
 /* Fragments */
-fragment DECIMAL: '.' INTEGER* ;
+fragment DECIMAL: '.' INTEGER? ;
 fragment EXPONENT: [eE] ('+'|'-')? INTEGER;
 fragment INTEGER: DIGIT+;
 fragment StringChar: ~["\\\r\n] | EscapedSequence | DoubleQuote;
@@ -26,6 +26,8 @@ fragment DIGIT: [0-9];
 
 
 /* Keywords */
+TRUE: 'true';
+FALSE: 'false';
 NUMBER: 'number';
 BOOL: 'bool';
 STRING: 'string';
@@ -76,7 +78,7 @@ NEWLINE: '\n';
 NumberLit: INTEGER (DECIMAL|DECIMAL? EXPONENT)?;
 
 
-BooleanLit: 'true'| 'false';
+BooleanLit: TRUE| FALSE;
 
 StringLit
     : '"' StringChar* '"'{        
@@ -89,9 +91,9 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
 /* PARSER */
-mainFunction: FUNC 'main' LBracket paramDeclList RBracket NEWLINE* (returnStatement | blockStatement)?;
 
-program: function* mainFunction function* ;
+program: NEWLINE* functionDecl* EOF;
+
 
 
 /* ARRAY */
@@ -167,7 +169,7 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-function: FUNC IDENTIFIER LBracket paramDeclList RBracket nullableListOfNEWLINE (returnStatement | blockStatement)?;
+functionDecl: FUNC IDENTIFIER LBracket paramDeclList RBracket nullableListOfNEWLINE (returnStatement | blockStatement)?;
 
 nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE | /* empty */;
 

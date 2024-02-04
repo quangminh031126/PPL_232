@@ -1,1 +1,1 @@
-Error on line 3 col 4: ts
+Error on line 1 col 0: 
