@@ -1,0 +1,9 @@
+
+dynamic sM3b[40.416E+67,4.269E-16]
+func H3rb (bool Gd)
+	return 29e-63
+
+func Fa (number LNw)	begin
+		break
+	end
+

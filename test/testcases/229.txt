@@ -1,8 +1,14 @@
- 
-            var VoTien <- a() + ++1 / 2 *3 <= 3 ... "v" >= 2
-            var VoTien <- a(1,2)[1,2,3 ... 2] + false + true
-            var VoTien <- a(z,k[2,3,"2"] ... 2)[true]
-            var VoTien <- (a ... 3) ... b and (a >= b) < b[1, b[1]]
-            var VoTien <-  ["tr", 2, 3, 4, 5] + [[1, 2 + 2 * 2 / 3, 3], [4, 5, 6]]
-            var VoTien <- a(x,array[2])[2,3+2,true,false]
-        
+
+func WY (string fY3[898.568E+66,65], dynamic nx[67.385E-03])	begin
+		for cYTj until true by "'""
+			dynamic xqk4[33,90,333] <- "'"'"'"'"'""
+		## Hg8
+		for wr until 0.671e+45 by YbkK
+			begin
+			end
+	end
+
+string FTcL[524.123E55,988E+13,60.709E12] <- true
+bool WYt7
+bool zv <- false ## m#)
+## -;

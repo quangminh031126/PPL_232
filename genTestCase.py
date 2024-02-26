@@ -286,9 +286,9 @@ class ASTGenerator(TestCaseGenerator):
 def main(argv):
     if argv[0] == 'LexerSuite':
         lexer = LexerGenerator()
-        for test in range(101, 201):
+        for test in range (101,201):
             lexer.gen(test)
-    
+
     elif argv[0] == 'ParserSuite':
         parser = ParserGenerator()
         for test in range(201, 301):

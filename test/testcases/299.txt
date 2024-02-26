@@ -1,0 +1,8 @@
+
+func JK3 ()
+	begin
+		kq2 <- "n"
+		## B
+	end
+func Mo ()	return
+

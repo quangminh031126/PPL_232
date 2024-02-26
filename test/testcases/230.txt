@@ -1,13 +1,3 @@
 
-        ## comment
-        func main()
-
-            ## comment
-            begin
-            aPI <- 3.14
-            end
-            ## comment
-            
-        ## comment
-        
-        
+dynamic UjQo <- 1E-64
+## l#N9C;3]+wR^iY 2,

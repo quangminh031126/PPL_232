@@ -1,0 +1,10 @@
+
+func on5D (string xN[5,4.457,5], string DGPZ, number Fi)	begin
+		break
+		## -EaL0Z
+		## fLPzu6b8C0UFtK
+	end
+## Q$.(`gvTE:
+func Bp2 (number ct)	begin
+	end
+var onl <- 19e+00

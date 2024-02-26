@@ -1,2 +1,5 @@
-var VoTien <- true >= "true" and 1 > 2
-        
+
+func KDg (number Gi_Y[5.684e01])	begin
+		## 9
+	end
+dynamic U__0[89.249e-90,21.160E09,69.997E21] <- false

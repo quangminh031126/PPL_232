@@ -1,6 +1,4 @@
- 
-            ##12
-            ##12
-            
-            func main(number a) var c <- 1
-        
+
+func lYH (bool qTXR[3,63.063], dynamic HF, bool oR[9E33,8E+68])
+	return
+string Ir <- 92e36
