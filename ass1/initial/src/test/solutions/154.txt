@@ -1,1 +1,1 @@
-yT,Error Token $
+string,s,<-,Illegal Escape In String:  NkJVQAv \,

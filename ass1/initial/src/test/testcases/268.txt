@@ -1,10 +1,8 @@
-
-var bR[8e+39,8.445e-62] <- 415.186
-number Rho ## ~ .B<kqP8`,WeIY}
-bool clb <- 411.614E96 ## sBg U$z|H:UTP4!^eL|
-func b5 (number xdtJ, number Cu[515E60,7E99])
-	begin
-		## g"Q
-		break
-	end
-
+ func main ()
+begin
+begin
+begin
+end
+end
+end
+ 

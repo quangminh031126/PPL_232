@@ -1,1 +1,10 @@
++,/,[,-,number,a1,true,
+,begin,bool,
+,<-,93.6,...,
+,+,=,
+,or,
+,string,>=,for,(,,,
+,%,
+,dynamic,>=,continue,and,false,var,func,a1,+,),<-,a1,<,
+,=,],break,abcd,var,<-,*,,,%,until,string,not,-,(,(,%,by,elif,not,func,var,func,dynamic,
 ,<EOF>

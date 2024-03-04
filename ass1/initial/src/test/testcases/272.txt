@@ -1,6 +1,2 @@
-
-func ON ()	begin
-		V2mf <- 9
-		if ("D'"V'"'"") I13z(QRJ)[jA, "n", 650] <- 74
-	end
-
+ number a[2,3] <- [[1,2,3],[1,2,3]]
+ 

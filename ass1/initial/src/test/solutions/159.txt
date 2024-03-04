@@ -1,1 +1,1 @@
-99.865e02,<EOF>
+string,s,<-,Illegal Escape In String:  NbmDU6M \z

@@ -1,6 +1,7 @@
-
-## kJyn4w~=S!+=
-## XA aA
-func SDOu ()
-	return
-dynamic S5FK ## Jsy!.D 1n.N9#?>4
+ ##string test
+func str(number n,bool b)
+func main()
+begin
+string s<- str(null,True)..."In zcode we have \''"..."## to start a comment " if
+end
+ 

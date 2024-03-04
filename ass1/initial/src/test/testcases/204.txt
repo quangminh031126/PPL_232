@@ -1,5 +1,4 @@
+ var a<-2
+var b<-3
+
  
-            bool a["string"]
-            bool a[[1,2]]
-            bool a[1+1]
-        

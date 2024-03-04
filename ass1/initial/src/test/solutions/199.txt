@@ -1,1 +1,5 @@
-<EOF>
+func,fXweobc,(,pIqCeep,,,pXPKzHr,,,pDfaKPx,),
+,begin,
+,var,vH7Cccr,<-,-,2634,
+,end,
+,<EOF>

@@ -1,7 +1,2 @@
-
-## ^}A}2rMdrqi"0+dcUa
-## (n
-## ~)V%X?$LM]X0zxwcLD
-var I6A[33e97] <- "J'""
-func ncu ()
-	return
+ func foo(a,b) return 1
+ 

@@ -1,11 +1,3 @@
-
-func dDK_ ()
-	begin
-	end
-bool lMT
-## `{QSc+rj@f(3IHF-Pn
-func xN ()
-	begin
-		## fF
-	end
-## mW>(pi/}4=#YM
+ continue
+func main()
+ 

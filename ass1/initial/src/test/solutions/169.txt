@@ -1,1 +1,1 @@
-87e-03,<EOF>
+string,s,<-,Illegal Escape In String:   \<

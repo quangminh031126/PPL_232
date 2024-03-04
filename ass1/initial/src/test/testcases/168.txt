@@ -1,1 +1,2 @@
-"Wo'"'"'""
+string s <- " P6Kmsw \| "
+    

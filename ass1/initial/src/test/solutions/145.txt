@@ -1,1 +1,1 @@
-Illegal Escape In String: Tien \"
+/,STRINGLIT,IDENTIFIER,],NUMLIT,!=,STRINGLIT,number,by,Error Token @

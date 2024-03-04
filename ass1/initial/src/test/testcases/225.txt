@@ -1,7 +1,17 @@
+ ## end line in statement
+func len(string s)
+begin
+var i<-0
+for i until s[i] by 1
+begin
+end
+return i
+end
+func main()
+begin
+string a<-"we will check the end of statement is \n" ##correct statement
+if (len(s)<3) printString("this is short string") else
+printString("this is long string")
+end
+
  
-            var VoTien <- a[1] + 1
-            var VoTien <- array[1,1+2][1][2,3]
-            var VoTien <- array[1,(1)...2,array[ar[(1*2) and 1]],array[2]]
-            var VoTien <- a[1] + fun()[1,fun()] 
-            var VoTien <- 1[1]
-        

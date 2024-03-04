@@ -1,6 +1,19 @@
+ ##if else check
+func main() begin
+if (a>b*c%d)
+	if ((s..."##tesecase")=="abc") 
+
+	a <- (k*-3 = -15) and not (true or false)
+
+	elif (true)
+		if ((s == "ghi") or (s == "hello")) b<- -2*b
+		elif (a) begin
+		a <- (a=a)
+		end
+	else a<- -2*a
+elif (s== "elif")
+s <- "else"
+else s<-"elif"
+var error
+end
  
-            var VoTien <- a()
-            var VoTien <- a(1,2)
-            var VoTien <- a(x,array[2])[2]
-            var VoTien <- a(z,k[3] ... 2)[1,2]
-        

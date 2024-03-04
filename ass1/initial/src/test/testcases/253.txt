@@ -1,3 +1,12 @@
+ func main()
 
-dynamic NC[69.813e-23,5E63,0.644] <- DdZO
-## NEJ-:^uw{y}Lc
+
+
+
+begin
+if (a)
+if (b)
+c <- 1
+else c <- 2
+end
+ 

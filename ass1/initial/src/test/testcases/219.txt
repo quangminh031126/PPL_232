@@ -1,9 +1,8 @@
+ ## None assoc 
+func main() 
+					begin
+number a<- -3+2*sqrt(3)
+dynamic s
+s <- str(a)..."cde" == "ghi" == "mmm"
+end
  
-            var VoTien <- true > "true"
-            var VoTien <- true >= "true"
-            var VoTien <- true = "true"
-            var VoTien <- true == "true"
-            var VoTien <- true < "true"
-            var VoTien <- true <= "true"
-            var VoTien <- true >= "true" ... 1 > 2
-        

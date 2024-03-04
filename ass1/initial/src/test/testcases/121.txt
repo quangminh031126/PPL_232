@@ -1,1 +1,3 @@
-5e-29
+string a<-"G5aS'"s
+"a
+    

@@ -1,1 +1,1 @@
-+,1,-,2,<EOF>
+(,string,bool,[,(,/,by,>=,Error Token {

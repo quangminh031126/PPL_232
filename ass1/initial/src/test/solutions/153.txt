@@ -1,1 +1,1 @@
-w2x,<EOF>
+string,s,<-,Illegal Escape In String:  Oz2D3bUuX \A

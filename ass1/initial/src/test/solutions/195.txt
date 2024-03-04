@@ -1,1 +1,2 @@
-Illegal Escape In String: \c
+dynamic,vtPBtki,<-,1237,
+,<EOF>

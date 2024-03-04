@@ -1,4 +1,16 @@
+ var _globalVar <- -1e-9
+number pi <- 3.1415926535897
+dynamic e <- 2.71828182846
+func exp(number n)
+begin
+var ans <- 1
+var i<-0
+for i until i=n by 1
+ans*=e
+return ans
+end
+func main()
+begin
+	var a<-exp(10)
+end
  
-            func main(number a[1,2,3]) ##12
-                break
-        

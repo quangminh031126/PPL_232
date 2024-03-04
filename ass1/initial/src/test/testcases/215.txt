@@ -1,5 +1,4 @@
+ ##dynamic function
+dynamic func a() return 3
 
-## a< .eKf7wE3[y+
-number DAOG[611.079] <- fhv
-bool Ec9h[45,4,92E05] ## 3U1O:^2{
-## fxOu8#@O"kxT
+ 

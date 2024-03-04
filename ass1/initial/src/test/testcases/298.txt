@@ -1,3 +1,5 @@
-
-number Vm[35.632]
-bool MO <- 59 ## 3+"
+ func main()
+begin
+[1,2,3] <- [4,5,6]
+end
+ 

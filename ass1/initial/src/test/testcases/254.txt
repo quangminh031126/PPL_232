@@ -1,75 +1,15 @@
-
-func LnWP (string mN[3e+34])
-	return
-
-func OZwT (number ZE)	return at
-func Pi (string og[0.856E59,297.576e+35,3])
-	begin
-		ZX1 <- wHA
-		if (false)
-		break
-		elif ("N") for D9 until "'"'"^" by "'"x'"6'""
-			if ("t%")
-			lw()
-			elif (false) dynamic km0 <- gMVJ
-			elif (9)
-			begin
-				## 9mlWy((q
-				## -xTiHZY=cb"]Yxw9
-				return "'""
-			end
-			elif (asz)
-			for t4LS until 4e-20 by true
-				sz72("YV4'"!")
-			else begin
-				for OTz until "'"K'"" by "'"A"
-					kX(JX)[83.669E+60, false, 0.198e-34] <- 7.362
-				break
-				## CAh=<@m?Y+
-			end
-		elif ("`") continue
-		elif ("G'"A") xT()
-		elif ("M'"")
-		if (lJA1) continue
-		elif (wiq)
-		continue
-		elif (Jtxx) dynamic Zzm ## 9lHG2ls"eJQHDH
-		elif (true) PL(72.085e58, true, 62.427)
-		elif (880)
-		RWI[".nK", "'"'"KA", 516.676] <- false
-		elif (MHR)
-		if (sVI) if (false) jT(aQ, oZ)
-		elif (6.571e-29)
-		number StI[887] ## Z
-		elif (3)
-		lAQ <- "Ia"
-		elif (391e07) begin
-			xuqb()
-			## m
-			bool a1X
-		end
-		elif (true) if (24E+73) continue
-		elif (true) break
-		elif (true)
-		Dy_ <- 2
-		elif ("'"'"") for fMg2 until "88Nk" by "'""
-			if (8) tnVj(8, 19, "0'"Nq")[308] <- "B'"'"'""
-		elif (2) for L0 until false by "'""
-			if (Rv_V) var gd <- I0p ## $2pS5 >Vd,V.+XY&6w1
-			elif (Y_9L) DJ(178.062)
-		elif ("@'"") break
-		elif ("'"fB") for tpw until 77e-02 by AdEq
-			return true
-		elif (sPBd) pF(b9l)
-		elif ("'"'"'"")
-		break
-		else begin
-			continue
-			## r=2W6`c3].
-			## JS1!7V}pVC[?g
-		end
-		begin
-		end
-	end
-var Qtu <- "'"'"o>"
-number es[1.476E-69] ## dJSze,tFkNYe<WlQ,B 
+ func main()
+begin
+number _ <- readNumber()
+number __<- readNumber()
+for _ until _*_ = _+_*_-2*_ by _+_
+if (_) 
+for _ until _/(_*_)%_ < _/(_*_+_) by _/_
+if (_*_<_+_) begin
+end
+elif (__<_) if ((__+_/__ = _%__) and (__*_< -1)) for _ until _/(_*_)%_ < _/(_*_+_) by _/_ if (true) break 
+else continue
+else break
+elif (true) continue
+end
+ 

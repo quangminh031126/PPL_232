@@ -1,2 +1,12 @@
-var VoTien <- a[]
-        
+ ##if else check
+func main() begin
+if (a>b*c%d)
+	if ((s..."##tesecase")=="abc") 
+
+	a <- (k*-3 = -15) and not (true or false)
+
+	else if ((s == "ghi") or (s == "hello")) b<- -2*b
+var error
+end
+
+ 

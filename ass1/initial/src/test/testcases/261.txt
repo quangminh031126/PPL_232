@@ -1,3 +1,5 @@
-
-## rL93iK
-var qzm[31.113E17,366]
+ ##index op
+func main() begin
+number a<- "abc"[0]
+end
+ 

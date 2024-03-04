@@ -1,9 +1,8 @@
+ func main()
+begin
+number b<-1
+var a<- --------[1,2]*----------------b
+end
 
-func xD (bool iU[4,95])
-	return
-dynamic Evn[2.979E98,471E45,2.109e62]
-## 7WU</dnm,BL
-number aX <- 132.983 ## ^YXi
-func Xb ()
-	return
 
+ 

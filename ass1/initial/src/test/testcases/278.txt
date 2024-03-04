@@ -1,2 +1,7 @@
-
-## Ufks><Q
+ ##comment
+dynamic d
+var k<-result = ((not a[1] * (b - c[2]) + d / e) == f % g) and (-h >= i[3, 4] or not (by < k[0, 1] * 2)) or not not l[5, 6] == m + n
+func main() begin
+writeNumber(k)
+end
+ 

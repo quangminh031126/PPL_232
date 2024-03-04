@@ -1,3 +1,9 @@
+ func foo(number a) return a*a
+func main() begin
+number a
+a<-0
+writeString(foo(a))
+return
+end
+
  
-            var VoTien
-        

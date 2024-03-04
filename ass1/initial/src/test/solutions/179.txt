@@ -1,1 +1,2 @@
-08,Z4,<EOF>
+beginuc,
+,<EOF>

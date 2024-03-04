@@ -1,3 +1,15 @@
+ dynamic a
+var b<-2
+func main()
+	begin
+if (b=2)
+	a <- b
+elif (b=3)
+	a <- b*2 + 1
+else if(True) a <- -1
+elif (isTrue()) if (ok) begin
+ end
+return
+end
 
-## <}qDw,Y"VEn6;&"HHY:
-## ^k-g~*b]F^.9Y^ }
+ 

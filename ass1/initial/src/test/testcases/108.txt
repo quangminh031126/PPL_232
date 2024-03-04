@@ -1,1 +1,16 @@
-11Tienc
+	%	%	<= != ) number not and	for	a1 %
+=	for
+for var
+until * elif not ,	a1
+"abcd" and false , bool
+]
+...	<	else
+return , number [ >=
+==	= %	= ...	not until	false [ - dynamic
+bool	number begin > elif , + =	=
+, 
+ > [ var	>=	!=
+begin else	...	not
+[ var
+continue	end	*	func false	) true	begin	and not or number break ( true bool	and	by	if	* elif
+    

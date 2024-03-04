@@ -1,2 +1,3 @@
-
-var Cw_[558.777E89]
+ ## func declare
+func root(var a)
+ 

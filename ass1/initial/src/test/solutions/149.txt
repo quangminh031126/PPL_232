@@ -1,1 +1,1 @@
-Tien \',Unclosed String:  
+==,>=,continue,end,and,!=,IDENTIFIER,Error Token ^

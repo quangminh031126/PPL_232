@@ -1,3 +1,4 @@
-
-func VPXy (bool uu, var ThPy[9.061e+00,81], string lVL[7.734,21])	return
-
+ func foo( number n,
+string s
+)
+ 

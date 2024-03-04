@@ -1,1 +1,2 @@
-4.090e41
+string s <- " 0LktgF \| "
+    

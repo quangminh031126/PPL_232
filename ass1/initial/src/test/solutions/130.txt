@@ -1,1 +1,1 @@
-<EOF>
+not,not,*,for,true,<-,number,Error Token ^

@@ -1,2 +1,7 @@
+ func main()
+begin
+bool a<- -_-_------_-_*-_<---------_+_
+end
 
-dynamic qpS[498.853] <- true ## yK "b$wv_
+
+ 

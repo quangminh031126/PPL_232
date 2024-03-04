@@ -1,4 +1,6 @@
+ func foo(number n ##this is a function )
+begin
 
-string HPoN[39.492,3,422E-99] <- 5E+60 ## i1(Vy?_9`sk{*%fT.u__
-## @7$_.s^9UA:7s!oC!s
-bool zVV ## (qmar:;8$9_{[-b9,
+end
+
+ 

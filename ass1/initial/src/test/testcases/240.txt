@@ -1,8 +1,8 @@
+ func main() begin
+for _ until _ by _
+if (_) break
+__()
+1
+end
 
-func ttV (var XbU2)	begin
-	end
-func me8O (number mW, var DtY)
-	return true
-
-## ` 9oPei5
-var ub5_ <- 482e-70 ## QUr
+ 

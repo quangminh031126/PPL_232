@@ -1,4 +1,6 @@
-
-number np[374,678.113] <- "'"'"+" ## ;
-## T.C:
-number Qv[46.776e-41,6.444,489e+25] <- "4j'"'""
+ func main()
+begin
+for <number-variable> until <condition expression> by <update-expression>
+<statement>
+end
+ 

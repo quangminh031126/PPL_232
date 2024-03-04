@@ -1,14 +1,17 @@
+ ##if else case
+func main()
+begin
+var a<-3
+var b<-4
+if (a<b) a<-b+a
+if (b<a) 
+	if (a=3) b<-b-a
+	elif (b=4)
+		if (a=7)
+			b<-a%b
+		else b<-b%a
+	else b<-b-a
+else b <- 3
 
-func WNd ()	begin
-		## JJa5
-		## kI=I&}%e=&</gg9IiZI
-		for Z51A until 912E38 by true
-			begin
-				## 6-d2>$<GL91
-				for TGwI until "'">" by "<`"
-					begin
-					end
-			end
-	end
-## {]-c(9C]WufckW=kn8;
-## d8%*~]jAr:JC+8r%
+end
+ 

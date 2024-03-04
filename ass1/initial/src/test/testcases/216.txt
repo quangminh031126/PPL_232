@@ -1,10 +1,9 @@
-
-bool OS2
-func MN (dynamic vu[5.457e-92,1,85.876], dynamic WiP, number mdLd)
-	return
-
-var vs7
-## wEP.l~INA^
-func L4V (number VI)
-	return true
-
+ ##diffifcult expresion
+func root(number n)
+func exp(number n)
+func log(number n)
+number pi <- 3.14
+number True <- 1
+bool a <- root(exp(3*pi)-log(pi%2)) = True and ("abcd" == "acc'""..."a")
+ 
+ 

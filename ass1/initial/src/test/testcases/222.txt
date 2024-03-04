@@ -1,2 +1,10 @@
-var VoTien <- true >= "true" and 1 > 2
-        
+ ## array test
+func root(number n)
+func main() 
+begin
+var a<-2
+number b<-3
+number c<-5
+number arr[2,3] <- [[-2,root(3.12),-3.14E-88],[a,b,c]]
+end
+ 

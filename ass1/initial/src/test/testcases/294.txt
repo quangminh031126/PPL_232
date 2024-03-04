@@ -1,10 +1,17 @@
+ func _____(number __, string ___, bool ____)
+begin
+if (____) ___ <- ___...str(__)
+else ___<-___..."_______"
+return ___
+end
+func main()
+begin
+number __________ <-10
+number __[___________]<-1
+bool ____<-True
+string ___<-"________"
+__ <- (___..._____(__,___,_____))..."________"
+return __
+end
 
-func RJW (dynamic Um[28.534,39.774e+15], string xhn, var cJ)
-	return ":'"'"'"'""
-
-func pQ3 (number jzt[526,157.820E-72], bool c3J[20.321])	begin
-		## 1De:i<,F)`lbG1ia
-		continue
-	end
-## )z3JH
-string rTS
+ 

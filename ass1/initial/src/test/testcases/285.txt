@@ -1,11 +1,5 @@
+ 
+number line[1e9] <- createArray(10)
 
-func C3I (number LLL, number ipN)
-	return
 
-func Y0X (var Dsrn[141.844E21,878.198,0E-69], number YVyH)
-	return false
-
-func p7 (string B62, string wo)	begin
-	end
-## l
-number fi[8.006e+20,222.776E92,89.459E-63] ## =xXj8ZlxM`
+ 

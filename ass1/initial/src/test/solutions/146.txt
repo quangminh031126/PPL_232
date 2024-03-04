@@ -1,1 +1,2 @@
-Illegal Escape In String: Tien \
+number,%,(,func,dynamic,
+,continue,until,Error Token @

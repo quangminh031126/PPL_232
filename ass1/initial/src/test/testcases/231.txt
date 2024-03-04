@@ -1,23 +1,15 @@
+ ##for in for
+func main()
+begin
+var i<-0
+var j<-0
+var k<-0
+number x<-readNumber()
+for i until i<x/2 by 1 
+for j until j<x/2 by 1 
+for k until k<x/2 by 1 
+x <- x + 1
+end
 
-        func main() begin 
-        end
-        func main() 
-            begin 
-                ## comment0
-            end
-        func main()
-            ## comment1
-            begin
-                ## comment2
-                
-                ## comment3
-                VoTien <- 1 + 2 + fun()
-                VoTien[1+a] <- 1
-                
-                ## comment4
-                VoTien[3+4,2,4] <- 1
-                
-                ## comment5
-            end
-            ## comment
-        
+
+ 

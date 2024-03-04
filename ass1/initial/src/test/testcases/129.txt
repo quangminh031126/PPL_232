@@ -1,1 +1,2 @@
-67
+string a<-"mWVo"s"
+    

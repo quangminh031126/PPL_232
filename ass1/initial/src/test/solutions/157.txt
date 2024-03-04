@@ -1,1 +1,1 @@
-8,<EOF>
+string,s,<-,Illegal Escape In String:  LZ \,

@@ -1,5 +1,2 @@
-
-## iwv+*QP"f|tRlu+/
-func M1 (bool MPYw, dynamic Vy[365E99,3e+41])	begin
-	end
-
+ var dynamic <- -1
+ 

@@ -1,7 +1,5 @@
-
-bool RP74 <- true ## y]8y"//1
-func q6w (dynamic Ea[849.527,429])	return
-func DK (var iA0T[6E-20,933.700e+65], dynamic B1Ig, string wx[4.306e+26])
-	begin
-	end
-bool uc <- 1
+ func main()
+begin
+if () return
+end
+ 

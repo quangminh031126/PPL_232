@@ -1,8 +1,5 @@
-
-func JK3 ()
-	begin
-		kq2 <- "n"
-		## B
-	end
-func Mo ()	return
-
+ func main()
+begin
+dynamic a <- [-1<3,foo(4),[1,2,3]]
+end
+ 

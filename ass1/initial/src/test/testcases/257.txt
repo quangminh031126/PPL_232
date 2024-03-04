@@ -1,7 +1,11 @@
+ func foo()
+func f()
+func main() return
+func foo() return
+func _____________f_____() 
 
-func arJ_ (bool aQgf, dynamic x9H[37.329E38])
-	begin
-		IPWa(1.736, false)
-	end
-func ugqI (number HRR[291.924,5.897], bool aSiB)	return 60
 
+
+
+	return
+ 

@@ -1,4 +1,1 @@
-a,
-,
-,
-,Error Token #
+dynamic,until,false,Error Token ^

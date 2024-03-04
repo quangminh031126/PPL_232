@@ -1,13 +1,4 @@
-
-func S3xA (number cGhi)	return
-
-func Lf9K (bool mCjS)
-	return ")'"E"
-
-func H3r ()	begin
-		## 9fI
-		## nO
-	end
-func fg (bool G7, dynamic nPm[61e-68,5,35], dynamic Q8)	begin
-	end
-
+ func returnArray()
+	return [1,2,3,4]
+_
+ 

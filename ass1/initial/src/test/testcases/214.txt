@@ -1,2 +1,26 @@
+ ## var without init
+var _globalVar <- -1e-9
+dynamic e <- 2.71828182846
+func exp(number n)
+begin
+var ans <- 1
+var i<-0
+for i until i=n by 1
+ans<-ans*e
+return ans
+end
+func sum(number a[100],number n)
+begin
+var ans
+var i <- 0
+for 
+end
+func softmax(number a[100],number n)
+begin
 
-bool eH5[855E56,46E-99,534.820e68] <- 785.661 ## fV1F@X
+end
+func main()
+begin
+
+end
+ 

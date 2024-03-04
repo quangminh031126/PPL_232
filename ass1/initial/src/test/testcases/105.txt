@@ -1,1 +1,17 @@
-"'"\h>}"
+ begin ( elif	else % not	end	!=
+/ end 
+ begin "abcd"	=	, bool continue	begin /
+<	and	+ false	/ continue continue <-
+break >=	false
+< >	dynamic	) number	>	* by	else break [ dynamic ] continue
+and	( [	>
+-	
+	break	!=	* number for break not
+) begin	return >	>
+by	"abcd"
+if
+elif	elif - var	/ < 
+ 
+	return until	break	==	and (	< ]	<-
+<
+    

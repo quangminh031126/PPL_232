@@ -1,11 +1,9 @@
+ ##comment
+dynamic d
+var k<-result = ((not a[1] * (b - c[2]) + d / e) == f % g) and (-h >= i[3, 4] or not (j < k[0, 1] * 2)) or not not l[5, 6] == m + n
+func main() begin
+writeNumber(k)
+end
 
-number VHqI[983.580,64.551] <- "6'"" ## <
-func lD ()
-	begin
-		QkSt[kxZ] <- 4.061
-		## nd9Lrvplx#DA
-		## [2B
-	end
-var M5[297.644] <- "2"
-func PRA (bool j9K, number o4P[0,6.434,24], bool ZXdG[2.799e+06])	return 12
 
+ 

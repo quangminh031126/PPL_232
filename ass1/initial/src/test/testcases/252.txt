@@ -1,8 +1,2 @@
-
-string qBj[37,1E+79,541]
-func VdCZ ()	return "'"'"'"'""
-
-func fY (string CW6)
-	return
-
-bool CVh6[95.753,335.757,9.338e-24] <- true ## {.M9Ftolslu+^gb
+ func func()
+ 

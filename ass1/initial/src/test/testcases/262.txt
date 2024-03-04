@@ -1,5 +1,9 @@
-
-func Zp1G (var wY, var xq, var aDIH)
-	return
-## K0H[9mPK`@%-
-## %/2c3Ano^ql*0jsfr
+ func jump(number address,number reg) 
+	begin
+reg<-address
+return reg
+end func main() begin
+number reg
+printString(jump(123,reg))
+end
+ 

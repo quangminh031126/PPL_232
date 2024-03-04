@@ -1,4 +1,10 @@
-
-bool IliV[34.625e-85] <- true
-func YWr (dynamic t_iz[4.141E+07,421.709])	return "u"
-
+ ##for in for
+func main()
+begin
+var i<-0
+var j<-0
+var k<-0
+number x<-readNumber()
+for i until i<x/2 by 1 for j until j<x/2 by 1 for k until k<x/2 by 1 if (i<j) if (k<i) break
+end
+ 

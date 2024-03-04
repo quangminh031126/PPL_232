@@ -1,12 +1,17 @@
+ func main()
+begin
+number _ <- readNumber()
+number __<- readNumber()
+for _ until _*_ = _+_*_-2*_ by _+_
+if (_) 
+for _ until _/(_*_)%_ < _/(_*_+_) by _/_
+if (_*_<_+_) begin
+end
+elif (__<_) if ((__+_/__ = _%__) and (__*_<-1)) for _ until _/(_*_)%_ < _/(_*_+_) by _/_ if (true) break 
+else continue
+else break
+elif (true) continue
+else break
+end
 
-func mR ()
-	begin
-		for UfTi until true by 7
-			break
-		## )
-	end
-
-func xOU (var hm[84.659e-75,0.868e14,33], dynamic RpE[86E-23], string OZ[73.088e+81,142,2.722E91])	return "'"'"'"'""
-
-func xHt (number M3eM[84.307])
-	return lb
+ 

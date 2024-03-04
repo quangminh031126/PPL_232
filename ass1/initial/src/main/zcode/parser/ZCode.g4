@@ -43,7 +43,7 @@ CONTINUE: 'continue';
 IF: 'if';
 ELSE: 'else';
 ELIF: 'elif';
-BEGIN: 'begin' NEWLINE+;
+BEGIN: 'begin';
 END: 'end';
 NOT: 'not';
 AND: 'and';

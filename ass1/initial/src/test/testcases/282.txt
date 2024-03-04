@@ -1,2 +1,4 @@
-
-## =9Rq2a`^600r9
+ ##check name rule
+func 12abc()
+func main
+ 

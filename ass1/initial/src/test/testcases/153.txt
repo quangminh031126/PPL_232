@@ -1,1 +1,2 @@
-w2x
+string s <- " Oz2D3bUuX \A "
+    

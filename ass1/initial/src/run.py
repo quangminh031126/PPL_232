@@ -61,10 +61,10 @@ def main(argv):
         if len(argv) < 2:
             printUsage()
         elif argv[1] == 'LexerSuite':
-            from LexerSuite import LexerSuite
+            from LexerSuite_Hieu import LexerSuite
             getAndTest(LexerSuite)
         elif argv[1] == 'ParserSuite':
-            from ParserSuite import ParserSuite
+            from ParserSuite_Hieu import ParserSuite
             getAndTest(ParserSuite)
         elif argv[1] == 'ASTGenSuite':
             from ASTGenSuite import ASTGenSuite

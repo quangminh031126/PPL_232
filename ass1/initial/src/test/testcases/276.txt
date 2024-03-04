@@ -1,5 +1,9 @@
-
-func xRLz (var HO0[634.161E+63])	begin
-		## Wf><[mBWd
-		## yFf!]73!O E|P%!? n^z
-	end
+ func main()
+begin
+number i<-0
+if (a or b and c)
+	if (a and b or c)
+for i until i==k by a[1]
+elif (k==1) return
+end
+ 

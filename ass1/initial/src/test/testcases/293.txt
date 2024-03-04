@@ -1,2 +1,15 @@
-
-func PaL5 (number hnCL)	return false
+ func _____(number __, string ___, bool ____)
+begin
+if (____) ___ <- ___...str(__)
+else ___<-___..."_______"
+return ___
+end
+func main()
+begin
+dynamic __<-1
+bool ____<-True
+string ___<-"________"
+__ <- (___..._____(__,___,_____))..."________"
+return __
+end
+ 

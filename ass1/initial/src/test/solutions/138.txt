@@ -1,1 +1,1 @@
-0.364E56,<EOF>
+IDENTIFIER,func,end,false,elif,if,),end,Error Token ~

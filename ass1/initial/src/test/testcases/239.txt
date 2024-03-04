@@ -1,9 +1,5 @@
+ func main() begin
+bool a <- foo((x <-2) or (("a'""..."a\'") == "a'"a\'"))[3,2]
+end
 
-func amoF (var LR, dynamic QIN)
-	begin
-		iQ()[false] <- "'"'"K'"C"
-		## +%??0OU
-	end
-## _Z@HQx2K?
-## #2
-bool d8T
+ 

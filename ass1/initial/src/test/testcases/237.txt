@@ -1,2 +1,5 @@
-
-bool uVk1[82.257E71,371.022] <- bOQ
+ func main() begin
+true<-false
+return
+end
+ 

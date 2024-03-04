@@ -1,6 +1,7 @@
-
-## d5PMx/`"Y,W4<_E5W
-func jNb (bool D5i4)
-	return
-
-## bIX?Am}E*
+ func abc/def()
+	return "I love PPL"
+func main()
+begin
+printString(abc/def())
+end
+ 

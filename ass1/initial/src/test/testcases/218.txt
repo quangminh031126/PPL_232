@@ -1,2 +1,8 @@
- var VoTien <- "Vo" ... 1 ... "Tien" 
-        
+ ##None assoc expression
+dynamic a
+func main()
+begin
+a<- "a"..."b"=="ab"=true
+end
+
+ 

@@ -1,1 +1,2 @@
-A,_,a,az,AZ,aZ,_a,a_,a1,_1,A1,<EOF>
+by,or,...,true,<=,until,elif,elif,],<=,-,continue,],string,dynamic,abcd,elif,number,/,for,/,by,false,*,),),bool,not,=,bool,or,number,/,>=,by,(,
+,<EOF>

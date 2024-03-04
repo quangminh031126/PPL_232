@@ -1,1 +1,1 @@
-0.166E11,<EOF>
+string,s,<-,Illegal Escape In String:  vr \#

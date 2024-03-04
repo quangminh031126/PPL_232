@@ -1,5 +1,5 @@
-
-func mHRi (var PwX, number Wh[7e+76,789.387E-44], bool X1t[73])	begin
-		var Aj[2,8E-50,8] <- false
-	end
-## ^$Mv}_|1g43HS6vT&M
+ func main()
+begin
+number arr[]
+end
+ 

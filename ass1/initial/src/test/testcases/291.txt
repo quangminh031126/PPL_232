@@ -1,5 +1,5 @@
-
-## ^nKCx
-## mtp:Hw6xlx6$#/.IUi-M
-func tKr (dynamic YZx0, number WJts[59.856e01])	return 3.872
-## j028
+ func main()
+begin
+for i until i by i for j until j by j for k until k by k for l until l by l for 1 until 1 by 1 pass
+end
+ 

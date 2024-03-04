@@ -1,2 +1,6 @@
-var VoTien <- - not 1
-        
+ ##func declare
+func test[number a,string b] 
+begin
+
+end
+ 

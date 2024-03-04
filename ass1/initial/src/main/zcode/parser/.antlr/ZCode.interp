@@ -17,7 +17,7 @@ null
 'if'
 'else'
 'elif'
-null
+'begin'
 'end'
 'not'
 'and'

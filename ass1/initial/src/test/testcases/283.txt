@@ -1,5 +1,5 @@
-
-## F#6A#$^yfIAf
-bool z1 <- "N'"" ## B"/EW 8S
-## S#GF
-func V2 ()	return true
+ ##check keyword rule
+func foo(number start,number end)
+func main()
+return
+ 

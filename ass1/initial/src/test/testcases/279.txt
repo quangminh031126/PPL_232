@@ -1,4 +1,2 @@
-
-bool Zl[20]
-func RBR (bool Sob6)
-	return LtwE
+ string s <- "abc '"..."...a"abc"
+ 

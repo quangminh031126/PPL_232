@@ -1,2 +1,3 @@
- "Tien \
- 
+ number % ( func dynamic
+ continue until @
+    

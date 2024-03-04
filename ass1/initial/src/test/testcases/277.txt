@@ -1,8 +1,1 @@
-
-dynamic wvZt[5.466E40,760.646] <- false ## Hl!B-k"%gV=0
-func liS_ (var Wcf[875.902,862.513], bool MG2[3.985e-07], dynamic dI[3E+36,0,8.471])	return 87.871
-
-func SH (string eJss[3.361E+71])	return
-func EH ()	return
-
-## L>)r-J3zLw6-8X.a
+dynamic a

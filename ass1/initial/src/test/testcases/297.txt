@@ -1,11 +1,2 @@
-
-string PsUy <- 260E55 ## )yUR
-func Tf (dynamic ST, number pY[7.595,663.524e+87,8e-04], number aX8k[89E-12])
-	return "'"'"tr"
-
-var wD4d[48.636,275] <- true ## vTQDdDK(nT?ZBy
-func c4 ()
-	begin
-		## 6M4cJtY
-	end
-bool bEt ## ,uP?RqDJ4<0M6
+ number foo(2) <- 3
+ 
