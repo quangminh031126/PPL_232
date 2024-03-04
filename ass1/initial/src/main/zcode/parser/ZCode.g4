@@ -94,19 +94,19 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE |;
 listOfNEWLINE: NEWLINE listOfNEWLINE | NEWLINE;
-program: nullableListOfNEWLINE declaration* topLevelDeclList EOF;
+program: nullableListOfNEWLINE globalLevelDeclList EOF;
 
-topLevelDecl: ;
-topLevelDeclList: topLevelDeclListPrime |; // nullable
-topLevelDeclListPrime: topLevelDecl listOfNEWLINE | topLevelDecl;
+globalLevelDecl: functionDecl | variableDeclaration;
+globalLevelDeclList: globalLevelDeclListPrime |; // nullable
+globalLevelDeclListPrime: globalLevelDecl listOfNEWLINE globalLevelDeclListPrime | globalLevelDecl;
 
-funcLevelDecl: ;
-funcLevelDeclList: funcLevelDeclListPrime |;
-funcLevelDeclListPrime: funcLevelDecl listOfNEWLINE | funcLevelDecl;
+blockLevelDecl: functionDecl | variableDeclaration;
+blockLevelDeclList: blockLevelDeclListPrime |;
+blockLevelDeclListPrime: blockLevelDecl listOfNEWLINE blockLevelDeclListPrime | blockLevelDecl;
 
-declaration: (function | variableDeclaration ) (NEWLINE+|EOF);
-function: function1 | functionPreDecl;
-function1: functionDecl;
+// declaration: (functionDecl | variableDeclaration ) (NEWLINE+|EOF);
+functionDecl: functionDecl1 | functionPreDecl;
+functionDecl1: functionFullDecl;
 
 /* ARRAY */
 
@@ -201,8 +201,8 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionDecl: FUNC IDENTIFIER paramDecl nullableListOfNEWLINE functionBody;
 functionPreDecl: FUNC IDENTIFIER paramDecl;
+functionFullDecl: FUNC IDENTIFIER paramDecl nullableListOfNEWLINE functionBody;
 paramDecl: LBracket paramDeclList RBracket;
 functionBody: blockStatement | returnStatement;
 
@@ -214,11 +214,11 @@ functionBody: blockStatement | returnStatement;
 
 
 /* If statement */
-ifStatement: IF expression statement elifStatementList elseStatement?;
+ifStatement: IF expression nullableListOfNEWLINE statement elifStatementList elseStatement?;
 elifStatementList: elifStatementPrime | /* empty */ ;
 elifStatementPrime: elifStatement nullableListOfNEWLINE elifStatementPrime | elifStatement;
-elifStatement: ELIF expression statement;
-elseStatement: ELSE expression statement;
+elifStatement: ELIF expression nullableListOfNEWLINE statement;
+elseStatement: ELSE expression nullableListOfNEWLINE statement;
 
 /* For statement */
 forStatement
@@ -241,7 +241,9 @@ functionCallStatement: functionCall;
 /* Block statement */
 blockStatement: BEGIN (blockStatementBody) END;
 blockStatementBody: nullableListOfStatement;
-nullableListOfStatement: (statement|declaration)*;
+nullableListOfStatement: nullableListOfStatementPrime | /* empty */;
+nullableListOfStatementPrime: (statement|blockLevelDecl) listOfNEWLINE nullableListOfStatementPrime| (statement|blockLevelDecl) ;
+
 
 expressionList: expression COMMA expressionList | expression;
 expression: expression1 ELLIPSIS expression1 | expression1;
