@@ -97,11 +97,11 @@ listOfNEWLINE: NEWLINE listOfNEWLINE | NEWLINE;
 program: nullableListOfNEWLINE globalLevelDeclList EOF;
 
 globalLevelDecl: functionDecl | variableDeclaration;
-globalLevelDeclList: globalLevelDeclListPrime |; // nullable
+globalLevelDeclList: globalLevelDeclListPrime | /* empty */; // nullable
 globalLevelDeclListPrime: globalLevelDecl listOfNEWLINE globalLevelDeclListPrime | globalLevelDecl;
 
 blockLevelDecl: functionDecl | variableDeclaration;
-blockLevelDeclList: blockLevelDeclListPrime |;
+blockLevelDeclList: blockLevelDeclListPrime | /* empty */;
 blockLevelDeclListPrime: blockLevelDecl listOfNEWLINE blockLevelDeclListPrime | blockLevelDecl;
 
 // declaration: (functionDecl | variableDeclaration ) (NEWLINE+|EOF);
@@ -122,40 +122,6 @@ arrayList
     : LSBracket arrayElementList RSBracket COMMA arrayList
     | LSBracket arrayElementList RSBracket;
 literalList: literal COMMA literalList | literal;
-// numberList: numberPrime | /* empty */;
-// numberPrime: NumberLit COMMA numberPrime | NumberLit;
-
-// boolList: boolPrime| /* empty */;
-// boolPrime: BooleanLit COMMA boolPrime | BooleanLit;
-
-// stringList: stringPrime | /* empty */;
-// stringPrime: StringLit COMMA stringPrime | StringLit;
-
-
-
-// /* NEGATION > MULT | DIV | MOD > PLUS | MINUS */
-// arithExpr: arithExpr (PLUS | MINUS) arithExpr1 | arithExpr1; /* Left associative */
-// arithExpr1: arithExpr1 (MULT | DIV | MOD) arithExpr2 | arithExpr2; /* Left associative */
-// arithExpr2: MINUS arithExpr2 | arithExpr3 ;
-// arithExpr3: IDENTIFIER | NumberLit;
-
-// /* NOT > AND > OR */
-// logicExpr: logicExpr OR logicExpr1 | logicExpr1;
-// logicExpr1: logicExpr1 AND logicExpr2 | logicExpr2;
-// logicExpr2: NOT logicExpr2 | logicExpr3;
-// logicExpr3: BooleanLit | IDENTIFIER;
-
-// /* String Expression */
-// stringConcatExpr: stringConcatExpr ELLIPSIS stringConcatExpr | StringLit | IDENTIFIER;
-
-// /* Relational Expression */
-
-// relExpr: arithComp | literalComp;
-// arithComp: arithExpr arithRelOp arithExpr;
-// literalComp: stringConcatExpr literalOp stringConcatExpr;
-// arithRelOp: EQUAL | NOTEQUAL | LESS | GREATER | LESSOREQUAL | GREATEROREQUAL;
-// literalOp: EQUALEQUAL;
-// expression: arithExpr | stringConcatExpr | relExpr | logicExpr | elementAccessExpr | functionCall;
 
 /* Index Operator */
 
@@ -201,9 +167,9 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionPreDecl: FUNC IDENTIFIER paramDecl;
-functionFullDecl: FUNC IDENTIFIER paramDecl nullableListOfNEWLINE functionBody;
-paramDecl: LBracket paramDeclList RBracket;
+functionPreDecl: FUNC IDENTIFIER LBracket paramDecl RBracket;
+functionFullDecl: FUNC IDENTIFIER LBracket paramDecl RBracket nullableListOfNEWLINE functionBody;
+paramDecl:  paramDeclList ;
 functionBody: blockStatement | returnStatement;
 
 

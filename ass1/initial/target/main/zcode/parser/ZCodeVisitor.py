@@ -14,23 +14,58 @@ class ZCodeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ZCodeParser#nullableListOfNEWLINE.
+    def visitNullableListOfNEWLINE(self, ctx:ZCodeParser.NullableListOfNEWLINEContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#listOfNEWLINE.
+    def visitListOfNEWLINE(self, ctx:ZCodeParser.ListOfNEWLINEContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ZCodeParser#program.
     def visitProgram(self, ctx:ZCodeParser.ProgramContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ZCodeParser#declaration.
-    def visitDeclaration(self, ctx:ZCodeParser.DeclarationContext):
+    # Visit a parse tree produced by ZCodeParser#globalLevelDecl.
+    def visitGlobalLevelDecl(self, ctx:ZCodeParser.GlobalLevelDeclContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ZCodeParser#function.
-    def visitFunction(self, ctx:ZCodeParser.FunctionContext):
+    # Visit a parse tree produced by ZCodeParser#globalLevelDeclList.
+    def visitGlobalLevelDeclList(self, ctx:ZCodeParser.GlobalLevelDeclListContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ZCodeParser#function1.
-    def visitFunction1(self, ctx:ZCodeParser.Function1Context):
+    # Visit a parse tree produced by ZCodeParser#globalLevelDeclListPrime.
+    def visitGlobalLevelDeclListPrime(self, ctx:ZCodeParser.GlobalLevelDeclListPrimeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#blockLevelDecl.
+    def visitBlockLevelDecl(self, ctx:ZCodeParser.BlockLevelDeclContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#blockLevelDeclList.
+    def visitBlockLevelDeclList(self, ctx:ZCodeParser.BlockLevelDeclListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#blockLevelDeclListPrime.
+    def visitBlockLevelDeclListPrime(self, ctx:ZCodeParser.BlockLevelDeclListPrimeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#functionDecl.
+    def visitFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#functionDecl1.
+    def visitFunctionDecl1(self, ctx:ZCodeParser.FunctionDecl1Context):
         return self.visitChildren(ctx)
 
 
@@ -164,13 +199,13 @@ class ZCodeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ZCodeParser#functionDecl.
-    def visitFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
+    # Visit a parse tree produced by ZCodeParser#functionPreDecl.
+    def visitFunctionPreDecl(self, ctx:ZCodeParser.FunctionPreDeclContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ZCodeParser#functionPreDecl.
-    def visitFunctionPreDecl(self, ctx:ZCodeParser.FunctionPreDeclContext):
+    # Visit a parse tree produced by ZCodeParser#functionFullDecl.
+    def visitFunctionFullDecl(self, ctx:ZCodeParser.FunctionFullDeclContext):
         return self.visitChildren(ctx)
 
 
@@ -251,6 +286,11 @@ class ZCodeVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#nullableListOfStatement.
     def visitNullableListOfStatement(self, ctx:ZCodeParser.NullableListOfStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#nullableListOfStatementPrime.
+    def visitNullableListOfStatementPrime(self, ctx:ZCodeParser.NullableListOfStatementPrimeContext):
         return self.visitChildren(ctx)
 
 

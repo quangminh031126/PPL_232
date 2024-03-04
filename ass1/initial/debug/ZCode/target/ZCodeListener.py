@@ -17,6 +17,24 @@ class ZCodeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ZCodeParser#nullableListOfNEWLINE.
+    def enterNullableListOfNEWLINE(self, ctx:ZCodeParser.NullableListOfNEWLINEContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#nullableListOfNEWLINE.
+    def exitNullableListOfNEWLINE(self, ctx:ZCodeParser.NullableListOfNEWLINEContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#listOfNEWLINE.
+    def enterListOfNEWLINE(self, ctx:ZCodeParser.ListOfNEWLINEContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#listOfNEWLINE.
+    def exitListOfNEWLINE(self, ctx:ZCodeParser.ListOfNEWLINEContext):
+        pass
+
+
     # Enter a parse tree produced by ZCodeParser#program.
     def enterProgram(self, ctx:ZCodeParser.ProgramContext):
         pass
@@ -26,12 +44,66 @@ class ZCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ZCodeParser#declaration.
-    def enterDeclaration(self, ctx:ZCodeParser.DeclarationContext):
+    # Enter a parse tree produced by ZCodeParser#globalLevelDecl.
+    def enterGlobalLevelDecl(self, ctx:ZCodeParser.GlobalLevelDeclContext):
         pass
 
-    # Exit a parse tree produced by ZCodeParser#declaration.
-    def exitDeclaration(self, ctx:ZCodeParser.DeclarationContext):
+    # Exit a parse tree produced by ZCodeParser#globalLevelDecl.
+    def exitGlobalLevelDecl(self, ctx:ZCodeParser.GlobalLevelDeclContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#globalLevelDeclList.
+    def enterGlobalLevelDeclList(self, ctx:ZCodeParser.GlobalLevelDeclListContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#globalLevelDeclList.
+    def exitGlobalLevelDeclList(self, ctx:ZCodeParser.GlobalLevelDeclListContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#globalLevelDeclListPrime.
+    def enterGlobalLevelDeclListPrime(self, ctx:ZCodeParser.GlobalLevelDeclListPrimeContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#globalLevelDeclListPrime.
+    def exitGlobalLevelDeclListPrime(self, ctx:ZCodeParser.GlobalLevelDeclListPrimeContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#blockLevelDecl.
+    def enterBlockLevelDecl(self, ctx:ZCodeParser.BlockLevelDeclContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#blockLevelDecl.
+    def exitBlockLevelDecl(self, ctx:ZCodeParser.BlockLevelDeclContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#blockLevelDeclList.
+    def enterBlockLevelDeclList(self, ctx:ZCodeParser.BlockLevelDeclListContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#blockLevelDeclList.
+    def exitBlockLevelDeclList(self, ctx:ZCodeParser.BlockLevelDeclListContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#blockLevelDeclListPrime.
+    def enterBlockLevelDeclListPrime(self, ctx:ZCodeParser.BlockLevelDeclListPrimeContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#blockLevelDeclListPrime.
+    def exitBlockLevelDeclListPrime(self, ctx:ZCodeParser.BlockLevelDeclListPrimeContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#functionDecl.
+    def enterFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#functionDecl.
+    def exitFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
         pass
 
 
@@ -152,6 +224,33 @@ class ZCodeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ZCodeParser#assignStatement.
+    def enterAssignStatement(self, ctx:ZCodeParser.AssignStatementContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#assignStatement.
+    def exitAssignStatement(self, ctx:ZCodeParser.AssignStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#scalarAssignStatement.
+    def enterScalarAssignStatement(self, ctx:ZCodeParser.ScalarAssignStatementContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#scalarAssignStatement.
+    def exitScalarAssignStatement(self, ctx:ZCodeParser.ScalarAssignStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#arrayAssignStatement.
+    def enterArrayAssignStatement(self, ctx:ZCodeParser.ArrayAssignStatementContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#arrayAssignStatement.
+    def exitArrayAssignStatement(self, ctx:ZCodeParser.ArrayAssignStatementContext):
+        pass
+
+
     # Enter a parse tree produced by ZCodeParser#statement.
     def enterStatement(self, ctx:ZCodeParser.StatementContext):
         pass
@@ -215,6 +314,33 @@ class ZCodeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ZCodeParser#functionPreDecl.
+    def enterFunctionPreDecl(self, ctx:ZCodeParser.FunctionPreDeclContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#functionPreDecl.
+    def exitFunctionPreDecl(self, ctx:ZCodeParser.FunctionPreDeclContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#functionFullDecl.
+    def enterFunctionFullDecl(self, ctx:ZCodeParser.FunctionFullDeclContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#functionFullDecl.
+    def exitFunctionFullDecl(self, ctx:ZCodeParser.FunctionFullDeclContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#paramDecl.
+    def enterParamDecl(self, ctx:ZCodeParser.ParamDeclContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#paramDecl.
+    def exitParamDecl(self, ctx:ZCodeParser.ParamDeclContext):
+        pass
+
+
     # Enter a parse tree produced by ZCodeParser#paramDeclList.
     def enterParamDeclList(self, ctx:ZCodeParser.ParamDeclListContext):
         pass
@@ -239,24 +365,6 @@ class ZCodeListener(ParseTreeListener):
 
     # Exit a parse tree produced by ZCodeParser#paramDeclAtom.
     def exitParamDeclAtom(self, ctx:ZCodeParser.ParamDeclAtomContext):
-        pass
-
-
-    # Enter a parse tree produced by ZCodeParser#functionDecl.
-    def enterFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
-        pass
-
-    # Exit a parse tree produced by ZCodeParser#functionDecl.
-    def exitFunctionDecl(self, ctx:ZCodeParser.FunctionDeclContext):
-        pass
-
-
-    # Enter a parse tree produced by ZCodeParser#paramDecl.
-    def enterParamDecl(self, ctx:ZCodeParser.ParamDeclContext):
-        pass
-
-    # Exit a parse tree produced by ZCodeParser#paramDecl.
-    def exitParamDecl(self, ctx:ZCodeParser.ParamDeclContext):
         pass
 
 
@@ -392,6 +500,15 @@ class ZCodeListener(ParseTreeListener):
 
     # Exit a parse tree produced by ZCodeParser#nullableListOfStatement.
     def exitNullableListOfStatement(self, ctx:ZCodeParser.NullableListOfStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ZCodeParser#nullableListOfStatementPrime.
+    def enterNullableListOfStatementPrime(self, ctx:ZCodeParser.NullableListOfStatementPrimeContext):
+        pass
+
+    # Exit a parse tree produced by ZCodeParser#nullableListOfStatementPrime.
+    def exitNullableListOfStatementPrime(self, ctx:ZCodeParser.NullableListOfStatementPrimeContext):
         pass
 
 

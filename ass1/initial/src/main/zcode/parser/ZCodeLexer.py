@@ -8,7 +8,7 @@ else:
     from typing.io import TextIO
 
 
-from lexererr import *
+from ass1.initial.debug.ZCode.lexererr import *
 
 
 
