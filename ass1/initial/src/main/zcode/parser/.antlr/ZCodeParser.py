@@ -1,4 +1,4 @@
-# Generated from /home/qmi/repos/initial/src/main/zcode/parser/ZCode.g4 by ANTLR 4.13.1
+# Generated from /Users/phamvoquangminh/repos/ass_PPL/PPL_232/ass1/initial/src/main/zcode/parser/ZCode.g4 by ANTLR 4.13.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -368,6 +368,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_literal
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteral" ):
+                listener.enterLiteral(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteral" ):
+                listener.exitLiteral(self)
+
 
 
 
@@ -419,6 +427,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_program
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProgram" ):
+                listener.enterProgram(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProgram" ):
+                listener.exitProgram(self)
 
 
 
@@ -487,6 +503,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclaration" ):
+                listener.enterDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclaration" ):
+                listener.exitDeclaration(self)
 
 
 
@@ -563,6 +587,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunction" ):
+                listener.enterFunction(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunction" ):
+                listener.exitFunction(self)
+
 
 
 
@@ -609,6 +641,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_function1
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunction1" ):
+                listener.enterFunction1(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunction1" ):
+                listener.exitFunction1(self)
 
 
 
@@ -660,6 +700,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrayDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayDeclaration" ):
+                listener.enterArrayDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayDeclaration" ):
+                listener.exitArrayDeclaration(self)
 
 
 
@@ -717,6 +765,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrayDim
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayDim" ):
+                listener.enterArrayDim(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayDim" ):
+                listener.exitArrayDim(self)
 
 
 
@@ -782,6 +838,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrayAssign
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayAssign" ):
+                listener.enterArrayAssign(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayAssign" ):
+                listener.exitArrayAssign(self)
+
 
 
 
@@ -841,6 +905,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrayElementList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayElementList" ):
+                listener.enterArrayElementList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayElementList" ):
+                listener.exitArrayElementList(self)
 
 
 
@@ -908,6 +980,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrayList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayList" ):
+                listener.enterArrayList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayList" ):
+                listener.exitArrayList(self)
+
 
 
 
@@ -974,6 +1054,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_literalList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteralList" ):
+                listener.enterLiteralList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteralList" ):
+                listener.exitLiteralList(self)
+
 
 
 
@@ -1035,6 +1123,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_elementAccessExpr
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElementAccessExpr" ):
+                listener.enterElementAccessExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElementAccessExpr" ):
+                listener.exitElementAccessExpr(self)
+
 
 
 
@@ -1077,6 +1173,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrExpr
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrExpr" ):
+                listener.enterArrExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrExpr" ):
+                listener.exitArrExpr(self)
 
 
 
@@ -1131,6 +1235,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_indexList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIndexList" ):
+                listener.enterIndexList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIndexList" ):
+                listener.exitIndexList(self)
 
 
 
@@ -1192,6 +1304,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_functionCall
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionCall" ):
+                listener.enterFunctionCall(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionCall" ):
+                listener.exitFunctionCall(self)
+
 
 
 
@@ -1231,6 +1351,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_functionArgsList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionArgsList" ):
+                listener.enterFunctionArgsList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionArgsList" ):
+                listener.exitFunctionArgsList(self)
 
 
 
@@ -1285,6 +1413,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_argsPrime
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArgsPrime" ):
+                listener.enterArgsPrime(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArgsPrime" ):
+                listener.exitArgsPrime(self)
+
 
 
 
@@ -1336,6 +1472,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_arg
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArg" ):
+                listener.enterArg(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArg" ):
+                listener.exitArg(self)
+
 
 
 
@@ -1373,6 +1517,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_assignStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignStatement" ):
+                listener.enterAssignStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignStatement" ):
+                listener.exitAssignStatement(self)
 
 
 
@@ -1427,6 +1579,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_scalarAssignStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterScalarAssignStatement" ):
+                listener.enterScalarAssignStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitScalarAssignStatement" ):
+                listener.exitScalarAssignStatement(self)
+
 
 
 
@@ -1471,6 +1631,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_arrayAssignStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayAssignStatement" ):
+                listener.enterArrayAssignStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayAssignStatement" ):
+                listener.exitArrayAssignStatement(self)
 
 
 
@@ -1556,6 +1724,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStatement" ):
+                listener.enterStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStatement" ):
+                listener.exitStatement(self)
 
 
 
@@ -1671,6 +1847,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_variableDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableDeclaration" ):
+                listener.enterVariableDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableDeclaration" ):
+                listener.exitVariableDeclaration(self)
+
 
 
 
@@ -1734,6 +1918,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_normalDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNormalDeclaration" ):
+                listener.enterNormalDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNormalDeclaration" ):
+                listener.exitNormalDeclaration(self)
+
 
 
 
@@ -1784,6 +1976,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_varType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVarType" ):
+                listener.enterVarType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVarType" ):
+                listener.exitVarType(self)
+
 
 
 
@@ -1830,6 +2030,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_varDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVarDecl" ):
+                listener.enterVarDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVarDecl" ):
+                listener.exitVarDecl(self)
+
 
 
 
@@ -1873,6 +2081,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_dynamicDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDynamicDecl" ):
+                listener.enterDynamicDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDynamicDecl" ):
+                listener.exitDynamicDecl(self)
 
 
 
@@ -1922,6 +2138,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_variableInitialization
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableInitialization" ):
+                listener.enterVariableInitialization(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableInitialization" ):
+                listener.exitVariableInitialization(self)
+
 
 
 
@@ -1957,6 +2181,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_paramDeclList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParamDeclList" ):
+                listener.enterParamDeclList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParamDeclList" ):
+                listener.exitParamDeclList(self)
 
 
 
@@ -2010,6 +2242,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_paramDeclPrime
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParamDeclPrime" ):
+                listener.enterParamDeclPrime(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParamDeclPrime" ):
+                listener.exitParamDeclPrime(self)
 
 
 
@@ -2074,6 +2314,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_paramDeclAtom
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParamDeclAtom" ):
+                listener.enterParamDeclAtom(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParamDeclAtom" ):
+                listener.exitParamDeclAtom(self)
 
 
 
@@ -2140,6 +2388,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_functionDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionDecl" ):
+                listener.enterFunctionDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionDecl" ):
+                listener.exitFunctionDecl(self)
+
 
 
 
@@ -2197,6 +2453,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_functionPreDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionPreDecl" ):
+                listener.enterFunctionPreDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionPreDecl" ):
+                listener.exitFunctionPreDecl(self)
+
 
 
 
@@ -2241,6 +2505,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_paramDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParamDecl" ):
+                listener.enterParamDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParamDecl" ):
+                listener.exitParamDecl(self)
+
 
 
 
@@ -2282,6 +2554,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_functionBody
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionBody" ):
+                listener.enterFunctionBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionBody" ):
+                listener.exitFunctionBody(self)
 
 
 
@@ -2345,6 +2625,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_ifStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfStatement" ):
+                listener.enterIfStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfStatement" ):
+                listener.exitIfStatement(self)
+
 
 
 
@@ -2393,6 +2681,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_elifStatementList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElifStatementList" ):
+                listener.enterElifStatementList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElifStatementList" ):
+                listener.exitElifStatementList(self)
 
 
 
@@ -2449,6 +2745,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_elifStatementPrime
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElifStatementPrime" ):
+                listener.enterElifStatementPrime(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElifStatementPrime" ):
+                listener.exitElifStatementPrime(self)
 
 
 
@@ -2517,6 +2821,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_elifStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElifStatement" ):
+                listener.enterElifStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElifStatement" ):
+                listener.exitElifStatement(self)
+
 
 
 
@@ -2561,6 +2873,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_elseStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElseStatement" ):
+                listener.enterElseStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElseStatement" ):
+                listener.exitElseStatement(self)
 
 
 
@@ -2626,6 +2946,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_forStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForStatement" ):
+                listener.enterForStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForStatement" ):
+                listener.exitForStatement(self)
+
 
 
 
@@ -2683,6 +3011,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_updateExpr
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdateExpr" ):
+                listener.enterUpdateExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdateExpr" ):
+                listener.exitUpdateExpr(self)
+
 
 
 
@@ -2716,6 +3052,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_breakStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBreakStatement" ):
+                listener.enterBreakStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBreakStatement" ):
+                listener.exitBreakStatement(self)
+
 
 
 
@@ -2748,6 +3092,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_continueStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterContinueStatement" ):
+                listener.enterContinueStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitContinueStatement" ):
+                listener.exitContinueStatement(self)
 
 
 
@@ -2785,6 +3137,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_returnStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReturnStatement" ):
+                listener.enterReturnStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReturnStatement" ):
+                listener.exitReturnStatement(self)
 
 
 
@@ -2829,6 +3189,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_functionCallStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionCallStatement" ):
+                listener.enterFunctionCallStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionCallStatement" ):
+                listener.exitFunctionCallStatement(self)
+
 
 
 
@@ -2869,6 +3237,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_blockStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlockStatement" ):
+                listener.enterBlockStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlockStatement" ):
+                listener.exitBlockStatement(self)
+
 
 
 
@@ -2907,6 +3283,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_blockStatementBody
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlockStatementBody" ):
+                listener.enterBlockStatementBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlockStatementBody" ):
+                listener.exitBlockStatementBody(self)
 
 
 
@@ -2951,6 +3335,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_nullableListOfStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNullableListOfStatement" ):
+                listener.enterNullableListOfStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNullableListOfStatement" ):
+                listener.exitNullableListOfStatement(self)
 
 
 
@@ -3014,6 +3406,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_expressionList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionList" ):
+                listener.enterExpressionList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionList" ):
+                listener.exitExpressionList(self)
+
 
 
 
@@ -3070,6 +3470,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression" ):
+                listener.enterExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression" ):
+                listener.exitExpression(self)
 
 
 
@@ -3146,6 +3554,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression1
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression1" ):
+                listener.enterExpression1(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression1" ):
+                listener.exitExpression1(self)
+
 
 
 
@@ -3212,6 +3628,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression2
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression2" ):
+                listener.enterExpression2(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression2" ):
+                listener.exitExpression2(self)
 
 
 
@@ -3287,6 +3711,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression3
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression3" ):
+                listener.enterExpression3(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression3" ):
+                listener.exitExpression3(self)
 
 
 
@@ -3366,6 +3798,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression4
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression4" ):
+                listener.enterExpression4(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression4" ):
+                listener.exitExpression4(self)
+
 
 
     def expression4(self, _p:int=0):
@@ -3438,6 +3878,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression5
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression5" ):
+                listener.enterExpression5(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression5" ):
+                listener.exitExpression5(self)
+
 
 
 
@@ -3494,6 +3942,14 @@ class ZCodeParser ( Parser ):
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression6
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression6" ):
+                listener.enterExpression6(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression6" ):
+                listener.exitExpression6(self)
+
 
 
 
@@ -3546,6 +4002,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_expression7
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression7" ):
+                listener.enterExpression7(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression7" ):
+                listener.exitExpression7(self)
 
 
 
@@ -3610,6 +4074,14 @@ class ZCodeParser ( Parser ):
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_operands
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperands" ):
+                listener.enterOperands(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperands" ):
+                listener.exitOperands(self)
 
 
 

@@ -1,4 +1,3 @@
-
-bool xjhh <- 5.729
-var O2tI[65,757,85E-53]
-## vTv2eNr#E
+ 
+            func main(var a)
+        

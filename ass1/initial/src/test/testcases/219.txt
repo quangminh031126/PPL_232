@@ -1,7 +1,9 @@
-
-## WhQ,bG`2E
-bool aj5x[0] <- q2
-number yTKh ## JNy
-## R>%O34|}I(p
-func v6 (var Spj, bool fY[128E+09,1e-72,947.097])	return
-
+ 
+            var VoTien <- true > "true"
+            var VoTien <- true >= "true"
+            var VoTien <- true = "true"
+            var VoTien <- true == "true"
+            var VoTien <- true < "true"
+            var VoTien <- true <= "true"
+            var VoTien <- true >= "true" ... 1 > 2
+        

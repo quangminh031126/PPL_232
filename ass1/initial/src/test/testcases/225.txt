@@ -1,8 +1,7 @@
-
-func y3 (bool PKHT[2,1.695], bool gd[259e+07,6E+33,5.188e27])
-	return
-
-## "su9"a
-dynamic T5[4.138] ## TCs=%nBR-5y6
-## 2^nBKw0m5f l%8BZQo:
-## P!GGA`&!ucH +
+ 
+            var VoTien <- a[1] + 1
+            var VoTien <- array[1,1+2][1][2,3]
+            var VoTien <- array[1,(1)...2,array[ar[(1*2) and 1]],array[2]]
+            var VoTien <- a[1] + fun()[1,fun()] 
+            var VoTien <- 1[1]
+        

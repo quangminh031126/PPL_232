@@ -1,5 +1,5 @@
-
-func rc (bool n5[606e-78,3.611], var IM22[5E+14])
-	begin
-	end
-
+ 
+            func main()
+            ## VO Tien
+            func main() func main(dynamic a) ## VO Tien
+        

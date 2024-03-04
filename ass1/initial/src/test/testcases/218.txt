@@ -1,4 +1,2 @@
-
-string p1k
-bool b5J[659E14,419.767e+81]
-var eJhK ## 2"-Ys3
+ var VoTien <- "Vo" ... 1 ... "Tien" 
+        

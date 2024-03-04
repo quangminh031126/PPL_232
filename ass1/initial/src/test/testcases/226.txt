@@ -1,2 +1,2 @@
-
-## Q]6
+var VoTien <- a[]
+        

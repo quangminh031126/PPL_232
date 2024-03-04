@@ -1,8 +1,2 @@
-
-## b$;{qk!AWF1L
-func f3 ()	return
-
-func Rz (bool MIfS[593,8])
-	begin
-	end
-
+var VoTien <- a()()
+        

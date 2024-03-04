@@ -1,14 +1,14 @@
-
-## Z^7#
-func AC ()	begin
-		## gV4umo)`>N|G`pZ2A
-	end
-func G5kN (bool r2[8])
-	begin
-		begin
-			FVH(false, KM8b)
-			## B;,@?5.eoCi 1<LQz"J
-		end
-	end
-
-var g34[5] ## -wy-jK@Wl"Szw[~L;P&
+ 
+            ##12
+            func main(number a) 
+                ##12
+                
+                begin 
+                    break
+                end
+                
+                ##12
+                ##12
+            func main(number a)
+            ##12        
+        

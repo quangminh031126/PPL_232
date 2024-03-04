@@ -1,1 +1,1 @@
-ecK,<EOF>
+Error Token {
