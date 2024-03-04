@@ -91,7 +91,17 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 /* PARSER */
 
+nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE |;
+listOfNEWLINE: NEWLINE listOfNEWLINE | NEWLINE;
 program: NEWLINE* declaration* EOF;
+
+topLevelDecl: ;
+topLevelDeclList: topLevelDeclListPrime |; // nullable
+topLevelDeclListPrime: topLevelDecl listOfNEWLINE | topLevelDecl;
+
+funcLevelDecl: ;
+funcLevelDeclList: funcLevelDeclListPrime |;
+funcLevelDeclListPrime: funcLevelDecl listOfNEWLINE | funcLevelDecl;
 
 declaration: (function | variableDeclaration ) (NEWLINE+|EOF);
 function: function1 | functionPreDecl;
@@ -244,7 +254,7 @@ expression7: elementAccessExpr | operands;
 operands: literal | IDENTIFIER | (LBracket expression RBracket) | functionCall ; 
 
 COMMENT: '##' .*? ~[\n\r\f]* -> skip;
-WS : [ \t\r]+ -> skip ; // skip spaces, tabs, newlines
+WS : [ \t\r\f]+ -> skip ; // skip spaces, tabs, newlines, form feed
 
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 UNCLOSE_STRING:  '"' StringChar* (NEWLINE|EOF){
