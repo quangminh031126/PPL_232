@@ -85,7 +85,8 @@ StringLit
     self.text = temp
 };
 
-literal: NumberLit | TRUE| FALSE | StringLit;
+BoolLit: TRUE | FALSE;
+literal: NumberLit | BoolLit | StringLit;
 IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 
@@ -93,7 +94,7 @@ IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
 
 nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE |;
 listOfNEWLINE: NEWLINE listOfNEWLINE | NEWLINE;
-program: NEWLINE* declaration* EOF;
+program: nullableListOfNEWLINE declaration* topLevelDeclList EOF;
 
 topLevelDecl: ;
 topLevelDeclList: topLevelDeclListPrime |; // nullable
@@ -200,7 +201,7 @@ paramDeclList: paramDeclPrime | /* empty */;
 paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
 paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
 
-functionDecl: FUNC IDENTIFIER paramDecl NEWLINE* functionBody;
+functionDecl: FUNC IDENTIFIER paramDecl nullableListOfNEWLINE functionBody;
 functionPreDecl: FUNC IDENTIFIER paramDecl;
 paramDecl: LBracket paramDeclList RBracket;
 functionBody: blockStatement | returnStatement;
@@ -215,14 +216,14 @@ functionBody: blockStatement | returnStatement;
 /* If statement */
 ifStatement: IF expression statement elifStatementList elseStatement?;
 elifStatementList: elifStatementPrime | /* empty */ ;
-elifStatementPrime: elifStatement NEWLINE* elifStatementPrime | elifStatement;
+elifStatementPrime: elifStatement nullableListOfNEWLINE elifStatementPrime | elifStatement;
 elifStatement: ELIF expression statement;
 elseStatement: ELSE expression statement;
 
 /* For statement */
 forStatement
     : 
-    FOR IDENTIFIER UNTIL expression BY updateExpr NEWLINE* statement
+    FOR IDENTIFIER UNTIL expression BY updateExpr nullableListOfNEWLINE statement
     ;
 updateExpr: expression;
 /* Break statement */
