@@ -1,6 +1,2 @@
- ##func declare
-func test[number a,string b] 
-begin
-
-end
- 
+var VoTien <- - not 1
+        

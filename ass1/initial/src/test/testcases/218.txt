@@ -1,8 +1,2 @@
- ##None assoc expression
-dynamic a
-func main()
-begin
-a<- "a"..."b"=="ab"=true
-end
-
- 
+ var VoTien <- "Vo" ... 1 ... "Tien" 
+        

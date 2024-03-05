@@ -1,14 +1,1 @@
-	until , !=	-
-< until 98E5476
-+ false or
-begin =	[ end < string +
-*
-dynamic
-<-	a1	end	not for true else	/ and
-< -	elif >= by
-== func for
-return	func	... [ var func and	<
-a1	or elif	number	bool ==
-< >= string	%
-<= string continue <	"abcd"
-    
++-*/%= <- != < <= > >= ... ==

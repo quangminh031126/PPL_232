@@ -1,1 +1,1 @@
-until,Error Token ;
+Error Token ;

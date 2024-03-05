@@ -4,237 +4,178 @@ grammar ZCode;
 from lexererr import *
 }
 
-options {
-    language=Python3;
+@lexer::members {
+
 }
 
+options {
+	language=Python3;
+}
 
-/* LEXER */
+// program rule
 
-/* Fragments */
-fragment DECIMAL: '.' INTEGER? ;
-fragment EXPONENT: [eE] ('+'|'-')? INTEGER;
-fragment INTEGER: DIGIT+;
-fragment StringChar: ~["\\\r\n] | EscapedSequence | DoubleQuote;
-fragment DoubleQuote: '\'"';
-fragment EscapedSequence
-    : '\\' [btnfr'\\]
-    ;
-fragment LETTER: [a-zA-Z];
-fragment UNDERSCORE: '_';
-fragment DIGIT: [0-9];
+program: stms EOF;
 
+stms: (null_lines | ) stm_lists (null_lines | ) | ;
 
-/* Keywords */
-TRUE: 'true';
-FALSE: 'false';
-NUMBER: 'number';
-BOOL: 'bool';
-STRING: 'string';
-RETURN: 'return';
-VAR: 'var';
-DYNAMIC: 'dynamic';
-FUNC: 'func';
-FOR: 'for';
-UNTIL: 'until';
-BY: 'by';
-BREAK: 'break';
-CONTINUE: 'continue';
+stm_lists: stm | stm null_lines stm_lists;
+
+// statement rule
+
+stm: (expr6 LP expr_list RP) | expr | decl | ass | block | func | r_break | r_continue | r_return | r_if | r_for;
+
+r_break: BREAK;
+
+r_continue: CONTINUE;
+
+r_return: RETURN (expr | );
+
+// if statement
+
+r_if: IF LP expr RP (null_lines | ) stm
+	| IF LP expr RP (null_lines | ) stm r_elifs
+	| IF LP expr RP (null_lines | ) stm r_else
+	| IF LP expr RP (null_lines | ) stm r_elifs r_else;
+
+r_elifs: r_elif | r_elif r_elifs;
+
+r_elif: (null_lines | ) ELIF LP expr RP (null_lines | ) stm;
+
+r_else: (null_lines | ) ELSE (null_lines | ) stm;
+
+// for statement
+
+r_for: FOR IDENTIFIER UNTIL expr BY expr (null_lines | ) stm;
+
+// block statement
+
+block: BEGIN (null_lines block_stms null_lines | null_lines) END;
+
+block_stms: stm | stm null_lines block_stms;
+
+// function statement
+
+func: FUNC IDENTIFIER arg_group (((null_lines | ) (r_return | block)) | );
+
+arg_group: LP args RP;
+args: arg_list | ;
+arg_list: arg | arg COMMA arg_list;
+arg: TYPE IDENTIFIER (type_index | );
+
+type_index: LB type_index_nums RB;
+type_index_nums: type_index_num_list | ;
+type_index_num_list: NUMBER | NUMBER COMMA type_index_num_list;
+
+// assignment statement
+
+ass: expr ASSIGN expr;
+
+decl: TYPE IDENTIFIER (type_index | ) ((ASSIGN expr) | )
+	| VAR IDENTIFIER ASSIGN expr
+	| DYN IDENTIFIER ((ASSIGN expr) | );
+ 
+expr: expr1 op=CONCAT expr1 | expr1;
+expr1: expr2 op=(EQ | DEQ | NEQ | LT | GT | LE | GE) expr2 | expr2;
+expr2: expr2 op=(AND | OR) expr3 | expr3;
+expr3: expr3 op=(ADD | SUB) expr4 | expr4;
+expr4: expr4 op=(MUL | DIV | MOD) expr5 | expr5;
+expr5: SUB expr5
+	| NOT expr5
+	| expr6;
+expr6: expr6 LB expr_list RB
+	| expr6 LP expr_list RP
+	| term;
+
+term: NUMBER
+	| STRING
+	| BOOLEAN
+	| IDENTIFIER	
+	| LB expr_list RB
+	| LP expr RP;
+
+expr_list: exprs | ;
+exprs: expr | expr COMMA exprs;
+
+// null_lines
+null_lines: NEWLINE+;
+
+// TYPE token
+TYPE: 'number' | 'string' | 'bool';
+
+// KEYWORDS
 IF: 'if';
-ELSE: 'else';
 ELIF: 'elif';
+ELSE: 'else';
+FOR: 'for';
+SUB: '-';
+ADD: '+';
+MUL: '*';
+DIV: '/';
+AND: 'and';
+OR: 'or';
+CONCAT: '...';
+ASSIGN: '<-';
+EQ: '=';
+DEQ: '==';
+GE: '>=';
+GT: '>';
+LE: '<=';
+LT: '<';
+LP: '(';
+RP: ')';
+LB: '[';
+RB: ']';
 BEGIN: 'begin';
 END: 'end';
 NOT: 'not';
-AND: 'and';
-OR: 'or';
-
-/* Operators */
-PLUS: '+';
-MINUS: '-';
-MULT: '*';
-DIV: '/';
-MOD: '%';
-EQUAL: '=';
-LEFTARR: '<-';
-EQUALEQUAL: '==';
-NOTEQUAL: '!=';
-LESS: '<';
-GREATER: '>';
-LESSOREQUAL: '<=';
-GREATEROREQUAL: '>=';
-ELLIPSIS: '...';
-
-/* Separator */
-LBracket: '(';
-RBracket: ')';
-LSBracket: '[';
-RSBracket: ']';
+NEQ: '!=';
+VAR: 'var';
+DYN: 'dynamic';
 COMMA: ',';
-NEWLINE: '\n';
+BREAK: 'break';
+CONTINUE: 'continue';
+RETURN: 'return';
+FUNC: 'func';
+MOD: '%';
+UNTIL: 'until';
+BY: 'by';
 
-/* Literals */
+// BOOLEAN token
+BOOLEAN: 'true' | 'false';
 
-NumberLit: INTEGER (DECIMAL|DECIMAL? EXPONENT)?;
+// NUMBER token
 
+NUMBER: INTEGRAL DECIMAL? EXPONENT?;
+INVALID_NUMBER_1: INTEGRAL DECIMAL? ('e' | 'E')(ADD|SUB)? {raise ErrorToken(self.text)};
+INVALID_NUMBER_2: INTEGRAL DECIMAL? [a-zA-Z_]+ (ADD|SUB)? [0-9]+ {raise ErrorToken(self.text)};
+INVALID_NUMBER_3: INTEGRAL DECIMAL? [a-zA-Z_]+ {raise ErrorToken(self.text)};
 
-StringLit
-    : '"' StringChar* '"'{        
-    temp = self.text
-    temp = temp[1:-1]  # Remove the opening and closing quotes
-    self.text = temp
-};
+// IDENTIFIER token
 
-BoolLit: TRUE | FALSE;
-literal: NumberLit | BoolLit | StringLit;
-IDENTIFIER: (LETTER|UNDERSCORE) (LETTER|UNDERSCORE|DIGIT)*;
+IDENTIFIER: [a-zA-Z_] [a-zA-Z_0-9]*;
+INVALID_IDENTIFIER: [0-9][a-zA-Z_0-9]* {raise ErrorToken(self.text)};
 
+fragment
+INTEGRAL: [0-9]+;
 
-/* PARSER */
+fragment
+DECIMAL: '.'[0-9]*;
 
-nullableListOfNEWLINE: NEWLINE nullableListOfNEWLINE |;
-listOfNEWLINE: NEWLINE listOfNEWLINE | NEWLINE;
-program: nullableListOfNEWLINE globalLevelDeclList EOF;
+fragment
+EXPONENT: ('e' | 'E')(ADD|SUB)?[0-9]+;
 
-globalLevelDecl: functionDecl | variableDeclaration;
-globalLevelDeclList: globalLevelDeclListPrime | /* empty */; // nullable
-globalLevelDeclListPrime: globalLevelDecl listOfNEWLINE globalLevelDeclListPrime | globalLevelDecl;
+// STRING token
+ILLEGAL_ESCAPE: '"' (~["] | '\'"')* INVALID_ESCAPED_SEQUENCE+ (~["] | '\'"')* '"' {raise IllegalEscape(self.text)} ;
+UNCLOSE_STRING: '"' (~["] | '\'"')*? (NEWLINE | EOF) {raise UncloseString(self.text)};
+STRING: '"' (~["\r\n\\] | '\'"' | '\\\'"' | '\\'[bft'\\])* '"' { self.text = str(bytes(self.text, "utf-8").decode("unicode_escape"))[1:-1]};
 
-blockLevelDecl: functionDecl | variableDeclaration;
-blockLevelDeclList: blockLevelDeclListPrime | /* empty */;
-blockLevelDeclListPrime: blockLevelDecl listOfNEWLINE blockLevelDeclListPrime | blockLevelDecl;
+fragment
+INVALID_ESCAPED_SEQUENCE: '\\'~[bfrnt'\\];
 
-// declaration: (functionDecl | variableDeclaration ) (NEWLINE+|EOF);
-functionDecl: functionDecl1 | functionPreDecl;
-functionDecl1: functionFullDecl;
+// COMMENT token
+COMMENT: '##' ~[\r\n]* -> skip;
 
-/* ARRAY */
-
-arrayDeclaration: varType IDENTIFIER LSBracket arrayDim RSBracket arrayAssign?;
-arrayDim: NumberLit COMMA arrayDim | NumberLit;
-arrayAssign: LEFTARR ((LSBracket arrayElementList RSBracket) | expression);
-arrayElementList
-    : literalList
-    | arrayList
-    | expressionList
-    ;
-arrayList
-    : LSBracket arrayElementList RSBracket COMMA arrayList
-    | LSBracket arrayElementList RSBracket;
-literalList: literal COMMA literalList | literal;
-
-/* Index Operator */
-
-elementAccessExpr: arrExpr LSBracket indexList RSBracket;
-arrExpr: IDENTIFIER | functionCall;
-indexList: expression COMMA indexList | expression;/* Non empty list of expression */
-
-/* Function Call */
-functionCall: IDENTIFIER LBracket functionArgsList RBracket;
-functionArgsList: argsPrime | /* Empty */;
-argsPrime: arg COMMA argsPrime | arg;
-arg: expression;
-
-
-assignStatement: scalarAssignStatement | arrayAssignStatement;
-scalarAssignStatement: IDENTIFIER LEFTARR expression;
-arrayAssignStatement: (IDENTIFIER | elementAccessExpr) arrayAssign;
-/* Variable and Function Declaration */
-statement
-    : 
-    ( /* variableDeclaration */
-    /* variableInitialization arrayAssign */
-    ifStatement
-    | forStatement
-    | breakStatement
-    | continueStatement
-    | returnStatement
-    | functionCallStatement
-    | blockStatement
-    | assignStatement
-    )
-    (NEWLINE+|EOF);
-
-variableDeclaration: (normalDeclaration | arrayDeclaration | varDecl | dynamicDecl);
-normalDeclaration: varType IDENTIFIER variableInitialization?;
-varType: (NUMBER|BOOL|STRING);
-varDecl: VAR IDENTIFIER variableInitialization;
-dynamicDecl: DYNAMIC IDENTIFIER variableInitialization?;
-
-variableInitialization: LEFTARR expression;
-
-paramDeclList: paramDeclPrime | /* empty */;
-paramDeclPrime: paramDeclAtom COMMA paramDeclPrime | paramDeclAtom;
-paramDeclAtom: varType IDENTIFIER (LSBracket arrayDim RSBracket)?;
-
-functionPreDecl: FUNC IDENTIFIER LBracket paramDecl RBracket;
-functionFullDecl: FUNC IDENTIFIER LBracket paramDecl RBracket nullableListOfNEWLINE functionBody;
-paramDecl:  paramDeclList ;
-functionBody: blockStatement | returnStatement;
-
-
-/* statements */
-/* An action that a program performs */
-
-/* Variable Declaration Statement */
-
-
-/* If statement */
-ifStatement: IF expression nullableListOfNEWLINE statement elifStatementList elseStatement?;
-elifStatementList: elifStatementPrime | /* empty */ ;
-elifStatementPrime: elifStatement nullableListOfNEWLINE elifStatementPrime | elifStatement;
-elifStatement: ELIF expression nullableListOfNEWLINE statement;
-elseStatement: ELSE expression nullableListOfNEWLINE statement;
-
-/* For statement */
-forStatement
-    : 
-    FOR IDENTIFIER UNTIL expression BY updateExpr nullableListOfNEWLINE statement
-    ;
-updateExpr: expression;
-/* Break statement */
-breakStatement: BREAK;
-
-/* Continute statement */
-continueStatement: CONTINUE;
-
-/* Return statement */
-returnStatement: RETURN expression?;
-
-/* Function call statement */
-functionCallStatement: functionCall;
-
-/* Block statement */
-blockStatement: BEGIN (blockStatementBody) END;
-blockStatementBody: nullableListOfStatement;
-nullableListOfStatement: nullableListOfStatementPrime | /* empty */;
-nullableListOfStatementPrime: (statement|blockLevelDecl) listOfNEWLINE nullableListOfStatementPrime| (statement|blockLevelDecl) ;
-
-
-expressionList: expression COMMA expressionList | expression;
-expression: expression1 ELLIPSIS expression1 | expression1;
-expression1: expression2 ( EQUAL | EQUALEQUAL | NOTEQUAL | LESS | LESSOREQUAL | GREATER | GREATEROREQUAL ) expression2 | expression2;
-expression2: expression2 (AND | OR) expression3 | expression3;
-expression3: expression3 (PLUS | MINUS) expression4 | expression4;
-expression4: expression4 (MULT | DIV | MOD) expression5 | expression5;
-expression5: NOT expression5 | expression6;
-expression6: MINUS expression6 | expression7;
-expression7: elementAccessExpr | operands;
-operands: literal | IDENTIFIER | (LBracket expression RBracket) | functionCall ; 
-
-COMMENT: '##' .*? ~[\n\r\f]* -> skip;
-WS : [ \t\r\f]+ -> skip ; // skip spaces, tabs, newlines, form feed
-
+// Misc tokens
+WS : [ \t\f]+ -> skip ; // skip spaces, tabs, newlineso
+NEWLINE: '\r'? '\n';
 ERROR_CHAR: . {raise ErrorToken(self.text)};
-UNCLOSE_STRING:  '"' StringChar* (NEWLINE|EOF){
-    esc = ['\n']
-    temp = str(self.text)
-    if (temp[-1] in esc):
-        raise UncloseString(temp[1:-1])
-    else:
-        raise UncloseString(temp[1:])
-};
-ILLEGAL_ESCAPE: '"' StringChar* '\\' (~[bfrnt'\\] | ~'\\') {
-    temp = self.text
-    raise IllegalEscape(temp[1:])
-};

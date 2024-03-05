@@ -1,1 +1,3 @@
-...,return,by,end,Error Token ;
+a,
+,
+,b,<EOF>

@@ -1,8 +1,3 @@
- func main()
-begin
-##"comment"
-string a <- "abcd"
-var i<-0
-for i until a=="abcd" by a<-a..."a"
-writeString(a) end
  
+            func main(var a)
+        

@@ -1,1 +1,3 @@
-<=,>=,Error Token '
+a,
+,
+,<EOF>

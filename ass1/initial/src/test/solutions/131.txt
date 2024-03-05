@@ -1,1 +1,1 @@
-begin,not,dynamic,),continue,],+,Error Token }
+<EOF>

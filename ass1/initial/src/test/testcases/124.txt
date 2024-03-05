@@ -1,2 +1,2 @@
-string a<-"VOJK'"s a
-    
+ "Tien \2 \n 
+ 

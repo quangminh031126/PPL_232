@@ -1,3 +1,5 @@
- func main() begin var a<-2 end
-
  
+            func main()
+            ## VO Tien
+            func main() func main(dynamic a) ## VO Tien
+        

@@ -1,7 +1,2 @@
- ##array check
-func main( )
-begin
-number arr <- [1,2,3]
-end
-
- 
+ var VoTien <- true > x >= z 
+        

@@ -1,7 +1,1 @@
-bool,
-,else,var,
-,28.48E1444,92.66,
-,>=,<,break,<-,a1,func,<,
-,and,begin,*,<-,by,>,continue,,,
-,begin,and,
-,<EOF>
+1,Tienc,<EOF>

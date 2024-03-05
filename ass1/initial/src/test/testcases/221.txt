@@ -1,7 +1,7 @@
- ## array check
-func main()
-begin
-var a[2,3] = [[0.1,1e9,3.14e-23],[-2,-3,-4]]
-
-end
  
+            var VoTien <- true and "true" or 1 
+            var VoTien <- 1 and 2 and 3 or 4 or 4
+            var VoTien <- 1 + 2 - 2 + 3 and 3
+            var VoTien <- 1 / 2 * 3 % 4
+            var VoTien <- 1 / 2 / 2 * 3 % 4
+        

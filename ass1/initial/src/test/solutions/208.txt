@@ -1,1 +1,1 @@
-Error on line 1 col 13: begin
+Error on line 4 col 24: func

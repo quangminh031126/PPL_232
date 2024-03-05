@@ -1,4 +1,1 @@
- ##None assoc expression
-var a<- "a"..."b"..."c"
-
- 
+ var VoTien <- "Vo" ... "Tien" 

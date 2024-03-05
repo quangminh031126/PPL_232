@@ -1,3 +1,4 @@
- ## func declare
-func root(dynamic a)
  
+            var VoTien <- -1 * not 1
+            var VoTien <- not not not----C
+        

@@ -1,13 +1,6 @@
- func main()
-begin
-##this test case is to test if else
-dynamic a <- readNumber()
-if ((a>0) and (a<10))
-	a<-a*2
-else if ((a>10) and (a<20) )
-a<-a*3
-else a <- a*4
-return
-end
  
- 
+            ##12
+            ##12
+            
+            func main(number a) var c <- 1
+        

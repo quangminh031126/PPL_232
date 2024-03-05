@@ -1,1 +1,1 @@
-Error on line 2 col 9: dynamic
+Error on line 7 col 32: <-
