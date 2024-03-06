@@ -1,4 +1,4 @@
-# Generated from /home/qmi/repos/PPL_232/ass2/assignment2-initial/src/main/zcode/parser/ZCode.g4 by ANTLR 4.13.1
+# Generated from /home/qmi/repos/PPL_232/ZCode.g4 by ANTLR 4.13.1
 from antlr4 import *
 from io import StringIO
 import sys
