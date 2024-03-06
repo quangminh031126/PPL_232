@@ -143,19 +143,22 @@ class ASTGeneration(ZCodeVisitor):
 
 
     # Visit a parse tree produced by ZCodeParser#expr3.
+    # expr3: expr3 op=(ADD | SUB) expr4 | expr4;
     def visitExpr3(self, ctx:ZCodeParser.Expr3Context):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by ZCodeParser#expr4.
+    # expr4: expr4 op=(MUL | DIV | MOD) expr5 | expr5;
     def visitExpr4(self, ctx:ZCodeParser.Expr4Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 1: return self.visit(ctx.expr5());
+        return BinaryOp(ctx.getChild(0),self.visit(ctx.expr4()),self.visit(ctx.expr5()))
 
 
     # Visit a parse tree produced by ZCodeParser#expr5.
     def visitExpr5(self, ctx:ZCodeParser.Expr5Context):
         if ctx.getChildCount() == 1: return self.visit(ctx.expr6())
-        return UnaryOp(self.visitChild(0))
+        return UnaryOp(ctx.getChild(0),self.visit(ctx.expr5()))
 
 
     # Visit a parse tree produced by ZCodeParser#expr6.
@@ -180,11 +183,23 @@ class ASTGeneration(ZCodeVisitor):
         if ctx.getChildCount() == 0: return []
         return self.visit(ctx.exprPrime())
 
+# expr6: expr6 LB expr_list RB // Array Expression
+# 	| expr6 LP expr_list RP // Function Call Expression
+# 	| term;
 
+# term: NumberLit
+# 	| StringLit
+# 	| BoolLit
+# 	| IDENTIFIER	
+# 	| LB expr_list RB
+# 	| LP expr RP;
+    
+# expr_list: exprPrime | /* empty */;
+# exprPrime: expr | expr COMMA exprPrime;
     # Visit a parse tree produced by ZCodeParser#exprPrime.
     def visitExprPrime(self, ctx:ZCodeParser.ExprPrimeContext):
         if ctx.getChildCount() == 1: return [self.visit(ctx.expr())]
-        return self.visit(ctx.expr()) + self.visit(ctx.exprPrime())
+        return [self.visit(ctx.expr())] + self.visit(ctx.exprPrime())
 
 
     # Visit a parse tree produced by ZCodeParser#listOfNEWLINE.
