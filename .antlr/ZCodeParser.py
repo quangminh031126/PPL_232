@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Generated from /home/qmi/repos/PPL_232/ZCode.g4 by ANTLR 4.13.1
+=======
+# Generated from /Users/phamvoquangminh/repos/ass_PPL/PPL_232/ZCode.g4 by ANTLR 4.13.1
+>>>>>>> 3af23a176cdfc5848db24b74a661bca76cdf01bf
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
