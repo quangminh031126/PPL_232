@@ -154,15 +154,15 @@ class ASTGeneration(ZCodeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#expr5.
     def visitExpr5(self, ctx:ZCodeParser.Expr5Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 1: return self.visit(ctx.expr6())
+        return UnaryOp(self.visitChild(0))
 
 
     # Visit a parse tree produced by ZCodeParser#expr6.
     def visitExpr6(self, ctx:ZCodeParser.Expr6Context):
         if ctx.getChildCount() == 1:
-            return self.visit(ctx.term())
-        return 
-
+            return [self.visit(ctx.term())]
+        return [self.visit(ctx.expr6()),self.visit(ctx.expr_list())]
 
     # Visit a parse tree produced by ZCodeParser#term.
     def visitTerm(self, ctx:ZCodeParser.TermContext):
