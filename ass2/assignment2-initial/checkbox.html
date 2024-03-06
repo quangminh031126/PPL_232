@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .checkbox {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function clearAll() {
+            var checkboxes = document.querySelectorAll('input[type=checkbox]');
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="center">
+        <div class="checkbox"><input type="checkbox" id="AST" name="AST"><label for="AST">AST</label></div>
+        <div class="checkbox"><input type="checkbox" id="Stmt" name="Stmt"><label for="Stmt">Stmt</label></div>
+        <div class="checkbox"><input type="checkbox" id="Expr" name="Expr"><label for="Expr">Expr</label></div>
+        <div class="checkbox"><input type="checkbox" id="LHS" name="LHS"><label for="LHS">LHS</label></div>
+        <div class="checkbox"><input type="checkbox" id="Type" name="Type"><label for="Type">Type</label></div>
+        <div class="checkbox"><input type="checkbox" id="Decl" name="Decl"><label for="Decl">Decl</label></div>
+        <div class="checkbox"><input type="checkbox" id="Id" name="Id"><label for="Id">Id</label></div>
+        <div class="checkbox"><input type="checkbox" id="BinaryOp" name="BinaryOp"><label for="BinaryOp">BinaryOp</label></div>
+        <div class="checkbox"><input type="checkbox" id="UnaryOp" name="UnaryOp"><label for="UnaryOp">UnaryOp</label></div>
+        <div class="checkbox"><input type="checkbox" id="CallExpr" name="CallExpr"><label for="CallExpr">CallExpr</label></div>
+        <div class="checkbox"><input type="checkbox" id="ArrayCell" name="ArrayCell"><label for="ArrayCell">ArrayCell</label></div>
+        <div class="checkbox"><input type="checkbox" id="Literal" name="Literal"><label for="Literal">Literal</label></div>
+        <div class="checkbox"><input type="checkbox" id="NumberLiteral" name="NumberLiteral"><label for="NumberLiteral">NumberLiteral</label></div>
+        <div class="checkbox"><input type="checkbox" id="StringLiteral" name="StringLiteral"><label for="StringLiteral">StringLiteral</label></div>
+        <div class="checkbox"><input type="checkbox" id="BooleanLiteral" name="BooleanLiteral"><label for="BooleanLiteral">BooleanLiteral</label></div>
+        <div class="checkbox"><input type="checkbox" id="ArrayLiteral" name="ArrayLiteral"><label for="ArrayLiteral">ArrayLiteral</label></div>
+        <div class="checkbox"><input type="checkbox" id="Assign" name="Assign"><label for="Assign">Assign</label></div>
+        <div class="checkbox"><input type="checkbox" id="If" name="If"><label for="If">If</label></div>
+        <div class="checkbox"><input type="checkbox" id="For" name="For"><label for="For">For</label></div>
+        <div class="checkbox"><input type="checkbox" id="Break" name="Break"><label for="Break">Break</label></div>
+        <div class="checkbox"><input type="checkbox" id="Continue" name="Continue"><label for="Continue">Continue</label></div>
+        <div class="checkbox"><input type="checkbox" id="Return" name="Return"><label for="Return">Return</label></div>
+        <div class="checkbox"><input type="checkbox" id="CallStmt" name="CallStmt"><label for="CallStmt">CallStmt</label></div>
+        <div class="checkbox"><input type="checkbox" id="Block" name="Block"><label for="Block">Block</label></div>
+        <div class="checkbox"><input type="checkbox" id="VarDecl" name="VarDecl"><label for="VarDecl">VarDecl</label></div>
+        <div class="checkbox"><input type="checkbox" id="FuncDecl" name="FuncDecl"><label for="FuncDecl">FuncDecl</label></div>
+        <div class="checkbox"><input type="checkbox" id="NumberType" name="NumberType"><label for="NumberType">NumberType</label></div>
+        <div class="checkbox"><input type="checkbox" id="BoolType" name="BoolType"><label for="BoolType">BoolType</label></div>
+        <div class="checkbox"><input type="checkbox" id="StringType" name="StringType"><label for="StringType">StringType</label></div>
+        <div class="checkbox"><input type="checkbox" id="ArrayType" name="ArrayType"><label for="ArrayType">ArrayType</label></div>
+        <div class="checkbox"><input type="checkbox" id="Program" name="Program"><label for="Program">Program</label></div>
+        <button onclick="clearAll()">Clear All</button>
+    </div>
+</body>
+</html>

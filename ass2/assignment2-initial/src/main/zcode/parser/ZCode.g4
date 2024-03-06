@@ -70,9 +70,9 @@ type_index_num_list: NumberLit | NumberLit COMMA type_index_num_list;
 
 ass: expr ASSIGN expr;
 
-decl: TYPE IDENTIFIER (type_index | ) ((ASSIGN expr) | )
-	| VAR IDENTIFIER ASSIGN expr
-	| DYN IDENTIFIER ((ASSIGN expr) | );
+decl: TYPE IDENTIFIER (type_index | ) ((ASSIGN expr) | ) // array decl or type decl 2 or 3 or 4
+	| VAR IDENTIFIER ASSIGN expr // var decl 4 
+	| DYN IDENTIFIER ((ASSIGN expr) | ); // dynamic decl 2 or 4
 
 expr: expr1 op=CONCAT expr1 | expr1;
 expr1: expr2 op=(EQ | DEQ | NEQ | LT | GT | LE | GE) expr2 | expr2;

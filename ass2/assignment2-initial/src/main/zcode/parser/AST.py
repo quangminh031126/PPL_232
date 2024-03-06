@@ -284,7 +284,7 @@ class StringType(Type):
         return "StringType"
 
 
-class ArrayType(Type):
+class ArrayType(Type): # array dim
     # size: List[float]
     # eleType: Type
 
