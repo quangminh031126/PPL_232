@@ -133,66 +133,30 @@ class ASTGeneration(ZCodeVisitor):
     # 	| VAR IDENTIFIER ASSIGN expr
     # 	| DYN IDENTIFIER ((ASSIGN expr) | );
     def visitDecl(self, ctx:ZCodeParser.DeclContext):
-        if ctx.TYPE(): # array decl or normal var decl
-            identifier = ctx.IDENTIFIER().getText()
-            if ctx.type_index() and ctx.ASSIGN():
-                # Handle case where both type_index and assign are present
-                # array declaration with init
-                if ctx.TYPE().getText() == 'number':
-                    arr_type = NumberType()
-                elif ctx.TYPE().getText() == 'bool':
-                    arr_type = BoolType()
-                else:
-                    arr_type = StringType()
-                arr_size = self.visit(ctx.type_index())
-                return VarDecl(ctx.IDENTIFIER().getText(),ArrayType(arr_size,arr_type),None,self.visit(ctx.expr()))
-            elif ctx.type_index():
-                # Handle case where only type_index is present
-                # array declaration with no init
-                if ctx.TYPE().getText() == 'number':
-                    arr_type = NumberType()
-                elif ctx.TYPE().getText() == 'bool':
-                    arr_type = BoolType()
-                else:
-                    arr_type = StringType()
-                arr_size = self.visit(ctx.type_index())
-                return VarDecl(ctx.IDENTIFIER().getText(),ArrayType(arr_size,arr_type),None,None)
-            elif ctx.ASSIGN():
-                # Handle case where only assign is present
-                # normal variable declaration with init
-                expr = self.visit(ctx.expr())
-                if ctx.TYPE().getText() == 'number':
-                    var_type = NumberType()
-                elif ctx.TYPE().getText() == 'bool':
-                    var_type = BoolType()
-                else:
-                    var_type = StringType()
-                return VarDecl(ctx.IDENTIFIER().getText(),var_type,None,expr)
+        identifier = ctx.IDENTIFIER().getText()
+        type_text = ctx.TYPE().getText() if ctx.TYPE() else None
+        type_index = self.visit(ctx.type_index()) if ctx.type_index() else None
+        expr = self.visit(ctx.expr()) if ctx.ASSIGN() else None
+        var_type = None
+
+        if type_text:
+            if type_text == 'number':
+                var_type = NumberType()
+            elif type_text == 'bool':
+                var_type = BoolType()
             else:
-                # Handle case where neither type_index nor assign are present
-                # normal variable declaration with no init
-                if ctx.TYPE().getText() == 'number':
-                    var_type = NumberType()
-                elif ctx.TYPE().getText() == 'bool':
-                    var_type = BoolType()
-                else:
-                    var_type = StringType()
-                return VarDecl(ctx.IDENTIFIER().getText(),var_type,None,None)
-        elif ctx.VAR(): # var decl 4 
-            # Handle var declaration
-            # var a <- 4
-            expr = self.visit(ctx.expr())
-            return VarDecl(ctx.IDENTIFIER().getText(),None,ctx.VAR().getText(),expr)
-        elif ctx.DYN(): # dynamic decl 2 or 4
-            # Handle dynamic declaration
-            if ctx.ASSIGN():
-                # Handle assignment
-                expr = self.visit(ctx.expr())
-                return VarDecl(ctx.IDENTIFIER().getText(),None,ctx.DYN().getText(),expr)
-            return VarDecl(ctx.IDENTIFIER().getText(),None,ctx.DYN().getText(),None)
+                var_type = StringType()
+
+        if ctx.TYPE(): # array decl or normal variable decl
+            if type_index:
+                var_type = ArrayType(type_index, var_type)
+            return VarDecl(identifier, var_type, None, expr)
+        elif ctx.VAR(): # var decl
+            return VarDecl(identifier, None, ctx.VAR().getText(), expr)
+        elif ctx.DYN(): # dynamic decl
+            return VarDecl(identifier, None, ctx.DYN().getText(), expr)
+
         return self.visitChildren(ctx)
-
-
 
     # Visit a parse tree produced by ZCodeParser#expr.
     # expr: expr1 op=CONCAT expr1 | expr1;
