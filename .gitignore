@@ -1,5 +1,3 @@
 __pycache__/
 *.txt
 *.interp
-ZCodeLexer.py
-ZCodeParser.py

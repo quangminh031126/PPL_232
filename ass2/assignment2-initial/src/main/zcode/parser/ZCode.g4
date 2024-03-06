@@ -82,8 +82,8 @@ expr4: expr4 op=(MUL | DIV | MOD) expr5 | expr5;
 expr5: SUB expr5
 	| NOT expr5
 	| expr6;
-expr6: expr6 LB expr_list RB
-	| expr6 LP expr_list RP
+expr6: expr6 LB expr_list RB // Array Expression
+	| expr6 LP expr_list RP // Function Call Expression
 	| term;
 
 term: NumberLit
