@@ -62,7 +62,8 @@ args: arg_list | /* empty */;
 arg_list: arg | arg COMMA arg_list;
 arg: TYPE IDENTIFIER (type_index | );
 
-type_index: LB type_index_nums RB;
+// array index shape
+type_index: LB type_index_nums RB; 
 type_index_nums: type_index_num_list | /* empty */;
 type_index_num_list: NumberLit | NumberLit COMMA type_index_num_list;
 
