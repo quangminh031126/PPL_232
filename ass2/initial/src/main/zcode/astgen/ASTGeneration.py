@@ -28,7 +28,7 @@ class ASTGeneration(ZCodeVisitor):
     # Visit a parse tree produced by ZCodeParser#stm.
     def visitStm(self, ctx:ZCodeParser.StmContext):
         if ctx.expr6():
-            return CallStmt(self.visit(ctx.expr6),self.visit(ctx.expr_list))
+            return CallStmt(self.visit(ctx.expr6()),self.visit(ctx.expr_list()))
         elif ctx.expr():
             return self.visit(ctx.expr())
         elif ctx.decl():
