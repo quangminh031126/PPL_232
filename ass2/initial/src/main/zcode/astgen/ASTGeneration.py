@@ -279,7 +279,7 @@ class ASTGeneration(ZCodeVisitor):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.term())
         if ctx.LB(): return ArrayCell(self.visit(ctx.expr6()),self.visit(ctx.expr_list()))
-        if ctx.LP(): return CallStmt(self.visit(ctx.expr6()),self.visit(ctx.expr_list()))
+        if ctx.LP(): return CallExpr(self.visit(ctx.expr6()),self.visit(ctx.expr_list()))
 # expr6: expr6 LB expr_list RB // Array Expression
 # 	| expr6 LP expr_list RP // Function Call Expression
 # 	| term;
@@ -289,9 +289,9 @@ class ASTGeneration(ZCodeVisitor):
         if ctx.getChildCount() == 1:
             if ctx.NumberLit(): return NumberLiteral(float(ctx.NumberLit().getText()))
             if ctx.StringLit(): return StringLiteral(ctx.StringLit().getText())
-            if ctx.BoolLit(): return BooleanLiteral(ctx.BoolLit().getText())
+            if ctx.BoolLit(): return BooleanLiteral(ctx.BoolLit().getText() == 'true')
             if ctx.IDENTIFIER(): return Id(ctx.IDENTIFIER().getText())
-        if ctx.expr_list(): return ArrayLiteral(self.visit(ctx.expr_list))
+        if ctx.expr_list(): return ArrayLiteral(self.visit(ctx.expr_list()))
         if ctx.expr(): return self.visit(ctx.expr())
 
 

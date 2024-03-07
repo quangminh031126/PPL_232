@@ -119,7 +119,7 @@ class TestAST:
         dest = open(os.path.join(SOL_DIR, str(num) + ".txt"), "r")
         line = dest.read()
         if line != expect:
-            print(f"Test {num} failed. Expected: {expect}, but got: {line}")
+            print(f"Test {num} failed. Expected:\n{expect}, but got:\n{line}")
         return line == expect
 
     @staticmethod
