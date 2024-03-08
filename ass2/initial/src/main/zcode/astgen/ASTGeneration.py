@@ -18,8 +18,16 @@ class ASTGeneration(ZCodeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#stm_lists.
     def visitStm_lists(self, ctx:ZCodeParser.Stm_listsContext):
-        if ctx.getChildCount() == 1: return [self.visit(ctx.stm())]
-        return [self.visit(ctx.stm())] + self.visit(ctx.stm_lists())
+        if ctx.stm() is None and ctx.stm_lists() is None:
+            return []
+        elif ctx.getChildCount() == 1: 
+            stm = self.visit(ctx.stm())
+            return [stm] if stm is not None else []
+        else:
+            stm = self.visit(ctx.stm())
+            stm_lists = self.visit(ctx.stm_lists())
+            return ([stm] if stm is not None else []) + (stm_lists if stm_lists is not None else [])
+  
 # program: stms EOF;
 
 # stms: (listOfNEWLINE | ) stm_lists (listOfNEWLINE | ) | /* empty */;
