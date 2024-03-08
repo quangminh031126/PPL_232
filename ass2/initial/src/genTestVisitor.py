@@ -85,7 +85,7 @@ class ZCodeProgram(Visitor):
         if mode == 'parser':
             kw = random.choice(keywords)
             expr = (' <- ' + self.visitZCodeExpression(mode) if random.randint(0, 1) == 1 else "") + ("" if random.randint(0, 1) == 0 else f" {self.visitZCodeComment(mode)}")
-            if random.randint(0, 1) == 0:
+            if kw not in ["dynamic", "var"] and random.randint(0, 1) == 0:
                 len = random.randint(1, 3)
                 arr = "[{}]".format(
                     ",".join([self.visitZCodeNumberLit(mode) for i in range(len)])
@@ -99,7 +99,7 @@ class ZCodeProgram(Visitor):
             is_array_type = random.randint(0, 1) == 0
             kw = random.choice(keywords) if is_array_type == False else random.choice(keywords[2:])
             expr = ' <- ' + self.visitZCodeExpression(mode) if random.randint(0, 1) == 1 else ""
-            if is_array_type:
+            if kw not in ["dynamic", "var"] and is_array_type:
                 len = random.randint(1, 3)
                 arr = "[{}]".format(
                     ",".join([self.visitZCodeNumberLit(mode) for i in range(len)])
@@ -108,6 +108,7 @@ class ZCodeProgram(Visitor):
             
             else:
                 return "{} {}{}".format(kw, iden, expr)
+
 
     def visitZCodeFuncDecl(self, mode):
         self.scope += 1
@@ -132,7 +133,7 @@ class ZCodeProgram(Visitor):
         keywords = ["dynamic", "var", "string", "bool", "number"]
         if mode == 'parser':
             kw = random.choice(keywords)
-            if random.randint(0, 1) == 0:
+            if kw not in ["dynamic", "var"] and random.randint(0, 1) == 0:
                 len = random.randint(1, 3)
                 arr = "[{}]".format(
                     ",".join([self.visitZCodeNumberLit(mode) for i in range(len)])
@@ -145,7 +146,8 @@ class ZCodeProgram(Visitor):
         else:
             is_array_type = random.randint(0, 1) == 0
             kw = random.choice(keywords[2:])
-            if is_array_type:
+            if kw not in ["dynamic", "var"] and is_array_type:
+                len = random.randint(1, 3)
                 arr = "[{}]".format(
                     ",".join([self.visitZCodeNumberLit(mode) for i in range(len)])
                 )
@@ -153,6 +155,7 @@ class ZCodeProgram(Visitor):
             
             else:
                 return "{} {}".format(kw, iden)
+
 
     def visitZCodeIfStmt(self, mode):
         tabarr = ['\t'] * self.scope
@@ -319,8 +322,5 @@ class ZCodeProgram(Visitor):
         return iden
 
     def visitZCodeComment(self, mode):
-        cmt = '## '
-        for i in range(random.randint(1, 20)):
-            cmt = cmt + random.choice([chr(x) for x in range(32, 127) if x not in [39, 92]])
-        
+        cmt = ''
         return cmt

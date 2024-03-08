@@ -18,7 +18,7 @@ class ASTGenSuite(unittest.TestCase):
             string QuangMinh <- 13412
         """
         expect = str(Program([
-                VarDecl(Id("QuangMinh"), StringType(), None, NumberLiteral(1.0))
+                VarDecl(Id("QuangMinh"), StringType(), None, NumberLiteral(13412.0))
             ]))
         #print(expect)
         self.assertTrue(TestAST.test(input, expect, 302))
@@ -30,10 +30,10 @@ class ASTGenSuite(unittest.TestCase):
             bool bucwanha <- 1
         """
         expect = str(Program([
-                VarDecl(Id("QuangMinh"), StringType()),
-                VarDecl(Id("QuangMinh"), BoolType()),
-                VarDecl(Id("QuangMinh"), StringType(), None, NumberLiteral(1.0)),
-                VarDecl(Id("QuangMinh"), BoolType(), None, NumberLiteral(1.0))
+                VarDecl(Id("qmi"), StringType()),
+                VarDecl(Id("bucwanha"), BoolType()),
+                VarDecl(Id("qmi"), StringType(), None, NumberLiteral(1.0)),
+                VarDecl(Id("bucwanha"), BoolType(), None, NumberLiteral(1.0))
             ]))
         #print(expect)
         self.assertTrue(TestAST.test(input, expect, 303))
@@ -43,8 +43,8 @@ class ASTGenSuite(unittest.TestCase):
             string QuangMinh[78]
         """
         expect = str(Program([
-                VarDecl(Id("QuangMinh"), ArrayType([5.0], StringType()), None, NumberLiteral(1.0)),
-                VarDecl(Id("QuangMinh"), ArrayType([5.0], StringType()))
+                VarDecl(Id("QuangMinh"), ArrayType([78.0], StringType()), None, NumberLiteral(1.0)),
+                VarDecl(Id("QuangMinh"), ArrayType([78.0], StringType()))
             ]))
         #print(expect)
         self.assertTrue(TestAST.test(input, expect, 304))
@@ -54,8 +54,8 @@ class ASTGenSuite(unittest.TestCase):
             bool riley[2,3,4]
         """
         expect = str(Program([
-                VarDecl(Id("QuangMinh"), ArrayType([5.0, 3.0, 4.2], NumberType()), None, NumberLiteral(1.0)),
-                VarDecl(Id("QuangMinh"), ArrayType([2.0, 3.0, 4.0], BoolType()))
+                VarDecl(Id("qmi"), ArrayType([5.0, 3.0, 4.2], NumberType()), None, NumberLiteral(1.0)),
+                VarDecl(Id("riley"), ArrayType([2.0, 3.0, 4.0], BoolType()))
             ]))
         #print(expect)
         self.assertTrue(TestAST.test(input, expect, 305))

@@ -220,7 +220,7 @@ class ASTGeneration(ZCodeVisitor):
         identifier = Id(ctx.IDENTIFIER().getText())
         type_text = ctx.TYPE().getText() if ctx.TYPE() else None
         type_index = self.visit(ctx.type_index()) if ctx.type_index() else None
-        expr = self.visit(ctx.expr()) if ctx.ASSIGN() else None
+        expr = self.visit(ctx.expr()) if ctx.ASSIGN() and ctx.expr() else None
         var_type = None
 
         if type_text:
@@ -236,9 +236,9 @@ class ASTGeneration(ZCodeVisitor):
                 var_type = ArrayType(type_index, var_type)
             return VarDecl(identifier, var_type, None, expr)
         elif ctx.VAR(): # var decl
-            return VarDecl(identifier, None, ctx.VAR().getText(), expr)
+            return VarDecl(identifier, var_type, ctx.VAR().getText(), expr)
         elif ctx.DYN(): # dynamic decl
-            return VarDecl(identifier, None, ctx.DYN().getText(), expr)
+            return VarDecl(identifier, var_type, ctx.DYN().getText(), expr)
 
         return self.visitChildren(ctx)
 
