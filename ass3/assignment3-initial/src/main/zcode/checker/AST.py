@@ -139,7 +139,7 @@ class BooleanLiteral(Literal):
 class ArrayLiteral(Literal):
     # value: List[Expr]
 
-    def __init__(self, value):
+    def __init__(self, value: List[Expr]):
         self.value = value
 
     def __str__(self):
@@ -292,7 +292,7 @@ class ArrayType(Type):
     # size: List[float]
     # eleType: Type
 
-    def __init__(self, size, eleType):
+    def __init__(self, size: List[float], eleType: Type):
         self.size = size
         self.eleType = eleType
 
