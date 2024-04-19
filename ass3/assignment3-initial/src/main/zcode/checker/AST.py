@@ -244,7 +244,7 @@ class VarDecl(Decl, Stmt):
     # modifier: str = None  # None if there is no modifier
     # varInit: Expr = None  # None if there is no initial
 
-    def __init__(self, name, varType=None, modifier=None, varInit=None):
+    def __init__(self, name: Id, varType: Type = None, modifier: str = None, varInit: Expr = None):
         self.name = name
         self.varType = varType
         self.modifier = modifier
