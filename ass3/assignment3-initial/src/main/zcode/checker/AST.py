@@ -81,7 +81,7 @@ class CallExpr(Expr):
     # args: List[Expr]
 
     def __init__(self, name, args):
-        self.name = name
+        self.name: Id = name
         self.args = args
 
     def __str__(self):
@@ -170,10 +170,10 @@ class If(Stmt):
     # elseStmt: Stmt = None  # None if there is no else branch
 
     def __init__(self, expr, thenStmt, elifStmt=[], elseStmt=None):
-        self.expr = expr
-        self.thenStmt = thenStmt
-        self.elifStmt = elifStmt
-        self.elseStmt = elseStmt
+        self.expr: Expr = expr
+        self.thenStmt: Stmt = thenStmt
+        self.elifStmt: List[Tuple[Expr, Stmt]] = elifStmt
+        self.elseStmt: Stmt = elseStmt
 
     def __str__(self):
         return f"If(({str(self.expr)}, {str(self.thenStmt)}), [{', '.join(f'({str(x[0])}, {str(x[1])})' for x in self.elifStmt)}], {str(self.elseStmt) if self.elseStmt else 'None'})"
@@ -186,10 +186,10 @@ class For(Stmt):
     # body: Stmt
 
     def __init__(self, name, condExpr, updExpr, body):
-        self.name = name
-        self.condExpr = condExpr
-        self.updExpr = updExpr
-        self.body = body
+        self.name: Id = name
+        self.condExpr: Expr = condExpr
+        self.updExpr: Expr = updExpr
+        self.body: Stmt = body
 
     def __str__(self):
         return f"For({str(self.name)}, {str(self.condExpr)}, {str(self.updExpr)}, {str(self.body)})"
@@ -220,7 +220,7 @@ class CallStmt(Stmt):
     # args: List[Expr]  # empty list if there is no argument
 
     def __init__(self, name, args):
-        self.name = name
+        self.name: Id = name
         self.args = args
 
     def __str__(self):
@@ -231,7 +231,7 @@ class Block(Stmt):
     # stmt: List[Stmt]  # empty list if there is no statement in block
 
     def __init__(self, stmt):
-        self.stmt = stmt
+        self.stmt: List[Stmt] = stmt
 
     def __str__(self):
         return f"Block([{', '.join(str(i) for i in self.stmt)}])"
@@ -261,9 +261,9 @@ class FuncDecl(Decl):
     # body: Stmt = None  # None if this is just a declaration-part
 
     def __init__(self, name, param, body=None):
-        self.name = name
-        self.param = param
-        self.body = body
+        self.name: Id = name
+        self.param: List[VarDecl] = param
+        self.body: Stmt = body
 
     def __str__(self):
         return f"FuncDecl({str(self.name)}, [{', '.join(str(i) for i in self.param)}], {str(self.body) if self.body else 'None'})"
