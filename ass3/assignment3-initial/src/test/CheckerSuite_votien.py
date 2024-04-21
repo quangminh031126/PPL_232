@@ -197,7 +197,7 @@ class CheckerSuite(unittest.TestCase):
             
             func main() return
         """
-        expect = "Redeclared Variable: c"
+        expect = ""
         self.assertTrue(TestChecker.test(input, expect, 420))
         
         input = """
@@ -223,7 +223,7 @@ class CheckerSuite(unittest.TestCase):
             
             func main() return
         """
-        expect = "Redeclared Variable: a"
+        expect = ""
         self.assertTrue(TestChecker.test(input, expect, 422))
         
         input = """

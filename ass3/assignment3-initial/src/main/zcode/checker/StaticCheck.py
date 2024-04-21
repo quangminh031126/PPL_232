@@ -8,6 +8,8 @@ import warnings
 
 from typing import List, Union, Type
 
+hello= "!!!!!!!!! HELLOOOOOOOO"
+
 class Symbol:
     def __init__(self, name: str = None, type: Type = None) -> None:
         self.name = name
@@ -120,7 +122,7 @@ class StaticChecker(BaseVisitor, Utils):
         self.can_be_inferred: bool = True
         self.visiting_var_name = None
         self.is_calling_function: bool = False
-        self.array_stack: List[ArrayLiteral]
+        self.array_stack: List[ArrayLiteral] = []
         self.func_name = None
         self.return_type: Type = None
         self.return_list: List[Return] = []
@@ -139,13 +141,13 @@ class StaticChecker(BaseVisitor, Utils):
         # Assumption that 
         if type(expr) is Id:
             var_symbol = param.lookup_variable_symbol(expr.name)
-            if var_symbol is None: warnings.warn("Chưa check sự tồn tại của biến!!",expr)
+            if var_symbol is None: warnings.warn(f"Chưa check sự tồn tại của biến!! {expr.name}" )
             else:
                 param.update_variable_type(var_symbol.name,to_type)
 
         elif type(expr) in [CallExpr,CallStmt]:
-            func_symbol = param.lookup_function_symbol(expr.name)
-            if func_symbol is None: warnings.warn("Chưa check sự tồn tại của hàm!!",expr)
+            func_symbol = param.lookup_function_symbol(expr.name.name)
+            if func_symbol is None: warnings.warn(f"Chưa check sự tồn tại của hàm!!{expr.name.name}")
             else:
                 param.update_function_sym(func_symbol.name,to_type)
                 self.is_calling_function = True
@@ -179,15 +181,17 @@ class StaticChecker(BaseVisitor, Utils):
     def visitVarDecl(self, ast: VarDecl, param: SymbolTable):        
         if param.lookup_variable_current_scope(ast.name.name) is not None:
             raise Redeclared(Variable(),ast.name.name)
-        
+        print('lhs:',ast.name)
+        print('rhs:',ast.varInit, self.visit(ast.varInit,param))
         self.visiting_var_name = ast.name.name
         l_type = ast.varType
         if ast.varInit is not None:
             r_type = self.visit(ast.varInit,param)
             if l_type is not None and r_type is not None:
                 if not self.is_same_type(l_type,r_type):
-                    raise TypeMismatchInExpression(ast)
+                    raise TypeMismatchInStatement(ast)
                 if type(l_type) is ArrayType:
+                    print(hello)
                     if l_type.size[:len(r_type.size)] != r_type.size:
                         self.inferType(ast.varInit,l_type,param)
                         if not self.can_be_inferred:
@@ -195,7 +199,7 @@ class StaticChecker(BaseVisitor, Utils):
                         param.add_variable_symbol(VariableSymbol(ast.name.name,l_type))
                     else:
                         if type(r_type.eleType) is not type(l_type.eleType):
-                            raise TypeMismatchInExpression(ast)
+                            raise TypeMismatchInStatement(ast)
                 param.add_variable_symbol(VariableSymbol(ast.name.name,l_type))
             elif l_type is None and r_type is None:
                 raise TypeCannotBeInferred(ast)
@@ -233,7 +237,7 @@ class StaticChecker(BaseVisitor, Utils):
                     if ast.name.name == no_body.name.name:
                         raise Redeclared(Function(),ast.name.name)
                 self.no_body.append(ast)
-            param.add_function_symbol(FunctionSymbol(ast.name.name,func_params=param.curr_scope()))
+            param.add_function_symbol(FunctionSymbol(ast.name.name,func_params=param.curr_scope()))           
         else: # khai bao ham
             self.func_name = ast.name.name
             for f in self.no_body:
@@ -247,19 +251,33 @@ class StaticChecker(BaseVisitor, Utils):
                     if (type(function_symbol.params[i].type) is not type(param.curr_scope()[i].type)) or (type(function_symbol.params[i].type) is ArrayType and function_symbol.params[i].type.size != param.curr_scope()[i].type.size):
                         raise Redeclared(Function(), ast.name.name)
                 self.visit(ast.body, param)
-                function_symbol.redefine(FunctionSymbol(ast.name.name,param.curr_scope(),self.return_type if self.return_type is not None else (VoidType() if self.return_list == [] else None),ast.body))
-            else:
-                param.add_function_symbol(FunctionSymbol(ast.name.name,param.curr_scope(),self.return_type,ast.body))
-                self.visit(ast.body, param)
                 return_type = self.return_type if self.return_type is not None else (VoidType() if self.return_list == [] else None)
-                if param.global_scope()[-1].type is None:
-                    param.global_scope()[-1] = FunctionSymbol(ast.name.name,param.curr_scope(),return_type,ast.body)
+                function_symbol.params = param.curr_scope()
+                function_symbol.type = return_type
+                function_symbol.body = ast.body
+                #function_symbol.redefine(FunctionSymbol(ast.name.name,param.curr_scope(),return_type,ast.body))
+            else:
+                function_symbol = param.lookup_function_symbol(ast.name.name)
+                if function_symbol is None:
+                    param.add_function_symbol(FunctionSymbol(ast.name.name,param.curr_scope(),self.return_type,ast.body))
+                    self.visit(ast.body, param)
+                    return_type = self.return_type if self.return_type is not None else (VoidType() if self.return_list == [] else None)
+                    function_symbol = param.lookup_function_symbol(ast.name.name)
+                    if function_symbol.type is None:
+                        function_symbol.type = return_type
+                    # if param.global_scope()[-1].type is None:
+                    #     param.global_scope()[-1] = FunctionSymbol(ast.name.name,param.curr_scope(),return_type,ast.body)
+                else:
+                    self.visit(ast.body, param)
+                    return_type = self.return_type if self.return_type is not None else (VoidType() if self.return_list == [] else None)
+                    function_symbol.params = param.curr_scope()
+                    function_symbol.type = return_type
+                    function_symbol.body = ast.body
         self.return_type = None
         self.has_return = False
         param.close_scope()
         self.return_list = []
 
-        
     def visitNumberType(self, ast, param: SymbolTable):
         return NumberType()
 
@@ -367,8 +385,8 @@ class StaticChecker(BaseVisitor, Utils):
         if self.visiting_var_name is not None and ast.name.name == self.visiting_var_name:
             raise TypeMismatchInExpression(ast)
         self.can_be_inferred = True
-        if param.lookup_symbol_exclude_global(ast.name.name) is not None:
-            raise TypeMismatchInExpression(ast)
+        # if param.lookup_symbol_exclude_global(ast.name.name) is not None:
+        #     raise TypeMismatchInExpression(ast)
         
         function_symbol = param.lookup_function_symbol(ast.name.name)
 
@@ -414,7 +432,7 @@ class StaticChecker(BaseVisitor, Utils):
 
     def visitId(self, ast: Id, param: SymbolTable):
         if self.visiting_var_name is not None and ast.name == self.visiting_var_name:
-            raise Undeclared(Identifier(),ast.name)
+            return None
         
         self.can_be_inferred = True
 
@@ -501,11 +519,11 @@ class StaticChecker(BaseVisitor, Utils):
         if scala_type is None:
             self.inferType(ast.name,NumberType(),param)
             scala_type = NumberType()
-        if scala_type is not NumberType():
+        if type(scala_type) is not NumberType:
             raise TypeMismatchInStatement(ast)
         condition_type = self.visit(ast.condExpr,param)
 
-        if condition_type is not None:
+        if condition_type is None:
             if type(ast.condExpr) in [Id,CallExpr]:
                 self.inferType(ast.condExpr,BoolType(),param)
                 if self.can_be_inferred == False:
@@ -542,22 +560,20 @@ class StaticChecker(BaseVisitor, Utils):
     def visitReturn(self, ast: Return, param: SymbolTable):
         if self.has_return:
             return
-        
         self.has_return = True
-        if ast.expr is None:
+        if ast.expr is None: # normal return
             self.return_type = VoidType()
         else:
             return_type = self.visit(ast.expr,param)
+            print(return_type)
             function_symbol = param.lookup_function_symbol(self.func_name)
             if function_symbol.type is None:
-                if return_type is None:
-                    if self.can_be_inferred == False:
+                if return_type is None: # return a, ma a chua co type, function cung chua
                         raise TypeCannotBeInferred(ast)
-                    else:
-                        self.return_list.append(ast)
                 else:
                     self.return_type = return_type
                     function_symbol.redefine(FunctionSymbol(None,None,return_type,None))
+                    function_symbol.type = return_type
                     if self.return_list != []:
                         while self.return_list != []:
                             if type(self.return_list[0].expr) in [Id,CallExpr,ArrayLiteral]:
@@ -610,7 +626,7 @@ class StaticChecker(BaseVisitor, Utils):
             else:
                 raise TypeCannotBeInferred(ast)
         elif r_type is None and l_type is not None:
-            if type(ast.exp) in [Id,CallExpr,ArrayLiteral]:
+            if type(ast.rhs) in [Id,CallExpr,ArrayLiteral]:
                 self.inferType(ast.rhs,l_type,param)
                 if self.can_be_inferred == False:
                     raise TypeCannotBeInferred(ast)
@@ -635,13 +651,13 @@ class StaticChecker(BaseVisitor, Utils):
                         else:
                             raise TypeCannotBeInferred(ast)
                     if type(l_type.eleType) is not type(r_type.eleType) or l_type.size != r_type.size:
-                        raise TypeMismatchInStatement
+                        raise TypeMismatchInStatement(ast)
         self.array_stack = []
 
-    def visitCallStmt(self, ast, param: SymbolTable):
+    def visitCallStmt(self, ast:CallStmt, param: SymbolTable):
         self.can_be_inferred = True
-        if param.lookup_symbol_exclude_global(ast.name.name) is not None:
-            raise TypeMismatchInStatement(ast)
+        # if param.lookup_symbol_exclude_global(ast.name.name) is not None:
+        #     raise TypeMismatchInStatement(ast)
         
         function_symbol = param.lookup_function_symbol(ast.name.name)
 
