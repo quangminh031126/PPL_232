@@ -2,27 +2,33 @@ from AST import *
 from Visitor import *
 from Utils import Utils
 from StaticError import *
-from functools import reduce
-from typing import Union, List, Dict
+from typing import Union, List
 import warnings
 
 
-from typing import List, Dict, Union, Type
+from typing import List, Union, Type
 
 class Symbol:
     def __init__(self, name: str = None, type: Type = None) -> None:
         self.name = name
         self.type = type
+    def __str__(self) -> str:
+        return f"Name: {self.name}, Type: {self.type}"
 
 class VariableSymbol(Symbol):
     def __init__(self, var_name: str = None, var_type: Type = None) -> None:
         super().__init__(var_name, var_type)
+    def __str__(self) -> str:
+        return f"Variable Name: {self.name}, Variable Type: {self.type}"
 
 class FunctionSymbol(Symbol):
     def __init__(self, func_name: str = None, func_params: List[VariableSymbol] = [], func_type: Type = None, func_body: Stmt = None) -> None:
         super().__init__(func_name, func_type)
         self.params = func_params
         self.body = func_body
+    def __str__(self) -> str:
+        params_str = ", ".join([str(param) for param in self.params])
+        return f"Function Name: {self.name}, Return Type: {self.type}, Parameters: [{params_str}]"
     def redefine(self, other: 'FunctionSymbol'):
         self.name = other.name if other.name is not None else self.name
         self.type = other.type if other.type is not None else self.type
@@ -31,6 +37,13 @@ class FunctionSymbol(Symbol):
 class SymbolTable():
     def __init__(self) -> None:
         self.scopes: List[List[Symbol]] = []
+        self.new_scope()
+        self.add_function_symbol(FunctionSymbol('readNumber',[],NumberType(),None))
+        self.add_function_symbol(FunctionSymbol('writeNumber',[VariableSymbol('anArg',NumberType())],VoidType(),None))
+        self.add_function_symbol(FunctionSymbol('readBool',[],BoolType(),None))
+        self.add_function_symbol(FunctionSymbol('writeBool',[VariableSymbol('anArg',BoolType())],VoidType(),None))
+        self.add_function_symbol(FunctionSymbol('readString',[],StringType(),None))
+        self.add_function_symbol(FunctionSymbol('writeString',[VariableSymbol('anArg',StringType())],VoidType(),None))
 
     def new_scope(self) -> None:
         self.scopes.append([])
@@ -48,10 +61,10 @@ class SymbolTable():
         return self.scopes[0]
     
     def add_variable_symbol(self,variable_symbol: VariableSymbol):
-        self.curr_scope.append(variable_symbol)
+        self.curr_scope().append(variable_symbol)
 
     def add_function_symbol(self,function_symbol: FunctionSymbol):
-        self.global_scope.append(function_symbol)
+        self.global_scope().append(function_symbol)
 
     def update_variable_type(self, variable_name:str, variable_type: Type) -> bool:
         for scope in reversed(self.scopes):
@@ -106,6 +119,9 @@ class StaticChecker(BaseVisitor, Utils):
         self.return_list: List[Return] = []
         self.in_loop = []
 
+    def check(self):
+        symbol_table = SymbolTable()
+        self.visit(self.ast, symbol_table)
     def is_same_type(self,l_type: Type,r_type: Type) -> bool:
         if type(l_type) is type(r_type):
             return True
