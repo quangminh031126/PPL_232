@@ -156,7 +156,10 @@ class TestChecker:
         checker = StaticChecker(asttree)
         try:
             res = checker.check()
-            dest.write(str(list(res)))
+            if res is None:
+                dest.write("")
+            else:
+                dest.write(str(list(res)))
         except StaticError as e:
             dest.write(str(e))
         finally:
