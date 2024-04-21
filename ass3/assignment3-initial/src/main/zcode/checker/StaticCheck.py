@@ -28,7 +28,7 @@ class FunctionSymbol(Symbol):
         self.body = func_body
     def __str__(self) -> str:
         params_str = ", ".join([str(param) for param in self.params])
-        return f"Function Name: {self.name}, Return Type: {self.type}, Parameters: [{params_str}]"
+        return f"Function Name: {self.name}, Return Type: {self.type}, Parameters: [{params_str}], Body: {self.body}"
     def redefine(self, other: 'FunctionSymbol'):
         self.name = other.name if other.name is not None else self.name
         self.type = other.type if other.type is not None else self.type
@@ -83,7 +83,7 @@ class SymbolTable():
     
     def lookup_variable_current_scope(self,variable_name: str) -> Union[VariableSymbol,None]:
         for symbol in self.curr_scope():
-            if variable_name == symbol.name:
+            if variable_name == symbol.name and type(symbol) is VariableSymbol:
                 return symbol
         return None
     
@@ -105,6 +105,13 @@ class SymbolTable():
                 if symbol_name == symbol.name:
                     return symbol
         return None
+    def __str__(self) -> str:
+        result = ""
+        for i, scope in enumerate(self.scopes):
+            result += f"Scope {i}:\n"
+            for symbol in scope:
+                result += f"{str(symbol)}\n"
+        return result
 
 class StaticChecker(BaseVisitor, Utils):
     def __init__(self, ast: Program) -> None:
@@ -118,6 +125,7 @@ class StaticChecker(BaseVisitor, Utils):
         self.return_type: Type = None
         self.return_list: List[Return] = []
         self.in_loop = []
+        self.has_return = False
 
     def check(self):
         symbol_table = SymbolTable()
@@ -165,7 +173,7 @@ class StaticChecker(BaseVisitor, Utils):
         if self.no_body != []:
             raise NoDefinition(self.no_body[0].name.name)
         main_func_symbol = param.lookup_function_symbol("main")
-        if main_func_symbol is None or type(main_func_symbol.type) is not VoidType or type(main_func_symbol.params) != []:
+        if main_func_symbol is None or type(main_func_symbol.type) is not VoidType or main_func_symbol.params != []:
             raise NoEntryPoint()
         
     def visitVarDecl(self, ast: VarDecl, param: SymbolTable):        
@@ -216,11 +224,14 @@ class StaticChecker(BaseVisitor, Utils):
         param.new_scope() # new scope for param scope
         for param_decl in ast.param:
             if param.lookup_variable_current_scope(param_decl.name.name) is not None:
-                Redeclared(Parameter(),param_decl.name.name)
+                raise Redeclared(Parameter(),param_decl.name.name)
             else:
                 param.add_variable_symbol(VariableSymbol(param_decl.name.name,self.visit(param_decl.varType,param)))
         if ast.body is None: # goi ham
             if self.is_calling_function == False:
+                for no_body in self.no_body:
+                    if ast.name.name == no_body.name.name:
+                        raise Redeclared(Function(),ast.name.name)
                 self.no_body.append(ast)
             param.add_function_symbol(FunctionSymbol(ast.name.name,func_params=param.curr_scope()))
         else: # khai bao ham
