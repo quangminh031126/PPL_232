@@ -1,11 +1,41 @@
 from Emitter import Emitter
 from functools import reduce
+from MachineCode import JasminCode
 
 from Frame import Frame
 from abc import ABC
 from Visitor import *
 from AST import *
+from CodeGenError import *
+from Utils import *
 
+# Since the Frame.py file is not submitted, have to do it here
+def patch_Frame_class():
+    def getBreakLabel(self):
+        if not self.brkLabel:
+            raise IllegalRuntimeException("None break label")
+        return self.brkLabel[-1]
+    Frame.getBreakLabel = getBreakLabel
+
+# Since the MachineCode.py file is not submitted, have to do it here
+def patch_Machine_Code_class():
+    def emitIREM(self):
+        return JasminCode.INDENT + "irem" + JasminCode.END
+    JasminCode.emitIREM = emitIREM    
+    
+    def emitFREM(self):
+        return JasminCode.INDENT + "frem" + JasminCode.END
+    JasminCode.emitFREM = emitFREM  
+
+    def emitICONST(self, i):
+        # i: Int
+        if i == -1:
+            return JasminCode.INDENT + "iconst_m1" + JasminCode.END
+        elif i >= 0 and i <= 5:
+            return JasminCode.INDENT + "iconst_" + str(i) + JasminCode.END
+        else:
+            raise IllegalOperandException(str(i))
+    JasminCode.emitICONST = emitICONST
 
 class MType:
     def __init__(self, partype, rettype):
@@ -28,14 +58,12 @@ class CodeGenerator:
         self.libName = "io"
 
     def init(self):
-        return [Symbol("readInt", MType(list(), IntType()), CName(self.libName)),
-                Symbol("writeInt", MType([IntType()],
-                       VoidType()), CName(self.libName)),
-                Symbol("writeIntLn", MType(
-                    [IntType()], VoidType()), CName(self.libName)),
-                Symbol("writeFloat", MType(
-                    [FloatType()], VoidType()), CName(self.libName))
-                ]
+        return [Symbol("readNumber", MType(list(), NumberType()), CName(self.libName)),
+                Symbol("writeNumber", MType([NumberType()], VoidType()), CName(self.libName)),
+                Symbol("readBool", MType([BoolType()], VoidType()), CName(self.libName)),
+                Symbol("writeBool", MType([BoolType()], VoidType()), CName(self.libName)),
+                Symbol("readString", MType(list(), StringType()), CName(self.libName)),
+                Symbol("writeString", MType([StringType()], VoidType()), CName(self.libName)),]
 
     def gen(self, ast, path):
         # ast: AST
@@ -76,6 +104,8 @@ class CName(Val):
 
 class CodeGenVisitor(BaseVisitor):
     def __init__(self, astTree, env, path):
+        patch_Frame_class()
+        patch_Machine_Code_Class()
         self.astTree = astTree
         self.env = env
         self.path = path
