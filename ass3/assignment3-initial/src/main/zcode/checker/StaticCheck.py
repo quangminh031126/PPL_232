@@ -3,7 +3,6 @@ from Visitor import *
 from Utils import Utils
 from StaticError import *
 from typing import Union, List
-import warnings
 
 
 from typing import List, Union, Type
@@ -141,17 +140,18 @@ class StaticChecker(BaseVisitor, Utils):
         # Assumption that 
         if type(expr) is Id:
             var_symbol = param.lookup_variable_symbol(expr.name)
-            if var_symbol is None: warnings.warn(f"Chưa check sự tồn tại của biến!! {expr.name}" )
+            if var_symbol is None:
+                pass
             else:
                 param.update_variable_type(var_symbol.name,to_type)
 
         elif type(expr) in [CallExpr,CallStmt]:
             func_symbol = param.lookup_function_symbol(expr.name.name)
-            if func_symbol is None: warnings.warn(f"Chưa check sự tồn tại của hàm!!{expr.name.name}")
+            if func_symbol is None: pass
             else:
                 param.update_function_sym(func_symbol.name,to_type)
                 self.is_calling_function = True
-                self.visit(FuncDecl(Id(func_symbol.name),list(map(lambda x: VarDecl(Id(x.name),x.typ,None,None),func_symbol.params)),func_symbol.body),param)
+                self.visit(FuncDecl(Id(func_symbol.name),list(map(lambda x: VarDecl(Id(x.name),x.type,None,None),func_symbol.params)),func_symbol.body),param)
                 self.is_calling_function = False
 
         elif type(expr) is ArrayLiteral:
@@ -181,25 +181,27 @@ class StaticChecker(BaseVisitor, Utils):
     def visitVarDecl(self, ast: VarDecl, param: SymbolTable):        
         if param.lookup_variable_current_scope(ast.name.name) is not None:
             raise Redeclared(Variable(),ast.name.name)
-        print('lhs:',ast.name)
-        print('rhs:',ast.varInit, self.visit(ast.varInit,param))
         self.visiting_var_name = ast.name.name
         l_type = ast.varType
         if ast.varInit is not None:
             r_type = self.visit(ast.varInit,param)
             if l_type is not None and r_type is not None:
-                if not self.is_same_type(l_type,r_type):
+                if type(l_type) is not type(r_type):
                     raise TypeMismatchInStatement(ast)
                 if type(l_type) is ArrayType:
-                    print(hello)
                     if l_type.size[:len(r_type.size)] != r_type.size:
-                        self.inferType(ast.varInit,l_type,param)
-                        if not self.can_be_inferred:
-                            raise TypeCannotBeInferred(ast)
-                        param.add_variable_symbol(VariableSymbol(ast.name.name,l_type))
+                        raise TypeMismatchInStatement(ast)
                     else:
-                        if type(r_type.eleType) is not type(l_type.eleType):
+                        if r_type.eleType is None:
+                            self.inferType(ast.varInit,l_type,param)
+                            if self.can_be_inferred == False:
+                                raise TypeCannotBeInferred(ast)
+                            r_type = l_type
+                            param.add_variable_symbol(VariableSymbol(ast.name.name,l_type))
+                        else: 
                             raise TypeMismatchInStatement(ast)
+                    if type(r_type.eleType) is not type(l_type.eleType):
+                        raise TypeMismatchInStatement(ast)
                 param.add_variable_symbol(VariableSymbol(ast.name.name,l_type))
             elif l_type is None and r_type is None:
                 raise TypeCannotBeInferred(ast)
@@ -210,7 +212,7 @@ class StaticChecker(BaseVisitor, Utils):
                         raise TypeCannotBeInferred(ast)
                     param.add_variable_symbol(VariableSymbol(ast.name.name,l_type))
                 else:
-                    raise TypeCannotBeInferred(ast)
+                    raise TypeMismatchInStatement(ast)
             else:
                 param.add_variable_symbol(VariableSymbol(ast.name.name,r_type))
         else:
@@ -291,7 +293,7 @@ class StaticChecker(BaseVisitor, Utils):
         return ArrayType()
 
     def visitBinaryOp(self, ast: BinaryOp, param: SymbolTable):
-        left_type, right_type = self.visit(ast.left), self.visit(ast.right)
+        left_type, right_type = self.visit(ast.left,param), self.visit(ast.right,param)
         op = ast.op
         if op in ['+','-','*','/','%','=','!=','>','<','>=','<=']:
             if left_type is None:
@@ -469,7 +471,7 @@ class StaticChecker(BaseVisitor, Utils):
                                 return None
                         if type(idx_type) is not NumberType:
                             raise TypeMismatchInExpression(ast)
-                    return arr_type.eleType if len(arr_type) == len(indices) else ArrayType(arr_type.size[len(ast.idx):], arr_type.eleType)
+                    return arr_type.eleType if len(arr_type.size) == len(indices) else ArrayType(arr_type.size[len(ast.idx):], arr_type.eleType)
 
     def visitBlock(self, ast: Block, param: SymbolTable):
         param.new_scope()
@@ -565,7 +567,6 @@ class StaticChecker(BaseVisitor, Utils):
             self.return_type = VoidType()
         else:
             return_type = self.visit(ast.expr,param)
-            print(return_type)
             function_symbol = param.lookup_function_symbol(self.func_name)
             if function_symbol.type is None:
                 if return_type is None: # return a, ma a chua co type, function cung chua
@@ -727,7 +728,10 @@ class StaticChecker(BaseVisitor, Utils):
                         element_type = first_element_type_found
                     else: return None
                 if type(element_type) is not type(first_element_type_found):
-                    TypeMismatchInExpression(self.array_stack[0])
+                    try:
+                        TypeMismatchInExpression(self.array_stack[0])
+                    except:
+                        TypeMismatchInExpression(ast)
                 else:
                     if type(element_type) is ArrayType:
                         if element_type.size[:len(first_element_type_found.size)] != first_element_type_found.size:
