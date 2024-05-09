@@ -60,6 +60,21 @@ class Symbol:
         return "Symbol(" + self.name + "," + str(self.mtype) + ")"
 
 
+class MethodDecl:
+    def __init__(self) -> None:
+        pass
+
+
+class Instance:
+    def __init__(self) -> None:
+        pass
+
+
+class ClassType:
+    def __init__(self) -> None:
+        pass
+
+
 class CodeGenerator:
     def __init__(self):
         self.libName = "io"
@@ -241,7 +256,7 @@ class CodeGenVisitor(BaseVisitor):
         )
 
     def visitNumberLiteral(self, ast, o):
-        return self.emit.emitPUSHFCONST(ast.value, o.frame), IntType()
+        return self.emit.emitPUSHFCONST(ast.value, o.frame), NumberType()
 
     def visitBinaryOp(self, ast, o):
         e1c, e1t = self.visit(ast.left, o)

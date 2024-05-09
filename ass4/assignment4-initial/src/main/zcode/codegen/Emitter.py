@@ -42,6 +42,21 @@ def patch_Machine_Code_class():
     JasminCode.emitICONST = emitICONST
 
 
+class MethodDecl:
+    def __init__(self) -> None:
+        pass
+
+
+class Instance:
+    def __init__(self) -> None:
+        pass
+
+
+class ClassType:
+    def __init__(self) -> None:
+        pass
+
+
 class Emitter:
     def __init__(self, filename):
         patch_Frame_class()
