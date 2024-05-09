@@ -1,13 +1,14 @@
-from Emitter import Emitter
-from functools import reduce
-from MachineCode import JasminCode
-
-from Frame import Frame
 from abc import ABC
-from Visitor import *
+from functools import reduce
+
 from AST import *
 from CodeGenError import *
+from Emitter import Emitter
+from Frame import Frame
+from MachineCode import JasminCode
 from Utils import *
+from Visitor import *
+
 
 # Since the Frame.py file is not submitted, have to do it here
 def patch_Frame_class():
@@ -15,17 +16,21 @@ def patch_Frame_class():
         if not self.brkLabel:
             raise IllegalRuntimeException("None break label")
         return self.brkLabel[-1]
+
     Frame.getBreakLabel = getBreakLabel
+
 
 # Since the MachineCode.py file is not submitted, have to do it here
 def patch_Machine_Code_class():
     def emitIREM(self):
         return JasminCode.INDENT + "irem" + JasminCode.END
-    JasminCode.emitIREM = emitIREM    
-    
+
+    JasminCode.emitIREM = emitIREM
+
     def emitFREM(self):
         return JasminCode.INDENT + "frem" + JasminCode.END
-    JasminCode.emitFREM = emitFREM  
+
+    JasminCode.emitFREM = emitFREM
 
     def emitICONST(self, i):
         # i: Int
@@ -35,7 +40,9 @@ def patch_Machine_Code_class():
             return JasminCode.INDENT + "iconst_" + str(i) + JasminCode.END
         else:
             raise IllegalOperandException(str(i))
+
     JasminCode.emitICONST = emitICONST
+
 
 class MType:
     def __init__(self, partype, rettype):
@@ -50,7 +57,7 @@ class Symbol:
         self.value = value
 
     def __str__(self):
-        return "Symbol("+self.name+","+str(self.mtype)+")"
+        return "Symbol(" + self.name + "," + str(self.mtype) + ")"
 
 
 class CodeGenerator:
@@ -58,12 +65,18 @@ class CodeGenerator:
         self.libName = "io"
 
     def init(self):
-        return [Symbol("readNumber", MType(list(), NumberType()), CName(self.libName)),
-                Symbol("writeNumber", MType([NumberType()], VoidType()), CName(self.libName)),
-                Symbol("readBool", MType([BoolType()], VoidType()), CName(self.libName)),
-                Symbol("writeBool", MType([BoolType()], VoidType()), CName(self.libName)),
-                Symbol("readString", MType(list(), StringType()), CName(self.libName)),
-                Symbol("writeString", MType([StringType()], VoidType()), CName(self.libName)),]
+        return [
+            Symbol("readNumber", MType(list(), NumberType()), CName(self.libName)),
+            Symbol(
+                "writeNumber", MType([NumberType()], VoidType()), CName(self.libName)
+            ),
+            Symbol("readBool", MType([BoolType()], VoidType()), CName(self.libName)),
+            Symbol("writeBool", MType([BoolType()], VoidType()), CName(self.libName)),
+            Symbol("readString", MType(list(), StringType()), CName(self.libName)),
+            Symbol(
+                "writeString", MType([StringType()], VoidType()), CName(self.libName)
+            ),
+        ]
 
     def gen(self, ast, path):
         # ast: AST
@@ -74,13 +87,13 @@ class CodeGenerator:
         gc.visit(ast, None)
 
 
-class SubBody():
+class SubBody:
     def __init__(self, frame, sym):
         self.frame = frame
         self.sym = sym
 
 
-class Access():
+class Access:
     def __init__(self, frame, sym, isLeft, isFirst=False):
         self.frame = frame
         self.sym = sym
@@ -105,40 +118,50 @@ class CName(Val):
 class CodeGenVisitor(BaseVisitor):
     def __init__(self, astTree, env, path):
         patch_Frame_class()
-        patch_Machine_Code_Class()
+        patch_Machine_Code_class()
         self.astTree = astTree
         self.env = env
         self.path = path
 
     def visitProgram(self, ast, c):
-        [self.visit(i, c)for i in ast.decl]
+        [self.visit(i, c) for i in ast.decl]
         return c
 
     def visitClassDecl(self, ast, c):
         self.className = ast.classname.name
-        self.emit = Emitter(self.path+"/" + self.className + ".j")
-        self.emit.printout(self.emit.emitPROLOG(
-            self.className, "java.lang.Object"))
-        [self.visit(ele, SubBody(None, self.env))
-         for ele in ast.memlist if type(ele) == MethodDecl]
+        self.emit = Emitter(self.path + "/" + self.className + ".j")
+        self.emit.printout(self.emit.emitPROLOG(self.className, "java.lang.Object"))
+        [
+            self.visit(ele, SubBody(None, self.env))
+            for ele in ast.memlist
+            if type(ele) == MethodDecl
+        ]
         # generate default constructor
-        self.genMETHOD(MethodDecl(Instance(), Id("<init>"), list(
-        ), None, Block([], [])), c, Frame("<init>", VoidType()))
+        self.genMETHOD(
+            MethodDecl(Instance(), Id("<init>"), list(), None, Block([], [])),
+            c,
+            Frame("<init>", VoidType()),
+        )
         self.emit.emitEPILOG()
         return c
 
     def genMETHOD(self, consdecl, o, frame):
         isInit = consdecl.returnType is None
-        isMain = consdecl.name.name == "main" and len(
-            consdecl.param) == 0 and type(consdecl.returnType) is VoidType
+        isMain = (
+            consdecl.name.name == "main"
+            and len(consdecl.param) == 0
+            and type(consdecl.returnType) is VoidType
+        )
         returnType = VoidType() if isInit else consdecl.returnType
         methodName = "<init>" if isInit else consdecl.name.name
-        intype = [ArrayType(0, StringType())] if isMain else list(
-            map(lambda x: x.typ, consdecl.param))
+        intype = (
+            [ArrayType(0, StringType())]
+            if isMain
+            else list(map(lambda x: x.typ, consdecl.param))
+        )
         mtype = MType(intype, returnType)
 
-        self.emit.printout(self.emit.emitMETHOD(
-            methodName, mtype, not isInit, frame))
+        self.emit.printout(self.emit.emitMETHOD(methodName, mtype, not isInit, frame))
 
         frame.enterScope(True)
 
@@ -146,23 +169,43 @@ class CodeGenVisitor(BaseVisitor):
 
         # Generate code for parameter declarations
         if isInit:
-            self.emit.printout(self.emit.emitVAR(frame.getNewIndex(), "this", ClassType(
-                Id(self.className)), frame.getStartLabel(), frame.getEndLabel(), frame))
+            self.emit.printout(
+                self.emit.emitVAR(
+                    frame.getNewIndex(),
+                    "this",
+                    ClassType(Id(self.className)),
+                    frame.getStartLabel(),
+                    frame.getEndLabel(),
+                    frame,
+                )
+            )
         elif isMain:
-            self.emit.printout(self.emit.emitVAR(frame.getNewIndex(), "args", ArrayType(
-                0, StringType()), frame.getStartLabel(), frame.getEndLabel(), frame))
+            self.emit.printout(
+                self.emit.emitVAR(
+                    frame.getNewIndex(),
+                    "args",
+                    ArrayType(0, StringType()),
+                    frame.getStartLabel(),
+                    frame.getEndLabel(),
+                    frame,
+                )
+            )
         else:
-            local = reduce(lambda env, ele: SubBody(
-                frame, [self.visit(ele, env)]+env.sym), consdecl.param, SubBody(frame, []))
-            glenv = local.sym+glenv
+            local = reduce(
+                lambda env, ele: SubBody(frame, [self.visit(ele, env)] + env.sym),
+                consdecl.param,
+                SubBody(frame, []),
+            )
+            glenv = local.sym + glenv
 
         body = consdecl.body
         self.emit.printout(self.emit.emitLABEL(frame.getStartLabel(), frame))
 
         # Generate code for statements
         if isInit:
-            self.emit.printout(self.emit.emitREADVAR(
-                "this", ClassType(Id(self.className)), 0, frame))
+            self.emit.printout(
+                self.emit.emitREADVAR("this", ClassType(Id(self.className)), 0, frame)
+            )
             self.emit.printout(self.emit.emitINVOKESPECIAL(frame))
         list(map(lambda x: self.visit(x, SubBody(frame, glenv)), body.stmt))
 
@@ -175,7 +218,11 @@ class CodeGenVisitor(BaseVisitor):
     def visitMethodDecl(self, ast, o):
         frame = Frame(ast.name, ast.returnType)
         self.genMETHOD(ast, o.sym, frame)
-        return Symbol(ast.name, MType([x.typ for x in ast.param], ast.returnType), CName(self.className))
+        return Symbol(
+            ast.name,
+            MType([x.typ for x in ast.param], ast.returnType),
+            CName(self.className),
+        )
 
     def visitCallStmt(self, ast, o):
         ctxt = o
@@ -189,8 +236,9 @@ class CodeGenVisitor(BaseVisitor):
             str1, typ1 = self.visit(x, Access(frame, nenv, False, True))
             in_ = (in_[0] + str1, in_[1].append(typ1))
         self.emit.printout(in_[0])
-        self.emit.printout(self.emit.emitINVOKESTATIC(
-            cname + "/" + ast.method.name, ctype, frame))
+        self.emit.printout(
+            self.emit.emitINVOKESTATIC(cname + "/" + ast.method.name, ctype, frame)
+        )
 
     def visitNumberLiteral(self, ast, o):
         return self.emit.emitPUSHFCONST(ast.value, o.frame), IntType()
